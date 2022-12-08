@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="pull-left">
+          <h4>5 Team Measures</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 mt-20">
+    <form class="form-block row">
+      <div class="col-md-4" *ngFor="let item of ListData;let i = index">
+        <div class="form-group mb-2"  *ngIf="item.label && item.label != 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <select name="{{item.label}}" class="form-control" [(ngModel)]="FilterData[item.label]">
+            <option  [value]="undefined" disabled [selected]=true>Select {{item.label}}</option>
+            <option [value]="data.answer" *ngFor="let data of item.answer">{{data.answer}}</option>
+          </select>
+        </div>
+        <div class="form-group mb-2"  *ngIf="item.label && item.label == 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <ng-multiselect-dropdown
+          [placeholder]="item.label | titlecase "
+          name="{{item.label}}"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="FilterData[item.label]"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group mb-2 text-center">
+          <button class="btn btn-primary mr-3" (click)="GetFilterData()">Submit</button>
+          <button class="btn btn-primary" (click)="resetData()">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-12" *ngIf='show'>
+    <div style="display: block;">
+      <div>
+        <div class="full-po mt-5" *ngIf="mesure">
+          <div class="one">
+              <img src="assets/images/{{mesure.Unconditional_dependability < 58 ? 'full-red-red' : (mesure.Unconditional_dependability >= 58 && mesure.Unconditional_dependability <= 62.5) ? 'full-red-yellow': (mesure.Unconditional_dependability > 62.5 && mesure.Unconditional_dependability <= 66.6) ? 'full-yellow-red': (mesure.Unconditional_dependability > 66.6 && mesure.Unconditional_dependability <= 70.5) ? 'full-yellow-yellow' : (mesure.Unconditional_dependability > 70.5 && mesure.Unconditional_dependability <= 74.9) ? 'full-yellow-green': (mesure.Unconditional_dependability >= 75 && mesure.Unconditional_dependability <= 79.9) ? 'full-green-yellow' : (mesure.Unconditional_dependability > 79.9 && mesure.Unconditional_dependability <= 84.9) ? 'full-green-green' : (mesure.Unconditional_dependability >= 85 && mesure.Unconditional_dependability <= 89.9) ? 'full-green-purble' : (mesure.Unconditional_dependability >= 90 && mesure.Unconditional_dependability <= 92.9) ? 'full-purble-green' : mesure.Unconditional_dependability > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+              <p [ngClass]="{'text-black': mesure.Unconditional_dependability >= 62.5 && mesure.Unconditional_dependability < 75}">Unconditional dependability <br> ({{mesure.Unconditional_dependability | number:'0.0-1'}})</p>
+          </div>
+          <div class="two">
+            <img src="assets/images/{{mesure.Disciplined_investment_in_SSOB < 58 ? 'full-red-red' : (mesure.Disciplined_investment_in_SSOB >= 58 && mesure.Disciplined_investment_in_SSOB <= 62.5) ? 'full-red-yellow': (mesure.Disciplined_investment_in_SSOB > 62.5 && mesure.Disciplined_investment_in_SSOB <= 66.6) ? 'full-yellow-red': (mesure.Disciplined_investment_in_SSOB > 66.6 && mesure.Disciplined_investment_in_SSOB <= 70.5) ? 'full-yellow-yellow' : (mesure.Disciplined_investment_in_SSOB > 70.5 && mesure.Disciplined_investment_in_SSOB <= 74.9) ? 'full-yellow-green': (mesure.Disciplined_investment_in_SSOB >= 75 && mesure.Disciplined_investment_in_SSOB <= 79.9) ? 'full-green-yellow' : (mesure.Disciplined_investment_in_SSOB > 79.9 && mesure.Disciplined_investment_in_SSOB <= 84.9) ? 'full-green-green' : (mesure.Disciplined_investment_in_SSOB >= 85 && mesure.Disciplined_investment_in_SSOB <= 89.9) ? 'full-green-purble' : (mesure.Disciplined_investment_in_SSOB >= 90 && mesure.Disciplined_investment_in_SSOB <= 92.9) ? 'full-purble-green' : mesure.Disciplined_investment_in_SSOB > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+            <p [ngClass]="{'text-black': mesure.Disciplined_investment_in_SSOB >= 62.5 && mesure.Disciplined_investment_in_SSOB < 75}">Disciplined investment in shared standards of Being <br> ({{mesure.Disciplined_investment_in_SSOB | number:'0.0-1'}})</p>
+        </div>
+        <div class="three">
+          <img src="assets/images/{{mesure.Embody_a_meaningful_purpose < 58 ? 'full-red-red' : (mesure.Embody_a_meaningful_purpose >= 58 && mesure.Embody_a_meaningful_purpose <= 62.5) ? 'full-red-yellow': (mesure.Embody_a_meaningful_purpose > 62.5 && mesure.Embody_a_meaningful_purpose <= 66.6) ? 'full-yellow-red': (mesure.Embody_a_meaningful_purpose > 66.6 && mesure.Embody_a_meaningful_purpose <= 70.5) ? 'full-yellow-yellow' : (mesure.Embody_a_meaningful_purpose > 70.5 && mesure.Embody_a_meaningful_purpose <= 74.9) ? 'full-yellow-green': (mesure.Embody_a_meaningful_purpose >= 75 && mesure.Embody_a_meaningful_purpose <= 79.9) ? 'full-green-yellow' : (mesure.Embody_a_meaningful_purpose > 79.9 && mesure.Embody_a_meaningful_purpose <= 84.9) ? 'full-green-green' : (mesure.Embody_a_meaningful_purpose >= 85 && mesure.Embody_a_meaningful_purpose <= 89.9) ? 'full-green-purble' : (mesure.Embody_a_meaningful_purpose >= 90 && mesure.Embody_a_meaningful_purpose <= 92.9) ? 'full-purble-green' : mesure.Embody_a_meaningful_purpose > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+          <p [ngClass]="{'text-black': mesure.Embody_a_meaningful_purpose >= 62.5 && mesure.Embody_a_meaningful_purpose < 75}">Collectively embody a meaningful purpose <br> ({{mesure.Embody_a_meaningful_purpose | number:'0.0-1'}})</p>
+         </div>
+         
+          <div class="four">
+            <img src="assets/images/{{mesure.Opportunity_seeking < 58 ? 'full-red-red' : (mesure.Opportunity_seeking >= 58 && mesure.Opportunity_seeking <= 62.5) ? 'full-red-yellow': (mesure.Opportunity_seeking > 62.5 && mesure.Opportunity_seeking <= 66.6) ? 'full-yellow-red': (mesure.Opportunity_seeking > 66.6 && mesure.Opportunity_seeking <= 70.5) ? 'full-yellow-yellow' : (mesure.Opportunity_seeking > 70.5 && mesure.Opportunity_seeking <= 74.9) ? 'full-yellow-green': (mesure.Opportunity_seeking >= 75 && mesure.Opportunity_seeking <= 79.9) ? 'full-green-yellow' : (mesure.Opportunity_seeking > 79.9 && mesure.Opportunity_seeking <= 84.9) ? 'full-green-green' : (mesure.Opportunity_seeking >= 85 && mesure.Opportunity_seeking <= 89.9) ? 'full-green-purble' : (mesure.Opportunity_seeking >= 90 && mesure.Opportunity_seeking <= 92.9) ? 'full-purble-green' : mesure.Opportunity_seeking > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+              <p [ngClass]="{'text-black': mesure.Opportunity_seeking >= 62.5 && mesure.Opportunity_seeking < 75}">Opportunity seeking vs Problem solving <br> ({{mesure.Opportunity_seeking | number:'0.0-1'}})</p>
+          </div>
+          <div class="five">
+            <img src="assets/images/{{mesure.Help_each_other_shine < 58 ? 'full-red-red' : (mesure.Help_each_other_shine >= 58 && mesure.Help_each_other_shine <= 62.5) ? 'full-red-yellow': (mesure.Help_each_other_shine > 62.5 && mesure.Help_each_other_shine <= 66.6) ? 'full-yellow-red': (mesure.Help_each_other_shine > 66.6 && mesure.Help_each_other_shine <= 70.5) ? 'full-yellow-yellow' : (mesure.Help_each_other_shine > 70.5 && mesure.Help_each_other_shine <= 74.9) ? 'full-yellow-green': (mesure.Help_each_other_shine >= 75 && mesure.Help_each_other_shine <= 79.9) ? 'full-green-yellow' : (mesure.Help_each_other_shine > 79.9 && mesure.Help_each_other_shine <= 84.9) ? 'full-green-green' : (mesure.Help_each_other_shine >= 85 && mesure.Help_each_other_shine <= 89.9) ? 'full-green-purble' : (mesure.Help_each_other_shine >= 90 && mesure.Help_each_other_shine <= 92.9) ? 'full-purble-green' : mesure.Help_each_other_shine > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+            <p [ngClass]="{'text-black': mesure.Help_each_other_shine >= 62.5 && mesure.Help_each_other_shine < 75}">Help each other shine in their wholeness <br> ({{mesure.Help_each_other_shine | number:'0.0-1'}})</p>
+        </div>
+         <div class="six">
+            <h4>Full Potential Team Measures</h4>
+         </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

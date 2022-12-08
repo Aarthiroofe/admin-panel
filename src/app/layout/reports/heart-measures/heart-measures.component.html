@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="pull-left">
+          <h4>Heart Measures</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 mt-20">
+    <form class="form-block row" role="form" name="LogInForm" #loginform="ngForm" novalidate autocomplete="off">
+      <div class="col-md-4" *ngFor="let item of ListData;let i = index">
+        <div class="form-group mb-2"   *ngIf="item.label && item.label != 'name'">
+          <label class="mr-20">{{item.label | titlecase  }}</label>
+          <select name="{{item.label}}" class="form-control" [(ngModel)]="FilterData[item.label]">
+            <option  [value]="undefined" disabled [selected]=true>Select {{item.label}}</option>
+            <option [value]="data.answer" *ngFor="let data of item.answer">{{data.answer}}</option>
+          </select>
+        </div>
+        <div class="form-group mb-2"  *ngIf="item.label && item.label == 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <ng-multiselect-dropdown
+          [placeholder]="item.label | titlecase "
+          name="{{item.label}}"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="FilterData[item.label]"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group mb-2 text-center">
+          <button class="btn btn-primary mr-3" (click)="GetHeartMeasureData()">Submit</button>
+          <button class="btn btn-primary" (click)="resetData(loginform)">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="text-right mb-2">
+  <button class="btn btn-primary" (click)="Download_pdf()" *ngIf="show && report_id">Download Report</button>
+</div>
+<div class="d-flex heart_measure_flex" *ngIf="show">
+    <div class="heart_measure_diagram" [ngClass]="UserData.overall_hp_score < 62.5 ? 'red_background': UserData.overall_hp_score >= 62.5 && UserData.overall_hp_score < 75? 'yellow_background': UserData.overall_hp_score >= 75 && UserData.overall_hp_score < 90 ? 'green_background':'purple_background'">
+      <div class="heart_measure_img_wrapper" [ngClass]="UserData.overall_hp_score < 62.5 ? 'red_bg': UserData.overall_hp_score >= 62.5 && UserData.overall_hp_score < 75? 'yellow_bg': UserData.overall_hp_score >= 75 && UserData.overall_hp_score < 90 ? 'green_bg':'purple_bg'">
+        <p  class="three_heart_name heart_name_individual">Conscious Individual</p>
+        <p  class="three_heart_name heart_name_org">Conscious Organisation</p>
+        <p  class="three_heart_name heart_name_habit">Habits</p>
+        <div class="heart_circle alignment_to_individual_purpose" [ngClass]="UserData.individual_alignment_purpose < 62.5 ? 'red': UserData.individual_alignment_purpose >= 62.5 && UserData.individual_alignment_purpose < 75? 'yellow': UserData.individual_alignment_purpose >= 75 && UserData.individual_alignment_purpose < 90 ? 'green':'purple'">
+          <p>Alignment to individual purpose</p>
+          <p>{{UserData.individual_alignment_purpose}}</p>
+        </div>
+        <div class="heart_circle clear_individual_purpose" [ngClass]="UserData.clear_personal_purpose < 62.5 ? 'red': UserData.clear_personal_purpose >= 62.5 && UserData.clear_personal_purpose < 75? 'yellow': UserData.clear_personal_purpose >= 75 && UserData.clear_personal_purpose < 90 ? 'green':'purple'">
+          <p>Clear individual purpose</p>
+          <p>{{UserData.clear_personal_purpose}}</p>
+        </div>
+        <div class="heart_circle individual_alignment_to_organisational_purpose" [ngClass]="UserData.individual_alignment_ORG_purpose < 62.5 ? 'red': UserData.individual_alignment_ORG_purpose >= 62.5 && UserData.individual_alignment_ORG_purpose < 75? 'yellow': UserData.individual_alignment_ORG_purpose >= 75 && UserData.individual_alignment_ORG_purpose < 90 ? 'green':'purple'">
+          <p>Individual alignment to organisational purpose </p>
+          <p>{{UserData.individual_alignment_ORG_purpose}}</p>
+        </div>
+        <div class="heart_circle clear_organisational_purpose" [ngClass]="UserData.clear_org_purpose < 62.5 ? 'red': UserData.clear_org_purpose >= 62.5 && UserData.clear_org_purpose < 75? 'yellow': UserData.clear_org_purpose >= 75 && UserData.clear_org_purpose < 90 ? 'green':'purple'">
+          <p>Clear organisational purpose </p>
+          <p>{{UserData.clear_org_purpose}}</p>
+        </div>
+        <div class="heart_circle psychological_safety" [ngClass]="UserData.psychological_safety < 62.5 ? 'red': UserData.psychological_safety >= 62.5 && UserData.psychological_safety < 75? 'yellow': UserData.psychological_safety >= 75 && UserData.psychological_safety < 90 ? 'green':'purple'">
+          <p>Psychological safety</p>
+          <p>{{UserData.psychological_safety}}</p>
+        </div>
+        <div class="heart_circle alignment_to_organisational_purpose" [ngClass]="UserData.org_alignment_purpose < 62.5 ? 'red': UserData.org_alignment_purpose >= 62.5 && UserData.org_alignment_purpose < 75? 'yellow': UserData.org_alignment_purpose >= 75 && UserData.org_alignment_purpose < 90 ? 'green':'purple'">
+          <p>Alignment to organisational purpose</p>
+          <p>{{UserData.org_alignment_purpose}}</p>
+        </div>
+        <div class="heart_circle trust" [ngClass]="UserData.trust < 62.5 ? 'red': UserData.trust >= 62.5 && UserData.trust < 75? 'yellow': UserData.trust >= 75 && UserData.trust < 90 ? 'green':'purple'">
+          <p>Trust</p>
+          <p>{{UserData.trust}}</p>
+        </div>
+        <div class="heart_circle authenticity" [ngClass]="UserData.authenticity < 62.5 ? 'red': UserData.authenticity >= 62.5 && UserData.authenticity < 75? 'yellow': UserData.authenticity >= 75 && UserData.authenticity < 90 ? 'green':'purple'">
+          <p>Authenticity</p>
+          <p>{{UserData.authenticity}}</p>
+        </div>
+        <div class="heart_circle principles_and_values_that_support_meaningful_purpose" [ngClass]="UserData.principles_values < 62.5 ? 'red': UserData.principles_values >= 62.5 && UserData.principles_values < 75? 'yellow': UserData.principles_values >= 75 && UserData.principles_values < 90 ? 'green':'purple'">
+          <p>Principles and values that support meaningful purpose</p>
+          <p>{{UserData.principles_values}}</p>
+        </div>
+        <div class="heart_circle giving_appreciation_daily" [ngClass]="UserData.giving_appreciation_daily < 62.5 ? 'red': UserData.giving_appreciation_daily >= 62.5 && UserData.giving_appreciation_daily < 75? 'yellow': UserData.giving_appreciation_daily >= 75 && UserData.giving_appreciation_daily < 90 ? 'green':'purple'">
+          <p>Giving appreciation daily</p>
+          <p>{{UserData.giving_appreciation_daily}}</p>
+        </div>
+        <div class="heart_circle being_on_the_pitch_and_not_in_the_stands" [ngClass]="UserData.pitch_vs_stands < 62.5 ? 'red': UserData.pitch_vs_stands >= 62.5 && UserData.pitch_vs_stands < 75? 'yellow': UserData.pitch_vs_stands >= 75 && UserData.pitch_vs_stands < 90 ? 'green':'purple'">
+          <p>Being on the <br>pitch and not in the stands</p>
+          <p>{{UserData.pitch_vs_stands}}</p>
+        </div>
+        <div class="heart_circle pausing_and_reflecting" [ngClass]="UserData.pausing_reflecting < 62.5 ? 'red': UserData.pausing_reflecting >= 62.5 && UserData.pausing_reflecting < 75? 'yellow': UserData.pausing_reflecting >= 75 && UserData.pausing_reflecting < 90 ? 'green':'purple'">
+          <p>Pausing and reflecting</p>
+          <p>{{UserData.pausing_reflecting}}</p>
+        </div>
+        <div class="heart_circle active_listening" [ngClass]="UserData.active_listening < 62.5 ? 'red': UserData.active_listening >= 62.5 && UserData.active_listening < 75? 'yellow': UserData.active_listening >= 75 && UserData.active_listening < 90 ? 'green':'purple'">
+          <p>Active listening</p>
+          <p>{{UserData.active_listening}}</p>
+        </div>
+        <div class="heart_circle being_in_flow_and_having_fun" [ngClass]="UserData.being_flow_having_fun < 62.5 ? 'red': UserData.being_flow_having_fun >= 62.5 && UserData.being_flow_having_fun < 75? 'yellow': UserData.being_flow_having_fun >= 75 && UserData.being_flow_having_fun < 90 ? 'green':'purple'">
+          <p>Being in flow <br>and having fun</p>
+          <p>{{UserData.being_flow_having_fun}}</p>
+        </div>
+        <div class="heart_circle giving_and_receiving_coaching" [ngClass]="UserData.giving_receiving_coaching < 62.5 ? 'red': UserData.giving_receiving_coaching >= 62.5 && UserData.giving_receiving_coaching < 75? 'yellow': UserData.giving_receiving_coaching >= 75 && UserData.giving_receiving_coaching < 90 ? 'green':'purple'">
+          <p>Giving and receiving coaching</p>
+          <p>{{UserData.giving_receiving_coaching}}</p>
+        </div>
+        <div class="overall_score">
+          <p>Win-Win 
+            Culture</p>
+            <p>{{UserData.overall_hp_score}}</p>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- Loading -->
+<div class="loader" *ngIf="loading">
+  <div class="loader_wrapper">
+      <img src="./assets/images/loader.gif">
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="pull-left">
+          <h4>8 Mindsets and Attitudes</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 mt-20">
+    <form class="form-block row">
+      <div class="col-md-4" *ngFor="let item of ListData;let i = index">
+        <div class="form-group mb-2"  *ngIf="item.label && item.label != 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <select name="{{item.label}}" class="form-control" [(ngModel)]="FilterData[item.label]">
+            <option  [value]="undefined" disabled [selected]=true>Select {{item.label}}</option>
+            <option [value]="data.answer" *ngFor="let data of item.answer">{{data.answer}}</option>
+          </select>
+        </div>
+        <div class="form-group mb-2"  *ngIf="item.label && item.label == 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <ng-multiselect-dropdown
+          [placeholder]="item.label | titlecase "
+          name="{{item.label}}"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="FilterData[item.label]"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group mb-2 text-center">
+          <button class="btn btn-primary mr-3" (click)="GetFilterData()">Submit</button>
+          <button class="btn btn-primary" (click)="resetData()">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-12" *ngIf='show'>
+    <div style="display: block;">
+      
+      <div>
+        <div class="be-full  mt-5" *ngIf="eightfull">
+          <div class="one">
+            <img src="assets/images/{{eightfull.Be_Authentic < 58 ? 'be-red-red' : (eightfull.Be_Authentic >= 58 && eightfull.Be_Authentic <= 62.5) ? 'be-red-yellow': (eightfull.Be_Authentic > 62.5 && eightfull.Be_Authentic <= 66.6) ? 'be-yellow-red': (eightfull.Be_Authentic > 66.6 && eightfull.Be_Authentic <= 70.5) ? 'be-yellow-yellow' : (eightfull.Be_Authentic > 70.5 && eightfull.Be_Authentic <= 74.9) ? 'be-yellow-green': (eightfull.Be_Authentic >= 75 && eightfull.Be_Authentic <= 79.9) ? 'be-green-yellow' : (eightfull.Be_Authentic >= 80 && eightfull.Be_Authentic <= 84.9) ? 'be-green-green' : (eightfull.Be_Authentic >= 85 && eightfull.Be_Authentic <= 89.9) ? 'be-green-purble' : (eightfull.Be_Authentic >= 90 && eightfull.Be_Authentic <= 92.9) ? 'be-purble-green' : eightfull.Be_Authentic > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+             
+              <p [ngClass]="{'text-black': eightfull.Be_Authentic >= 62.5 && eightfull.Be_Authentic < 75}">Fierce Authenticity <br /> ({{eightfull.Be_Authentic | number:'0.0-1'}})</p>
+          </div>
+          <div class="two">
+            <img src="assets/images/{{eightfull.Commit_To_A_Higher_Cause < 58 ? 'be-red-red' : (eightfull.Commit_To_A_Higher_Cause >= 58 && eightfull.Commit_To_A_Higher_Cause <= 62.5) ? 'be-red-yellow': (eightfull.Commit_To_A_Higher_Cause > 62.5 && eightfull.Commit_To_A_Higher_Cause <= 66.6) ? 'be-yellow-red': (eightfull.Commit_To_A_Higher_Cause > 66.6 && eightfull.Commit_To_A_Higher_Cause <= 70.5) ? 'be-yellow-yellow' : (eightfull.Commit_To_A_Higher_Cause > 70.5 && eightfull.Commit_To_A_Higher_Cause <= 74.9) ? 'be-yellow-green': (eightfull.Commit_To_A_Higher_Cause >= 75 && eightfull.Commit_To_A_Higher_Cause <= 79.9) ? 'be-green-yellow' : (eightfull.Commit_To_A_Higher_Cause >= 80 && eightfull.Commit_To_A_Higher_Cause <= 84.9) ? 'be-green-green' : (eightfull.Commit_To_A_Higher_Cause >= 85 && eightfull.Commit_To_A_Higher_Cause <= 89.9) ? 'be-green-purble' : (eightfull.Commit_To_A_Higher_Cause >= 90 && eightfull.Commit_To_A_Higher_Cause <= 92.9) ? 'be-purble-green' : eightfull.Commit_To_A_Higher_Cause > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+              
+              <p [ngClass]="{'text-black': eightfull.Commit_To_A_Higher_Cause >= 62.5 && eightfull.Commit_To_A_Higher_Cause < 75}">Commit to a Higher Cause <br /> {{eightfull.Commit_To_A_Higher_Cause | number:'0.0-1'}})</p>
+          </div>
+          <div class="three">
+            <img src="assets/images/{{eightfull.Help_Others_Shine < 58 ? 'be-red-red' : (eightfull.Help_Others_Shine >= 58 && eightfull.Help_Others_Shine <= 62.5) ? 'be-red-yellow': (eightfull.Help_Others_Shine > 62.5 && eightfull.Help_Others_Shine <= 66.6) ? 'be-yellow-red': (eightfull.Help_Others_Shine > 66.6 && eightfull.Help_Others_Shine <= 70.5) ? 'be-yellow-yellow' : (eightfull.Help_Others_Shine > 70.5 && eightfull.Help_Others_Shine <= 74.9) ? 'be-yellow-green': (eightfull.Help_Others_Shine >= 75 && eightfull.Help_Others_Shine <= 79.9) ? 'be-green-yellow' : (eightfull.Help_Others_Shine >= 80 && eightfull.Help_Others_Shine <= 84.9) ? 'be-green-green' : (eightfull.Help_Others_Shine >= 85 && eightfull.Help_Others_Shine <= 89.9) ? 'be-green-purble' : (eightfull.Help_Others_Shine >= 90 && eightfull.Help_Others_Shine <= 92.9) ? 'be-purble-green' : eightfull.Help_Others_Shine > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+              
+              <p [ngClass]="{'text-black': eightfull.Help_Others_Shine >= 62.5 && eightfull.Help_Others_Shine < 75}">Help Others Shine <br /> ({{eightfull.Help_Others_Shine | number:'0.0-1'}})</p>
+          </div>
+          <div class="four">
+            <img src="assets/images/{{eightfull.Sync_Ind_Collective_Purpose < 58 ? 'be-red-red' : (eightfull.Sync_Ind_Collective_Purpose >= 58 && eightfull.Sync_Ind_Collective_Purpose <= 62.5) ? 'be-red-yellow': (eightfull.Sync_Ind_Collective_Purpose > 62.5 && eightfull.Sync_Ind_Collective_Purpose <= 66.6) ? 'be-yellow-red': (eightfull.Sync_Ind_Collective_Purpose > 66.6 && eightfull.Sync_Ind_Collective_Purpose <= 70.5) ? 'be-yellow-yellow' : (eightfull.Sync_Ind_Collective_Purpose > 70.5 && eightfull.Sync_Ind_Collective_Purpose <= 74.9) ? 'be-yellow-green': (eightfull.Sync_Ind_Collective_Purpose >= 75 && eightfull.Sync_Ind_Collective_Purpose <= 79.9) ? 'be-green-yellow' : (eightfull.Sync_Ind_Collective_Purpose >= 80 && eightfull.Sync_Ind_Collective_Purpose <= 84.9) ? 'be-green-green' : (eightfull.Sync_Ind_Collective_Purpose >= 85 && eightfull.Sync_Ind_Collective_Purpose <= 89.9) ? 'be-green-purble' : (eightfull.Sync_Ind_Collective_Purpose >= 90 && eightfull.Sync_Ind_Collective_Purpose <= 92.9) ? 'be-purble-green' : eightfull.Sync_Ind_Collective_Purpose > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+              
+              <p [ngClass]="{'text-black': eightfull.Sync_Ind_Collective_Purpose >= 62.5 && eightfull.Sync_Ind_Collective_Purpose < 75}">Sync Individual and Collective purpose <br /> ({{eightfull.Sync_Ind_Collective_Purpose | number:'0.0-1'}})</p>
+          </div>
+          <div class="five">
+            <img src="assets/images/{{eightfull.Alter_Your_Relationship_to_All_Adverties < 58 ? 'be-red-red' : (eightfull.Alter_Your_Relationship_to_All_Adverties >= 58 && eightfull.Alter_Your_Relationship_to_All_Adverties <= 62.5) ? 'be-red-yellow': (eightfull.Alter_Your_Relationship_to_All_Adverties > 62.5 && eightfull.Alter_Your_Relationship_to_All_Adverties <= 66.6) ? 'be-yellow-red': (eightfull.Alter_Your_Relationship_to_All_Adverties > 66.6 && eightfull.Alter_Your_Relationship_to_All_Adverties <= 70.5) ? 'be-yellow-yellow' : (eightfull.Alter_Your_Relationship_to_All_Adverties > 70.5 && eightfull.Alter_Your_Relationship_to_All_Adverties <= 74.9) ? 'be-yellow-green': (eightfull.Alter_Your_Relationship_to_All_Adverties >= 75 && eightfull.Alter_Your_Relationship_to_All_Adverties <= 79.9) ? 'be-green-yellow' : (eightfull.Alter_Your_Relationship_to_All_Adverties >= 80 && eightfull.Alter_Your_Relationship_to_All_Adverties <= 84.9) ? 'be-green-green' : (eightfull.Alter_Your_Relationship_to_All_Adverties >= 85 && eightfull.Alter_Your_Relationship_to_All_Adverties <= 89.9) ? 'be-green-purble' : (eightfull.Alter_Your_Relationship_to_All_Adverties >= 90 && eightfull.Alter_Your_Relationship_to_All_Adverties <= 92.9) ? 'be-purble-green' : eightfull.Alter_Your_Relationship_to_All_Adverties > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+              
+              <p [ngClass]="{'text-black': eightfull.Alter_Your_Relationship_to_All_Adverties >= 62.5 && eightfull.Alter_Your_Relationship_to_All_Adverties < 75}">Alter relationship to all adversities <br /> ({{eightfull.Alter_Your_Relationship_to_All_Adverties | number:'0.0-1'}})</p>
+          </div>
+          <div class="six">
+            <img src="assets/images/{{eightfull.Turning_Ideas_Into_Action < 58 ? 'be-red-red' : (eightfull.Turning_Ideas_Into_Action >= 58 && eightfull.Turning_Ideas_Into_Action <= 62.5) ? 'be-red-yellow': (eightfull.Turning_Ideas_Into_Action > 62.5 && eightfull.Turning_Ideas_Into_Action <= 66.6) ? 'be-yellow-red': (eightfull.Turning_Ideas_Into_Action > 66.6 && eightfull.Turning_Ideas_Into_Action <= 70.5) ? 'be-yellow-yellow' : (eightfull.Turning_Ideas_Into_Action > 70.5 && eightfull.Turning_Ideas_Into_Action <= 74.9) ? 'be-yellow-green': (eightfull.Turning_Ideas_Into_Action >= 75 && eightfull.Turning_Ideas_Into_Action <= 79.9) ? 'be-green-yellow' : (eightfull.Turning_Ideas_Into_Action >= 80 && eightfull.Turning_Ideas_Into_Action <= 84.9) ? 'be-green-green' : (eightfull.Turning_Ideas_Into_Action >= 85 && eightfull.Turning_Ideas_Into_Action <= 89.9) ? 'be-green-purble' : (eightfull.Turning_Ideas_Into_Action >= 90 && eightfull.Turning_Ideas_Into_Action <= 92.9) ? 'be-purble-green' : eightfull.Turning_Ideas_Into_Action > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+            
+              <p [ngClass]="{'text-black': eightfull.Turning_Ideas_Into_Action >= 62.5 && eightfull.Turning_Ideas_Into_Action < 75}">Harness the intuitive mind <br /> {{eightfull.Turning_Ideas_Into_Action | number:'0.0-1'}})</p>
+          </div>
+          <div class="seven">
+            <img src="assets/images/{{eightfull.Experiment_Play < 58 ? 'be-red-red' : (eightfull.Experiment_Play >= 58 && eightfull.Experiment_Play <= 62.5) ? 'be-red-yellow': (eightfull.Experiment_Play > 62.5 && eightfull.Experiment_Play <= 66.6) ? 'be-yellow-red': (eightfull.Experiment_Play > 66.6 && eightfull.Experiment_Play <= 70.5) ? 'be-yellow-yellow' : (eightfull.Experiment_Play > 70.5 && eightfull.Experiment_Play <= 74.9) ? 'be-yellow-green': (eightfull.Experiment_Play >= 75 && eightfull.Experiment_Play <= 79.9) ? 'be-green-yellow' : (eightfull.Experiment_Play >= 80 && eightfull.Experiment_Play <= 84.9) ? 'be-green-green' : (eightfull.Experiment_Play >= 85 && eightfull.Experiment_Play <= 89.9) ? 'be-green-purble' : (eightfull.Experiment_Play >= 90 && eightfull.Experiment_Play <= 92.9) ? 'be-purble-green' : eightfull.Experiment_Play > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+             
+              <p [ngClass]="{'text-black': eightfull.Experiment_Play >= 62.5 && eightfull.Experiment_Play < 75}">Relentless experimentation and play <br /> ({{eightfull.Experiment_Play | number:'0.0-1'}})</p>
+          </div>
+          <div class="eight">
+            <img src="assets/images/{{eightfull.Question_Existing_Belief < 58 ? 'be-red-red' : (eightfull.Question_Existing_Belief >= 58 && eightfull.Question_Existing_Belief <= 62.5) ? 'be-red-yellow': (eightfull.Question_Existing_Belief > 62.5 && eightfull.Question_Existing_Belief <= 66.6) ? 'be-yellow-red': (eightfull.Question_Existing_Belief > 66.6 && eightfull.Question_Existing_Belief <= 70.5) ? 'be-yellow-yellow' : (eightfull.Question_Existing_Belief > 70.5 && eightfull.Question_Existing_Belief <= 74.9) ? 'be-yellow-green': (eightfull.Question_Existing_Belief >= 75 && eightfull.Question_Existing_Belief <= 79.9) ? 'be-green-yellow' : (eightfull.Question_Existing_Belief >= 80 && eightfull.Question_Existing_Belief <= 84.9) ? 'be-green-green' : (eightfull.Question_Existing_Belief >= 85 && eightfull.Question_Existing_Belief <= 89.9) ? 'be-green-purble' : (eightfull.Question_Existing_Belief >= 90 && eightfull.Question_Existing_Belief <= 92.9) ? 'be-purble-green' : eightfull.Question_Existing_Belief > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+
+             
+              <p [ngClass]="{'text-black': eightfull.Question_Existing_Belief >= 62.5 && eightfull.Question_Existing_Belief < 75}">Live in a state of enquiry <br /> ({{eightfull.Question_Existing_Belief | number:'0.0-1'}})</p>
+          </div>
+          <div class="nine">
+            <h4>Being Attitudes</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

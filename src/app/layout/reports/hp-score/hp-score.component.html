@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="pull-left">
+          <h4>HP Score</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 mt-20">
+    <form class="form-block row" role="form" name="LogInForm" #loginform="ngForm" novalidate autocomplete="off">
+      <div class="col-md-4" *ngFor="let item of ListData;let i = index">
+        <div class="form-group mb-2"  *ngIf="item.label && item.label != 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <select name="{{item.label}}" class="form-control" [(ngModel)]="FilterData[item.label]">
+            <option  [value]="undefined" [selected]="true">Select {{item.label}}</option>
+            <option [value]="data.answer" *ngFor="let data of item.answer">{{data.answer}}</option>
+          </select>
+        </div>
+        <div class="form-group mb-2"  *ngIf="item.label && item.label == 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <ng-multiselect-dropdown
+          [placeholder]="item.label | titlecase "
+          name="{{item.label}}"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="FilterData[item.label]"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group mb-2 text-center">
+          <button class="btn btn-primary mr-3" (click)="GetFilterData()">Submit</button>
+          <button class="btn btn-primary" (click)="resetData(loginform)">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-12 mt-20 text-center">
+    <div class="custom_report hp_image bar-image" *ngIf="show">
+      <div class="bar-relative">
+        <img src="assets/images/bar.png" />
+        <div class="bar-position">
+          <div>
+            <div [ngStyle]="{'width': circle1 + '%'}">
+            </div>
+            <div [ngStyle]="{'width': circle2 + '%'}">
+            </div>
+          </div>
+        </div>
+        <p class="one">Unexpressed</p>
+        <p class="two">Under expressed</p>
+        <p class="three">Well expressed</p>
+        <p class="four">Fully expressed</p>
+        <h5>{{UserData | number:'0.0-1'}}</h5>
+      </div>
+      <!-- <img src="./assets/images/{{UserData < 62.5 ? 'unexpressed': UserData >= 62.5 && UserData < 75? 'underexpressed': UserData >= 75 && UserData < 90 ? 'wellexpressed':'fullyexpressed'}}.png" alt=""> -->
+    </div>
+  </div>
+</div>
+<!-- Loading -->
+<div class="loader" *ngIf="loading">
+  <div class="loader_wrapper">
+      <img src="./assets/images/loader.gif">
+  </div>
+</div>

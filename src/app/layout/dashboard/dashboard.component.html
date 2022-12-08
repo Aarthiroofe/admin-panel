@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="pull-left">
+          <h4>Organizations Dashboard</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 mt-20">
+    <form class="form-block row" role="form" name="LogInForm" #loginform="ngForm" novalidate autocomplete="off">
+      <div class="col-md-4" *ngFor="let item of ListData;let i = index">
+        <div class="form-group mb-2"  *ngIf="item.label && item.label != 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <select name="{{item.label}}" class="form-control" [(ngModel)]="FilterData[item.label]">
+            <option [value]="undefined" disabled [selected]=true>Select {{item.label}}</option>
+            <option [value]="data.answer" *ngFor="let data of item.answer">{{data.answer }}</option>
+          </select>
+        </div>
+        <div class="form-group mb-2" *ngIf="item.label && item.label == 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <ng-multiselect-dropdown
+          [placeholder]="item.label | titlecase "
+          name="{{item.label}}"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="FilterData[item.label]"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group mb-2 text-center">
+          <button class="btn btn-primary" (click)="GetFilterData()">Submit</button>
+          <button class="btn btn-primary ml-10" (click)="resetData(loginform)">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-12 mt-20">
+    <div class="text-right mb-3" *ngIf="UserData && UserData.length">
+      <button class="btn btn-primary mr-3" (click)="downloadPpt()">Download PPT</button>
+      <button class="btn btn-primary" (click)="downloadReport()">Download Report</button>
+    </div>
+    <app-ppt></app-ppt>
+    <div class="card custom_card">
+      <div class="zark_table">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th *ngFor="let person of ListData">{{person.label}}</th>
+              <th>View report</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="UserData?.length != 0">
+            <tr *ngFor="let person of UserData;let i=index">
+              <td>{{i+1}}</td>
+              <td *ngFor="let item of UserData[i].data">{{item ? item : '-'}}</td>
+              <td>
+                <button class="btn btn-primary" [disabled]="person.pdf_view && person.pdf_view.length && person.pdf_view[0].survey_status == 0" (click)="ViewReport(person)"><i class="fa fa-eye"
+                    aria-hidden="true"></i></button>
+              </td>
+            </tr>
+          </tbody>
+          <!-- <tbody *ngIf="UserData?.length == 0">
+            <tr>
+              <td colspan="ListData.length" class="no-data-available">No data!</td>
+            </tr>
+          <tbody> -->
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Loading -->
+<div class="loader" *ngIf="loading">
+  <div class="loader_wrapper">
+    <img src="./assets/images/loader.gif">
+  </div>
+</div>

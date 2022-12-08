@@ -1,0 +1,75 @@
+$topnav-background-color: #2f73ba;
+:host {
+    .navbar {
+        background-color: #0080d8;
+        padding: 5px 20px 5px 20px;
+            // box-shadow: 1px 1px 10px #e3e6e8;
+            // border-bottom: 1px solid #c8ced3;
+        .navbar-brand {
+            color: #fff;
+            display: flex;
+            align-items: center;
+            img {
+                height: 50px;
+            }
+            span {
+                color: #000;
+                padding-left: 10px;
+            }
+        }
+        .header {
+            .nav-item {
+                .dropdown-menu-right {
+                    left: auto !important;
+                }
+            }
+        }
+        .nav-item>a {
+            color: #212529;
+            &:hover {
+                color: #212529;
+            }
+            &:after {
+                display: none;
+            }
+            i {
+                font-size: 20px;
+            }
+        }
+    }
+    .messages {
+        width: 300px;
+        .media {
+            border-bottom: 1px solid #ddd;
+            padding: 5px 10px;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+        .media-body {
+            h5 {
+                font-size: 13px;
+                font-weight: 600;
+            }
+            .small {
+                margin: 0;
+            }
+            .last {
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+    }
+    .common_url {
+        background: #4c4fb4;
+        position: fixed;
+        top: 80px;
+        z-index: 100;
+        width: 100%;
+        padding: 15px 100px 14px 240px;
+        p {
+            margin-bottom: 0;
+            color: #fff;
+        }
+    }
+}

@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap");
+.report-section .card {
+  border: 0;
+}
+.report_body {
+  margin: 0 auto;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+}
+
+.red {
+  background: #fd0100;
+}
+
+.yellow {
+  background: #fde32f;
+}
+
+.green {
+  background: #2b9349;
+}
+
+.purple {
+  background: #c54de6;
+}
+
+.orange {
+  background-color: #fa851d;
+}
+
+.blue {
+  background: #57a1df;
+}
+.report_page,
+.report_pages {
+  background-color: #fff;
+  position: relative;
+  left: -8px;
+  padding: 30px 30px 25px 30px;
+}
+.report_peage_header {
+  // background-color: #0080d8;
+  width: 100%;
+
+  img {
+    width: 200px;
+  }
+}
+.report-footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  left: 0;
+}
+
+table {
+  margin-bottom: 0;
+
+  &.remove-border {
+    tr {
+      &:last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+  tr {
+    td {
+      font-size: 14px;
+      padding: 5px 15px;
+      width: 15%;
+      text-align: center;
+      &:first-child {
+        width: 25%;
+        text-align: left;
+      }
+      
+    }
+  }
+}

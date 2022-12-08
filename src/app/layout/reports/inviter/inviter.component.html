@@ -1,0 +1,1324 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="pull-left">
+          <h4>360 Report</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 mt-20">
+    <form class="form-block row align-items-end" role="form" name="LogInForm" #loginform="ngForm" novalidate autocomplete="off">
+      <div class="col-md-4" *ngFor="let item of ListData;let i = index">
+        <div class="form-group mb-2"  *ngIf="item.label && item.label != 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <select name="{{item.label}}" class="form-control" [(ngModel)]="FilterData[item.label]">
+            <option  [value]="undefined" [selected]="true">Select {{item.label}}</option>
+            <option [value]="data.answer" *ngFor="let data of item.answer">{{data.answer}}</option>
+          </select>
+        </div>
+        <div class="form-group mb-2"  *ngIf="item.label && item.label == 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <ng-multiselect-dropdown
+          [placeholder]="item.label | titlecase "
+          name="{{item.label}}"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="FilterData[item.label]"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+        </div>
+      </div>
+      <div class="col-md-12 mt-3">
+        <div class="form-group mb-2 text-center">
+          <button class="btn btn-primary mr-3" (click)="GetFilterData()">Submit</button>
+          <button class="btn btn-primary" (click)="resetData(loginform)">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-12" *ngIf="show">
+    <div class="row">
+      <div class="col-md-12 mb-20">
+        <div class="p-2">
+          <div class="report_body" id="data" #data>
+            <div id="page_1">
+              <div class="report_page">
+                <div class="report_content cloud_image">
+                  <div class="table-responsive mb-5">
+                    <table class="table table-bordered">
+                      <tr>
+                        <th colspan="6" class="text-center text-uppercase">
+                          Overall Human Potential Score
+                        </th>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td *ngFor="let person of inviterDetail">
+                          {{ person.person }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Overall Human Potential Score</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person.hplevel && person.hplevel < 62.5
+                              ? 'red'
+                              : person.hplevel >= 62.5 && person.hplevel < 75
+                              ? 'yellow'
+                              : person.hplevel >= 75 && person.hplevel < 90
+                              ? 'green'
+                              : person.hplevel >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person.hplevel
+                              ? (person.hplevel | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <tr>
+                        <th colspan="6" class="text-center text-uppercase">
+                          Organizational Performance metrics
+                        </th>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td *ngFor="let person of inviterDetail">
+                          {{ person.person }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>GETTING THINGS DONE</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.opm.Gettingdonediscuss < 62.5
+                              ? 'red'
+                              : person?.opm.Gettingdonediscuss >= 62.5 &&
+                                person?.opm.Gettingdonediscuss < 75
+                              ? 'yellow'
+                              : person?.opm.Gettingdonediscuss >= 75 &&
+                                person?.opm.Gettingdonediscuss < 90
+                              ? 'green'
+                              : person?.opm.Gettingdonediscuss >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.opm
+                              ? (person?.opm?.Gettingdonediscuss
+                                | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>EMPLOYEE ENGAGEMENT</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.opm.Employee_Engagement < 62.5
+                              ? 'red'
+                              : person?.opm.Employee_Engagement >= 62.5 &&
+                                person?.opm.Employee_Engagement < 75
+                              ? 'yellow'
+                              : person?.opm.Employee_Engagement >= 75 &&
+                                person?.opm.Employee_Engagement < 90
+                              ? 'green'
+                              : person?.opm.Employee_Engagement >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.opm
+                              ? (person?.opm?.Employee_Engagement
+                                | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>CUSTOMER ORIENTATION</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.opm.Customer_Orientation < 62.5
+                              ? 'red'
+                              : person?.opm.Customer_Orientation >= 62.5 &&
+                                person?.opm.Customer_Orientation < 75
+                              ? 'yellow'
+                              : person?.opm.Customer_Orientation >= 75 &&
+                                person?.opm.Customer_Orientation < 90
+                              ? 'green'
+                              : person?.opm.Customer_Orientation >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.opm
+                              ? (person?.opm?.Customer_Orientation
+                                | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>INVENTIVENESS</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.opm.Inventiveness < 62.5
+                              ? 'red'
+                              : person?.opm.Inventiveness >= 62.5 &&
+                                person?.opm.Inventiveness < 75
+                              ? 'yellow'
+                              : person?.opm.Inventiveness >= 75 &&
+                                person?.opm.Inventiveness < 90
+                              ? 'green'
+                              : person?.opm.Inventiveness >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.opm
+                              ? (person?.opm?.Inventiveness | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>TRUSTWORTHINESS</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.opm.Trustworthiness < 62.5
+                              ? 'red'
+                              : person?.opm.Trustworthiness >= 62.5 &&
+                                person?.opm.Trustworthiness < 75
+                              ? 'yellow'
+                              : person?.opm.Trustworthiness >= 75 &&
+                                person?.opm.Trustworthiness < 90
+                              ? 'green'
+                              : person?.opm.Trustworthiness >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.opm
+                              ? (person?.opm?.Trustworthiness | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>SELF LEADERSHIP</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.opm.SelfLeadership < 62.5
+                              ? 'red'
+                              : person?.opm.SelfLeadership >= 62.5 &&
+                                person?.opm.SelfLeadership < 75
+                              ? 'yellow'
+                              : person?.opm.SelfLeadership >= 75 &&
+                                person?.opm.SelfLeadership < 90
+                              ? 'green'
+                              : person?.opm.SelfLeadership >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.opm
+                              ? (person?.opm?.SelfLeadership | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- page 1 end -->
+            <!-- page 2 start -->
+            <div id="page_2">
+              <div class="report_page">
+                <div class="report_content second_page">
+                  <div class="table-responsive">
+                    <table class="table table-bordered remove-border">
+                      <tr>
+                        <th colspan="6" class="text-center text-uppercase">
+                          4 BEING STATES AND 23 DIMENSIONS
+                        </th>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td *ngFor="let person of inviterDetail">
+                          {{ person.person }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">BEING AWARE</td>
+                        <td *ngFor="let person of inviterDetail"></td>
+                      </tr>
+                      <tr>
+                        <td>Individual Awareness</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Aware
+                              .Individual_awareness < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Individual_awareness >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Aware
+                                  .Individual_awareness < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Individual_awareness >= 75 &&
+                                person?.fourthbeingattitude.Being_Aware
+                                  .Individual_awareness < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Individual_awareness >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Aware
+                              ?.Individual_awareness
+                              ? (person?.fourthbeingattitude?.Being_Aware
+                                  ?.Individual_awareness | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Interpersonal Awareness</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Aware
+                              .Team_awareness < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Team_awareness >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Aware
+                                  .Team_awareness < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Team_awareness >= 75 &&
+                                person?.fourthbeingattitude.Being_Aware
+                                  .Team_awareness < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Team_awareness >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Aware
+                              ?.Team_awareness
+                              ? (person?.fourthbeingattitude.Being_Aware
+                                  ?.Team_awareness | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Environmental Awareness</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Aware
+                              .Organizational_awareness < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Organizational_awareness >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Aware
+                                  .Organizational_awareness < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Organizational_awareness >= 75 &&
+                                person?.fourthbeingattitude.Being_Aware
+                                  .Organizational_awareness < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Organizational_awareness >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Aware
+                              ?.Organizational_awareness
+                              ? (person?.fourthbeingattitude?.Being_Aware
+                                  ?.Organizational_awareness | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Societal Awareness</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Aware
+                              .Societal_awareness < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Societal_awareness >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Aware
+                                  .Societal_awareness < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Societal_awareness >= 75 &&
+                                person?.fourthbeingattitude.Being_Aware
+                                  .Societal_awareness < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Societal_awareness >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Aware
+                              ?.Societal_awareness
+                              ? (person?.fourthbeingattitude?.Being_Aware
+                                  ?.Societal_awareness | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Personal Development</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Aware
+                              .Personal_development < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Personal_development >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Aware
+                                  .Personal_development < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Personal_development >= 75 &&
+                                person?.fourthbeingattitude.Being_Aware
+                                  .Personal_development < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Aware
+                                  .Personal_development >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Aware
+                              ?.Personal_development
+                              ? (person?.fourthbeingattitude?.Being_Aware
+                                  ?.Personal_development | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-bordered remove-border">
+                      <tr>
+                        <td class="text-center">BEING INSPIRED</td>
+                        <td *ngFor="let person of inviterDetail"></td>
+                      </tr>
+                      <tr>
+                        <td>Play</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Inspired.Play <
+                            62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Play >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Play < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Play >= 75 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Play < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Play >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Inspired?.Play
+                              ? (person?.fourthbeingattitude?.Being_Inspired
+                                  ?.Play | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Curiosity</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Inspired
+                              .Curiosity < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Curiosity >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Curiosity < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Curiosity >= 75 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Curiosity < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Curiosity >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Inspired
+                              ?.Curiosity
+                              ? (person?.fourthbeingattitude?.Being_Inspired
+                                  ?.Curiosity | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Facing unknown</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Inspired
+                              .Not_knowing < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Not_knowing >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Not_knowing < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Not_knowing >= 75 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Not_knowing < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Not_knowing >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Inspired
+                              ?.Not_knowing
+                              ? (person?.fourthbeingattitude?.Being_Inspired
+                                  ?.Not_knowing | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Being in flow</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Inspired.Flow <
+                            62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Flow >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Flow < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Flow >= 75 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Flow < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Flow >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude.Being_Inspired?.Flow
+                              ? (person?.fourthbeingattitude?.Being_Inspired
+                                  ?.Flow | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Open to new possibility</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Inspired
+                              .Openess_to_new_ideas < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Openess_to_new_ideas >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Openess_to_new_ideas < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Openess_to_new_ideas >= 75 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Openess_to_new_ideas < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Openess_to_new_ideas >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude.Being_Inspired
+                              ?.Openess_to_new_ideas
+                              ? (person?.fourthbeingattitude?.Being_Inspired
+                                  ?.Openess_to_new_ideas | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Holistic view</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Inspired
+                              .Holistic_view < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Holistic_view >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Holistic_view < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Holistic_view >= 75 &&
+                                person?.fourthbeingattitude.Being_Inspired
+                                  .Holistic_view < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Inspired
+                                  .Holistic_view >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude.Being_Inspired
+                              ?.Holistic_view
+                              ? (person?.fourthbeingattitude?.Being_Inspired
+                                  ?.Holistic_view | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-bordered remove-border">
+                      <tr>
+                        <td class="text-center">BEING ABUNDANT</td>
+                        <td *ngFor="let person of inviterDetail"></td>
+                      </tr>
+                      <tr>
+                        <td>Collaboration vs competition</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Abundant
+                              .Collaboration_vs_competition < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Collaboration_vs_competition >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Collaboration_vs_competition < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Collaboration_vs_competition >= 75 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Collaboration_vs_competition < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Collaboration_vs_competition >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Abundant
+                              ?.Collaboration_vs_competition
+                              ? (person?.fourthbeingattitude?.Being_Abundant
+                                  ?.Collaboration_vs_competition
+                                | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Doing from Being</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Abundant
+                              .Being_from_Doing < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Being_from_Doing >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Being_from_Doing < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Being_from_Doing >= 75 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Being_from_Doing < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Being_from_Doing >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Abundant
+                              ?.Being_from_Doing
+                              ? (person?.fourthbeingattitude?.Being_Abundant
+                                  ?.Being_from_Doing | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Trust vs control</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Abundant
+                              .Trust_vs_control < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Trust_vs_control >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Trust_vs_control < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Trust_vs_control >= 75 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Trust_vs_control < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Trust_vs_control >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Abundant
+                              ?.Trust_vs_control
+                              ? (person?.fourthbeingattitude?.Being_Abundant
+                                  ?.Trust_vs_control | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Gratitude</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Abundant
+                              .Gratitude < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Gratitude >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Gratitude < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Gratitude >= 75 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Gratitude < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Gratitude >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Abundant
+                              ?.Gratitude
+                              ? (person?.fourthbeingattitude?.Being_Abundant
+                                  ?.Gratitude | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Acknowledgment</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Abundant
+                              .Acknowledgment < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Acknowledgment >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Acknowledgment < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Acknowledgment >= 75 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Acknowledgment < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Acknowledgment >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Abundant
+                              ?.Acknowledgment
+                              ? (person?.fourthbeingattitude?.Being_Abundant
+                                  ?.Acknowledgment | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Generosity</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Abundant
+                              .Generosity < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Generosity >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Generosity < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Generosity >= 75 &&
+                                person?.fourthbeingattitude.Being_Abundant
+                                  .Generosity < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Abundant
+                                  .Generosity >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Abundant
+                              ?.Generosity
+                              ? (person?.fourthbeingattitude?.Being_Abundant
+                                  ?.Generosity | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <tr>
+                        <td class="text-center">BEING IN SERVICE</td>
+                        <td *ngFor="let person of inviterDetail"></td>
+                      </tr>
+                      <tr>
+                        <td>Greater Good</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Service
+                              .True_diversity < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .True_diversity >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Service
+                                  .True_diversity < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .True_diversity >= 75 &&
+                                person?.fourthbeingattitude.Being_Service
+                                  .True_diversity < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .True_diversity >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Service
+                              ?.True_diversity
+                              ? (person?.fourthbeingattitude?.Being_Service
+                                  ?.True_diversity | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Connectedness</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Service
+                              .Connectedness < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Connectedness >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Service
+                                  .Connectedness < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Connectedness >= 75 &&
+                                person?.fourthbeingattitude.Being_Service
+                                  .Connectedness < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Connectedness >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Service
+                              ?.Connectedness
+                              ? (person?.fourthbeingattitude?.Being_Service
+                                  ?.Connectedness | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Compassion</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Service
+                              .Compassion < 62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Compassion >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Service
+                                  .Compassion < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Compassion >= 75 &&
+                                person?.fourthbeingattitude.Being_Service
+                                  .Compassion < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Compassion >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Service
+                              ?.Compassion
+                              ? (person?.fourthbeingattitude?.Being_Service
+                                  ?.Compassion | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Harmony</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Service.Harmony <
+                            62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Harmony >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Service
+                                  .Harmony < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Harmony >= 75 &&
+                                person?.fourthbeingattitude.Being_Service
+                                  .Harmony < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Harmony >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Service?.Harmony
+                              ? (person?.fourthbeingattitude?.Being_Service
+                                  ?.Harmony | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Humility</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.fourthbeingattitude.Being_Service.Humility <
+                            62.5
+                              ? 'red'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Humility >= 62.5 &&
+                                person?.fourthbeingattitude.Being_Service
+                                  .Humility < 75
+                              ? 'yellow'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Humility >= 75 &&
+                                person?.fourthbeingattitude.Being_Service
+                                  .Humility < 90
+                              ? 'green'
+                              : person?.fourthbeingattitude.Being_Service
+                                  .Humility >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.fourthbeingattitude?.Being_Service?.Humility
+                              ? (person?.fourthbeingattitude?.Being_Service
+                                  ?.Humility | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- page 2 start -->
+            <!-- page 3 start -->
+            <div id="page_3">
+              <div class="report_page">
+                <div class="report_content cloud_image">
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <tr>
+                        <th colspan="6" class="text-center text-uppercase">
+                          8 BEING ATTITUDES
+                        </th>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td *ngFor="let person of inviterDetail">
+                          {{ person.person }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>FIERCE AUTHENTICITY</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.eightbeingattitude.Be_Authentic < 62.5
+                              ? 'red'
+                              : person?.eightbeingattitude.Be_Authentic >=
+                                  62.5 &&
+                                person?.eightbeingattitude.Be_Authentic < 75
+                              ? 'yellow'
+                              : person?.eightbeingattitude.Be_Authentic >= 75 &&
+                                person?.eightbeingattitude.Be_Authentic < 90
+                              ? 'green'
+                              : person?.eightbeingattitude.Be_Authentic >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.eightbeingattitude?.Be_Authentic
+                              ? (person?.eightbeingattitude?.Be_Authentic
+                                | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>LIVE IN A STATE OF ENQUIRY</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.eightbeingattitude
+                              .Question_Existing_Belief < 62.5
+                              ? 'red'
+                              : person?.eightbeingattitude
+                                  .Question_Existing_Belief >= 62.5 &&
+                                person?.eightbeingattitude
+                                  .Question_Existing_Belief < 75
+                              ? 'yellow'
+                              : person?.eightbeingattitude
+                                  .Question_Existing_Belief >= 75 &&
+                                person?.eightbeingattitude
+                                  .Question_Existing_Belief < 90
+                              ? 'green'
+                              : person?.eightbeingattitude
+                                  .Question_Existing_Belief >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.eightbeingattitude?.Question_Existing_Belief
+                              ? (person?.eightbeingattitude
+                                  ?.Question_Existing_Belief | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>COMMIT TO A HIGHER CAUSE</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.eightbeingattitude
+                              .Commit_To_A_Higher_Cause < 62.5
+                              ? 'red'
+                              : person?.eightbeingattitude
+                                  .Commit_To_A_Higher_Cause >= 62.5 &&
+                                person?.eightbeingattitude
+                                  .Commit_To_A_Higher_Cause < 75
+                              ? 'yellow'
+                              : person?.eightbeingattitude
+                                  .Commit_To_A_Higher_Cause >= 75 &&
+                                person?.eightbeingattitude
+                                  .Commit_To_A_Higher_Cause < 90
+                              ? 'green'
+                              : person?.eightbeingattitude
+                                  .Commit_To_A_Higher_Cause >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.eightbeingattitude?.Commit_To_A_Higher_Cause
+                              ? (person?.eightbeingattitude
+                                  ?.Commit_To_A_Higher_Cause | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>SYNC INDIVIDUAL AND COLLECTIVE PURPOSE</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.eightbeingattitude
+                              .Sync_Ind_Collective_Purpose < 62.5
+                              ? 'red'
+                              : person?.eightbeingattitude
+                                  .Sync_Ind_Collective_Purpose >= 62.5 &&
+                                person?.eightbeingattitude
+                                  .Sync_Ind_Collective_Purpose < 75
+                              ? 'yellow'
+                              : person?.eightbeingattitude
+                                  .Sync_Ind_Collective_Purpose >= 75 &&
+                                person?.eightbeingattitude
+                                  .Sync_Ind_Collective_Purpose < 90
+                              ? 'green'
+                              : person?.eightbeingattitude
+                                  .Sync_Ind_Collective_Purpose >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.eightbeingattitude
+                              ?.Sync_Ind_Collective_Purpose
+                              ? (person?.eightbeingattitude
+                                  ?.Sync_Ind_Collective_Purpose
+                                | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>ALTER RELATIONSHIP TO ADVERSITIES</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.eightbeingattitude
+                              .Alter_Your_Relationship_to_All_Adverties < 62.5
+                              ? 'red'
+                              : person?.eightbeingattitude
+                                  .Alter_Your_Relationship_to_All_Adverties >=
+                                  62.5 &&
+                                person?.eightbeingattitude
+                                  .Alter_Your_Relationship_to_All_Adverties < 75
+                              ? 'yellow'
+                              : person?.eightbeingattitude
+                                  .Alter_Your_Relationship_to_All_Adverties >=
+                                  75 &&
+                                person?.eightbeingattitude
+                                  .Alter_Your_Relationship_to_All_Adverties < 90
+                              ? 'green'
+                              : person?.eightbeingattitude
+                                  .Alter_Your_Relationship_to_All_Adverties >=
+                                90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.eightbeingattitude
+                              ?.Alter_Your_Relationship_to_All_Adverties
+                              ? (person?.eightbeingattitude
+                                  ?.Alter_Your_Relationship_to_All_Adverties
+                                | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>RELENTLESS EXPERIMENTATION AND PLAY</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.eightbeingattitude.Experiment_Play < 62.5
+                              ? 'red'
+                              : person?.eightbeingattitude.Experiment_Play >=
+                                  62.5 &&
+                                person?.eightbeingattitude.Experiment_Play < 75
+                              ? 'yellow'
+                              : person?.eightbeingattitude.Experiment_Play >=
+                                  75 &&
+                                person?.eightbeingattitude.Experiment_Play < 90
+                              ? 'green'
+                              : person?.eightbeingattitude.Experiment_Play >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.eightbeingattitude?.Experiment_Play
+                              ? (person?.eightbeingattitude?.Experiment_Play
+                                | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>HARNESS THE INTUITIVE MIND</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.eightbeingattitude
+                              .Turning_Ideas_Into_Action < 62.5
+                              ? 'red'
+                              : person?.eightbeingattitude
+                                  .Turning_Ideas_Into_Action >= 62.5 &&
+                                person?.eightbeingattitude
+                                  .Turning_Ideas_Into_Action < 75
+                              ? 'yellow'
+                              : person?.eightbeingattitude
+                                  .Turning_Ideas_Into_Action >= 75 &&
+                                person?.eightbeingattitude
+                                  .Turning_Ideas_Into_Action < 90
+                              ? 'green'
+                              : person?.eightbeingattitude
+                                  .Turning_Ideas_Into_Action >= 90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.eightbeingattitude
+                              ?.Turning_Ideas_Into_Action
+                              ? (person?.eightbeingattitude
+                                  ?.Turning_Ideas_Into_Action | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>HELP OTHERS SHINE</td>
+                        <td
+                          *ngFor="let person of inviterDetail"
+                          [class]="
+                            person?.eightbeingattitude.Help_Others_Shine < 62.5
+                              ? 'red'
+                              : person?.eightbeingattitude.Help_Others_Shine >=
+                                  62.5 &&
+                                person?.eightbeingattitude.Help_Others_Shine <
+                                  75
+                              ? 'yellow'
+                              : person?.eightbeingattitude.Help_Others_Shine >=
+                                  75 &&
+                                person?.eightbeingattitude.Help_Others_Shine <
+                                  90
+                              ? 'green'
+                              : person?.eightbeingattitude.Help_Others_Shine >=
+                                90
+                              ? 'purple'
+                              : ''
+                          "
+                        >
+                          {{
+                            person?.eightbeingattitude?.Help_Others_Shine
+                              ? (person?.eightbeingattitude?.Help_Others_Shine
+                                | number: "0.0-1")
+                              : "NA"
+                          }}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- page 3 end -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Loading -->
+<div class="loader" *ngIf="loading">
+  <div class="loader_wrapper">
+      <img src="./assets/images/loader.gif">
+  </div>
+</div>

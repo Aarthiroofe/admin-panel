@@ -1,0 +1,3112 @@
+<section class="report-section pt-5">
+  <div class="card p-4">
+    <div class="ppt-body">
+      <div id="page_1">
+        <div class="page_1">
+          <h1 class="text-center mb-5">Organizational Human<br /> Potential Assessment</h1>
+        </div>
+      </div>
+      <div id="page_2">
+        <div class="page_2">
+          <img src="assets/images/blue1.png" />
+        </div>
+      </div>
+      <div id="page_3">
+        <div class="page_3">
+          <h2 class="text-center">Organizational Performance Metrics</h2>
+          <div>
+            <div class="org-full" *ngIf="opmData">
+              <div class="one">
+                <img
+                  src="assets/images/{{opmData.Gettingdonediscuss < 58 ? 'org-red-red' : (opmData.Gettingdonediscuss >= 58 && opmData.Gettingdonediscuss <= 62.5) ? 'org-red-yellow': (opmData.Gettingdonediscuss > 62.5 && opmData.Gettingdonediscuss <= 66.6) ? 'org-yellow-red': (opmData.Gettingdonediscuss > 66.6 && opmData.Gettingdonediscuss <= 70.5) ? 'org-yellow-yellow' : (opmData.Gettingdonediscuss > 70.5 && opmData.Gettingdonediscuss <= 74.9) ? 'org-yellow-green': (opmData.Gettingdonediscuss >= 75 && opmData.Gettingdonediscuss <= 79.9) ? 'org-green-yellow' : (opmData.Gettingdonediscuss >= 80 && opmData.Gettingdonediscuss <= 84.9) ? 'org-green-green' : (opmData.Gettingdonediscuss >= 85 && opmData.Gettingdonediscuss <= 89.9) ? 'org-green-purble' : (opmData.Gettingdonediscuss >= 90 && opmData.Gettingdonediscuss <= 92.9) ? 'org-purble-green' : opmData.Gettingdonediscuss > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+
+
+                <p [ngClass]="{'text-black': opmData.Gettingdonediscuss >= 62.5 && opmData.Gettingdonediscuss < 75}">
+                  Getting
+                  Things Done <br /> ({{opmData.Gettingdonediscuss | number:'0.0-1'}})</p>
+              </div>
+
+              <div class="two">
+                <img
+                  src="assets/images/{{opmData.Trustworthiness < 58 ? 'org-red-red' : (opmData.Trustworthiness >= 58 && opmData.Trustworthiness <= 62.5) ? 'org-red-yellow': (opmData.Trustworthiness > 62.5 && opmData.Trustworthiness <= 66.6) ? 'org-yellow-red': (opmData.Trustworthiness > 66.6 && opmData.Trustworthiness <= 70.5) ? 'org-yellow-yellow' : (opmData.Trustworthiness > 70.5 && opmData.Trustworthiness <= 74.9) ? 'org-yellow-green': (opmData.Trustworthiness >= 75 && opmData.Trustworthiness <= 79.9) ? 'org-green-yellow' : (opmData.Trustworthiness >= 80 && opmData.Trustworthiness <= 84.9) ? 'org-green-green' : (opmData.Trustworthiness >= 85 && opmData.Trustworthiness <= 89.9) ? 'org-green-purble' : (opmData.Trustworthiness >= 90 && opmData.Trustworthiness <= 92.9) ? 'org-purble-green' : opmData.Trustworthiness > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+
+
+                <p [ngClass]="{'text-black': opmData.Trustworthiness >= 62.5 && opmData.Trustworthiness < 75}">
+                  Trustworthiness <br /> ({{opmData.Trustworthiness | number:'0.0-1'}})</p>
+              </div>
+              <div class="three">
+                <img
+                  src="assets/images/{{opmData.Customer_Orientation < 58 ? 'org-red-red' : (opmData.Customer_Orientation >= 58 && opmData.Customer_Orientation <= 62.5) ? 'org-red-yellow': (opmData.Customer_Orientation > 62.5 && opmData.Customer_Orientation <= 66.6) ? 'org-yellow-red': (opmData.Customer_Orientation > 66.6 && opmData.Customer_Orientation <= 70.5) ? 'org-yellow-yellow' : (opmData.Customer_Orientation > 70.5 && opmData.Customer_Orientation <= 74.9) ? 'org-yellow-green': (opmData.Customer_Orientation >= 75 && opmData.Customer_Orientation <= 79.9) ? 'org-green-yellow' : (opmData.Customer_Orientation >= 80 && opmData.Customer_Orientation <= 84.9) ? 'org-green-green' : (opmData.Customer_Orientation >= 85 && opmData.Customer_Orientation <= 89.9) ? 'org-green-purble' : (opmData.Customer_Orientation >= 90 && opmData.Customer_Orientation <= 92.9) ? 'org-purble-green' : opmData.Customer_Orientation > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+
+
+                <p
+                  [ngClass]="{'text-black': opmData.Customer_Orientation >= 62.5 && opmData.Customer_Orientation < 75}">
+                  Customer Orientation <br /> ({{opmData.Customer_Orientation | number:'0.0-1'}})</p>
+              </div>
+              <div class="four">
+                <img
+                  src="assets/images/{{opmData.SelfLeadership < 58 ? 'org-red-red' : (opmData.SelfLeadership >= 58 && opmData.SelfLeadership <= 62.5) ? 'org-red-yellow': (opmData.SelfLeadership > 62.5 && opmData.SelfLeadership <= 66.6) ? 'org-yellow-red': (opmData.SelfLeadership > 66.6 && opmData.SelfLeadership <= 70.5) ? 'org-yellow-yellow' : (opmData.SelfLeadership > 70.5 && opmData.SelfLeadership <= 74.9) ? 'org-yellow-green': (opmData.SelfLeadership >= 75 && opmData.SelfLeadership <= 79.9) ? 'org-green-yellow' : (opmData.SelfLeadership >= 80 && opmData.SelfLeadership <= 84.9) ? 'org-green-green' : (opmData.SelfLeadership >= 85 && opmData.SelfLeadership <= 89.9) ? 'org-green-purble' : (opmData.SelfLeadership >= 90 && opmData.SelfLeadership <= 92.9) ? 'org-purble-green' : opmData.SelfLeadership > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+
+
+                <p [ngClass]="{'text-black': opmData.SelfLeadership >= 62.5 && opmData.SelfLeadership < 75}">Self
+                  Leadership
+                  <br /> ({{opmData.SelfLeadership | number:'0.0-1'}})</p>
+              </div>
+              <div class="five">
+                <img
+                  src="assets/images/{{opmData.Employee_Engagement < 58 ? 'org-red-red' : (opmData.Employee_Engagement >= 58 && opmData.Employee_Engagement <= 62.5) ? 'org-red-yellow': (opmData.Employee_Engagement > 62.5 && opmData.Employee_Engagement <= 66.6) ? 'org-yellow-red': (opmData.Employee_Engagement > 66.6 && opmData.Employee_Engagement <= 70.5) ? 'org-yellow-yellow' : (opmData.Employee_Engagement > 70.5 && opmData.Employee_Engagement <= 74.9) ? 'org-yellow-green': (opmData.Employee_Engagement >= 75 && opmData.Employee_Engagement <= 79.9) ? 'org-green-yellow' : (opmData.Employee_Engagement >= 80 && opmData.Employee_Engagement <= 84.9) ? 'org-green-green' : (opmData.Employee_Engagement >= 85 && opmData.Employee_Engagement <= 89.9) ? 'org-green-purble' : (opmData.Employee_Engagement >= 90 && opmData.Employee_Engagement <= 92.9) ? 'org-purble-green' : opmData.Employee_Engagement > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+
+
+                <p [ngClass]="{'text-black': opmData.Employee_Engagement >= 62.5 && opmData.Employee_Engagement < 75}">
+                  Employee Engagement <br /> ({{opmData.Employee_Engagement | number:'0.0-1'}})</p>
+              </div>
+              <div class="six">
+                <img
+                  src="assets/images/{{opmData.Inventiveness < 58 ? 'org-red-red' : (opmData.Inventiveness >= 58 && opmData.Inventiveness <= 62.5) ? 'org-red-yellow': (opmData.Inventiveness > 62.5 && opmData.Inventiveness <= 66.6) ? 'org-yellow-red': (opmData.Inventiveness > 66.6 && opmData.Inventiveness <= 70.5) ? 'org-yellow-yellow' : (opmData.Inventiveness > 70.5 && opmData.Inventiveness <= 74.9) ? 'org-yellow-green': (opmData.Inventiveness >= 75 && opmData.Inventiveness <= 79.9) ? 'org-green-yellow' : (opmData.Inventiveness >= 80 && opmData.Inventiveness <= 84.9) ? 'org-green-green' : (opmData.Inventiveness >= 85 && opmData.Inventiveness <= 89.9) ? 'org-green-purble' : (opmData.Inventiveness >= 90 && opmData.Inventiveness <= 92.9) ? 'org-purble-green' : opmData.Inventiveness > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+
+
+                <p [ngClass]="{'text-black': opmData.Inventiveness >= 62.5 && opmData.Inventiveness < 75}">Inventiveness
+                  <br /> ({{opmData.Inventiveness | number:'0.0-1'}})</p>
+              </div>
+              <div class="seven">
+                <h4>Organizational Performance Metrics</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page_4">
+        <div class="page_4">
+          <div class="report_page">
+            <div class="report_content">
+              <div class="sortmax">
+                <div *ngIf="sortingObject[0] === 'Trustworthiness'">
+                  <h3 class="text-center">TRUSTWORTHINESS</h3>
+                  <p class="text-center">Measures the extent to which you are deserving of the trust/confidence you
+                    receive from those around you</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar1 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Trustworthiness< 62.5 ? 'red_active': opmData?.Trustworthiness>= 62.5 && opmData?.Trustworthiness< 75? 'yellow_active': opmData?.Trustworthiness>= 75 && opmData?.Trustworthiness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are not consistently acting in
+                        accordance to the rules and policies.
+                        There is a risk that corners will be
+                        cut, and trust will be broken, in
+                        exchange for short term personal
+                        gains.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You operate in accordance to the
+                        rules, which is the most fundamental,
+                        base level of trust in all relationships.
+                        However, in more ambiguous
+                        situations, where the rules might not
+                        apply as easily, there is a risk of
+                        incongruent behaviour and hence an
+                        erosion of trust. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You not only act in accordance to the
+                        rules, but you also demonstrate a
+                        high level of integrity in more
+                        complex situations where rules and
+                        policies can sometimes be misinterpreted. You feel empowered to
+                        trust your judgment and learn from
+                        your mistakes. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have consistently demonstrated
+                        that you act according to a very clear
+                        set of shared values and principles.
+                        This strong inner compass eliminates
+                        the need for rules and policies and
+                        ensures that all situations will be
+                        resolved with the highest level of
+                        integrity</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar1 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[0] === 'Employee_Engagement'">
+                  <h3 class="text-center">EMPLOYEE ENGAGEMENT</h3>
+                  <p class="text-center">Measures your level of dedication and commitment exhibited in your
+                    professional day-to-day work activities</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar3 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="OpmData?.Employee_Engagement< 62.5 ? 'red_active': OpmData?.Employee_Engagement>= 62.5 && OpmData?.Employee_Engagement< 75? 'yellow_active': OpmData?.Employee_Engagement>= 75 && OpmData?.Employee_Engagement< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+
+                      <p>You have a low level of intrinsic motivation. You don't see the meaning in your work and
+                        simply do the minimum that is required of you in order to collect a pay check.</p>
+                    </div>
+                    <div class="box yellow">
+
+                      <p>You are extrinsically motivated. You work hard in pursuit of the next promotion and raise.
+                        At the end of the day however, this single minded focus on perfomance leaves you feeling
+                        unfulfilled or in some cases, even burnt out. </p>
+                    </div>
+                    <div class="box green">
+
+                      <p>You are seeing deeper meaning in your work. You experience your job as an extension of who
+                        your are, in the sense that more of your unique strengths and talents are being valued in
+                        the work that you do. </p>
+                    </div>
+                    <div class="box purple">
+
+                      <p>You act as a true owner of the business. You not only bring the best of yourself to work,
+                        but you are also motivated to step beyond your roles and responsibilities to challenge the
+                        status quo and proactively bring new ideas into the organization.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar3 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[0] === 'SelfLeadership'">
+                  <h3 class="text-center">SELF LEADERSHIP</h3>
+                  <p class="text-center">Self-Leadership is about becoming an expert on yourself through a
+                    commitment to honest self-reflection and the ongoing process of learning and
+                    growing from your experiences.</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar5 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.SelfLeadership< 62.5 ? 'red_active': opmData?.SelfLeadership>= 62.5 && opmData?.SelfLeadership< 75? 'yellow_active': opmData?.SelfLeadership>= 75 && opmData?.SelfLeadership< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You often exhibit triggered or
+                        reactive behavior. You might feel
+                        powerless or victimized to others and
+                        situations. You are mostly unaware
+                        of your own thoughts, feelings, and
+                        behaviors and/or would be dishonest
+                        about your true motivations. You can
+                        be more self-observing </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You may be aware of your own inner
+                        experience, but more often than not
+                        respond out of habit. You fluctuate
+                        between your triggers/reactions on
+                        the one hand, and the ability to have
+                        perspective on self, others and
+                        events</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are well aware of your own inner
+                        experience and are able to respond
+                        out of choice in productive and
+                        flexible ways. You rise above your
+                        triggers & reactions to understand
+                        multiple views and others'
+                        perspectives affecting the situation.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are fully in-tune with your own
+                        inner state while also being able to
+                        sense into the energy of those
+                        around you. You have mastered the
+                        ability to respond to any situation
+                        compassionately and in service of
+                        the greater good. You recognize the
+                        opportunity in all situations.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar5 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[0] === 'Inventiveness'">
+                  <h3 class="text-center">INVENTIVENESS</h3>
+                  <p class="text-center">Measures your ability to create breakthrough ideas and produce radically
+                    new products and services (that may or may not have direct market
+                    application)
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar7 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Inventiveness< 62.5 ? 'red_active': opmData?.Inventiveness>= 62.5 && opmData?.Inventiveness< 75? 'yellow_active': opmData?.Inventiveness>= 75 && opmData?.Inventiveness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are ineffective at bringing new
+                        ideas into your work. An overreliance on the status quo may be
+                        sustainable in the short term, but
+                        longer term a lack of new ideas will
+                        make it increasingly difficult to
+                        remain relevant in your current
+                        position. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are mainly focused on
+                        incremental changes. This consists
+                        of small, yet meaningful
+                        improvements in the way you work
+                        and conduct your business. These
+                        tend to be process type of
+                        innovations.</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at thinking "out of
+                        the box" and unlocking new ideas
+                        that significantly improve the way you
+                        work and perform in your current
+                        role.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are poised to deliver
+                        transformational thinking into the
+                        organization. Your creativity
+                        significantly influences the strategies
+                        and plans of the organization. You
+                        are considered a thought-leader with
+                        the ability to imagine exciting new
+                        possibilities. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar7 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[0] === 'Gettingdonediscuss'">
+                  <h3 class="text-center">GETTING THINGS DONE</h3>
+                  <p class="text-center">Measures your ability to execute and deliver concrete results</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar9 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Gettingdonediscuss< 62.5 ? 'red_active': opmData?.Gettingdonediscuss>= 62.5 && opmData?.Gettingdonediscuss< 75? 'yellow_active': opmData?.Gettingdonediscuss>= 75 && opmData?.Gettingdonediscuss< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have an opportunity to be more
+                        decisive in bringing your ideas to life.
+                        Please investigate if you carry the
+                        energy of procrastination or lethargy
+                        within you. You will likely benefit from
+                        more structure and a clear decision
+                        making process. Also, a sharper
+                        vision and strategy will help you
+                        make choices and prioritize
+                        resources.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are moderately effective at
+                        getting things done. There is a
+                        reluctance to move projects forward
+                        without reaching consensus. You
+                        might be prone to 'paralysis by
+                        analysis'. Your tolerance for risk is
+                        low and therefore some of your
+                        initiatives may not get the support
+                        they need to grow into their full
+                        potential. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at getting things
+                        done. You have established clear
+                        processes,structure or techniques to
+                        speed up the decision-making.
+                        However, in more ambiguous
+                        situations you may not be willing, or
+                        feeling empowered, to take the
+                        necessary risks needed to move
+                        ahead purposefully. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are extremely effective at getting
+                        things done. You define deliverables
+                        clearly and execute efficiently. In
+                        situations where speed to market is
+                        key, you dare to make decisions
+                        without lengthy deliberations.
+                        Whereas, in environments requiring
+                        greater creativity, collaboration and
+                        innovation, you are able to delegate
+                        and mobilise others in order to get
+                        things done. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar9 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div *ngIf="sortingObject[0] === 'Customer_Orientation'">
+                  <h3 class="text-center">CUSTOMER ORIENTATION: </h3>
+                  <p class="text-center">Measures how well you listen and respond to
+                    the explicit AND implicit desires of your organization's customers
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar11 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Customer_Orientation< 62.5 ? 'red_active': opmData?.Customer_Orientation>= 62.5 && opmData?.Customer_Orientation< 75? 'yellow_active': opmData?.Customer_Orientation>= 75 && opmData?.Customer_Orientation< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        no longer feel valued or listened to.
+                        Unless the switching costs are too
+                        high they are likely to consider
+                        changing allegiance or moving to
+                        another service provider. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        see you as a reliable partner. You
+                        deliver a product or service that
+                        meets their basic expectations.
+                        However, they may not feel a strong
+                        loyalty. There is an opportunity to
+                        engage with their needs more
+                        deeply, and translate this into
+                        products and services that will make
+                        you an essential business partner in
+                        the future. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        feel listened to. You take their needs
+                        and aspirations into account and
+                        significantly influence the direction of
+                        their projects. Your stakeholders
+                        usually respond enthusiastically and
+                        with great loyalty to the new products
+                        and services you offer</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have the unique ability to see
+                        into the future and anticipate
+                        emerging needs of your (internal or
+                        external) customers often before they
+                        are able to articulate them. You are a
+                        visionary who listens beyond their
+                        stated needs and is able to serve
+                        your customers in ways that
+                        significantly shift their behaviors and
+                        delight them </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar11 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page_5">
+        <div class="page_5">
+          <div class="report_page">
+            <div class="report_content">
+              <div class="sortmax">
+                <div *ngIf="sortingObject[1] === 'Trustworthiness'">
+                  <h3 class="text-center">TRUSTWORTHINESS</h3>
+                  <p class="text-center">Measures the extent to which you are deserving of the trust/confidence you
+                    receive from those around you</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar1 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Trustworthiness< 62.5 ? 'red_active': opmData?.Trustworthiness>= 62.5 && opmData?.Trustworthiness< 75? 'yellow_active': opmData?.Trustworthiness>= 75 && opmData?.Trustworthiness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are not consistently acting in
+                        accordance to the rules and policies.
+                        There is a risk that corners will be
+                        cut, and trust will be broken, in
+                        exchange for short term personal
+                        gains.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You operate in accordance to the
+                        rules, which is the most fundamental,
+                        base level of trust in all relationships.
+                        However, in more ambiguous
+                        situations, where the rules might not
+                        apply as easily, there is a risk of
+                        incongruent behaviour and hence an
+                        erosion of trust. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You not only act in accordance to the
+                        rules, but you also demonstrate a
+                        high level of integrity in more
+                        complex situations where rules and
+                        policies can sometimes be misinterpreted. You feel empowered to
+                        trust your judgment and learn from
+                        your mistakes. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have consistently demonstrated
+                        that you act according to a very clear
+                        set of shared values and principles.
+                        This strong inner compass eliminates
+                        the need for rules and policies and
+                        ensures that all situations will be
+                        resolved with the highest level of
+                        integrity</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar1 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[1] === 'Employee_Engagement'">
+                  <h3 class="text-center">EMPLOYEE ENGAGEMENT</h3>
+                  <p class="text-center">Measures your level of dedication and commitment exhibited in your
+                    professional day-to-day work activities</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar3 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="OpmData?.Employee_Engagement< 62.5 ? 'red_active': OpmData?.Employee_Engagement>= 62.5 && OpmData?.Employee_Engagement< 75? 'yellow_active': OpmData?.Employee_Engagement>= 75 && OpmData?.Employee_Engagement< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+
+                      <p>You have a low level of intrinsic motivation. You don't see the meaning in your work and
+                        simply do the minimum that is required of you in order to collect a pay check.</p>
+                    </div>
+                    <div class="box yellow">
+
+                      <p>You are extrinsically motivated. You work hard in pursuit of the next promotion and raise.
+                        At the end of the day however, this single minded focus on perfomance leaves you feeling
+                        unfulfilled or in some cases, even burnt out. </p>
+                    </div>
+                    <div class="box green">
+
+                      <p>You are seeing deeper meaning in your work. You experience your job as an extension of who
+                        your are, in the sense that more of your unique strengths and talents are being valued in
+                        the work that you do. </p>
+                    </div>
+                    <div class="box purple">
+
+                      <p>You act as a true owner of the business. You not only bring the best of yourself to work,
+                        but you are also motivated to step beyond your roles and responsibilities to challenge the
+                        status quo and proactively bring new ideas into the organization.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar3 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[1] === 'SelfLeadership'">
+                  <h3 class="text-center">SELF LEADERSHIP</h3>
+                  <p class="text-center">Self-Leadership is about becoming an expert on yourself through a
+                    commitment to honest self-reflection and the ongoing process of learning and
+                    growing from your experiences.</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar5 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.SelfLeadership< 62.5 ? 'red_active': opmData?.SelfLeadership>= 62.5 && opmData?.SelfLeadership< 75? 'yellow_active': opmData?.SelfLeadership>= 75 && opmData?.SelfLeadership< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You often exhibit triggered or
+                        reactive behavior. You might feel
+                        powerless or victimized to others and
+                        situations. You are mostly unaware
+                        of your own thoughts, feelings, and
+                        behaviors and/or would be dishonest
+                        about your true motivations. You can
+                        be more self-observing </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You may be aware of your own inner
+                        experience, but more often than not
+                        respond out of habit. You fluctuate
+                        between your triggers/reactions on
+                        the one hand, and the ability to have
+                        perspective on self, others and
+                        events</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are well aware of your own inner
+                        experience and are able to respond
+                        out of choice in productive and
+                        flexible ways. You rise above your
+                        triggers & reactions to understand
+                        multiple views and others'
+                        perspectives affecting the situation.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are fully in-tune with your own
+                        inner state while also being able to
+                        sense into the energy of those
+                        around you. You have mastered the
+                        ability to respond to any situation
+                        compassionately and in service of
+                        the greater good. You recognize the
+                        opportunity in all situations.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar5 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[1] === 'Inventiveness'">
+                  <h3 class="text-center">INVENTIVENESS</h3>
+                  <p class="text-center">Measures your ability to create breakthrough ideas and produce radically
+                    new products and services (that may or may not have direct market
+                    application)
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar7 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Inventiveness< 62.5 ? 'red_active': opmData?.Inventiveness>= 62.5 && opmData?.Inventiveness< 75? 'yellow_active': opmData?.Inventiveness>= 75 && opmData?.Inventiveness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are ineffective at bringing new
+                        ideas into your work. An overreliance on the status quo may be
+                        sustainable in the short term, but
+                        longer term a lack of new ideas will
+                        make it increasingly difficult to
+                        remain relevant in your current
+                        position. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are mainly focused on
+                        incremental changes. This consists
+                        of small, yet meaningful
+                        improvements in the way you work
+                        and conduct your business. These
+                        tend to be process type of
+                        innovations.</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at thinking "out of
+                        the box" and unlocking new ideas
+                        that significantly improve the way you
+                        work and perform in your current
+                        role.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are poised to deliver
+                        transformational thinking into the
+                        organization. Your creativity
+                        significantly influences the strategies
+                        and plans of the organization. You
+                        are considered a thought-leader with
+                        the ability to imagine exciting new
+                        possibilities. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar7 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[1] === 'Gettingdonediscuss'">
+                  <h3 class="text-center">GETTING THINGS DONE</h3>
+                  <p class="text-center">Measures your ability to execute and deliver concrete results</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar9 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Gettingdonediscuss< 62.5 ? 'red_active': opmData?.Gettingdonediscuss>= 62.5 && opmData?.Gettingdonediscuss< 75? 'yellow_active': opmData?.Gettingdonediscuss>= 75 && opmData?.Gettingdonediscuss< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have an opportunity to be more
+                        decisive in bringing your ideas to life.
+                        Please investigate if you carry the
+                        energy of procrastination or lethargy
+                        within you. You will likely benefit from
+                        more structure and a clear decision
+                        making process. Also, a sharper
+                        vision and strategy will help you
+                        make choices and prioritize
+                        resources.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are moderately effective at
+                        getting things done. There is a
+                        reluctance to move projects forward
+                        without reaching consensus. You
+                        might be prone to 'paralysis by
+                        analysis'. Your tolerance for risk is
+                        low and therefore some of your
+                        initiatives may not get the support
+                        they need to grow into their full
+                        potential. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at getting things
+                        done. You have established clear
+                        processes,structure or techniques to
+                        speed up the decision-making.
+                        However, in more ambiguous
+                        situations you may not be willing, or
+                        feeling empowered, to take the
+                        necessary risks needed to move
+                        ahead purposefully. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are extremely effective at getting
+                        things done. You define deliverables
+                        clearly and execute efficiently. In
+                        situations where speed to market is
+                        key, you dare to make decisions
+                        without lengthy deliberations.
+                        Whereas, in environments requiring
+                        greater creativity, collaboration and
+                        innovation, you are able to delegate
+                        and mobilise others in order to get
+                        things done. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar9 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div *ngIf="sortingObject[1] === 'Customer_Orientation'">
+                  <h3 class="text-center">CUSTOMER ORIENTATION: </h3>
+                  <p class="text-center">Measures how well you listen and respond to
+                    the explicit AND implicit desires of your organization's customers
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar11 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Customer_Orientation< 62.5 ? 'red_active': opmData?.Customer_Orientation>= 62.5 && opmData?.Customer_Orientation< 75? 'yellow_active': opmData?.Customer_Orientation>= 75 && opmData?.Customer_Orientation< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        no longer feel valued or listened to.
+                        Unless the switching costs are too
+                        high they are likely to consider
+                        changing allegiance or moving to
+                        another service provider. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        see you as a reliable partner. You
+                        deliver a product or service that
+                        meets their basic expectations.
+                        However, they may not feel a strong
+                        loyalty. There is an opportunity to
+                        engage with their needs more
+                        deeply, and translate this into
+                        products and services that will make
+                        you an essential business partner in
+                        the future. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        feel listened to. You take their needs
+                        and aspirations into account and
+                        significantly influence the direction of
+                        their projects. Your stakeholders
+                        usually respond enthusiastically and
+                        with great loyalty to the new products
+                        and services you offer</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have the unique ability to see
+                        into the future and anticipate
+                        emerging needs of your (internal or
+                        external) customers often before they
+                        are able to articulate them. You are a
+                        visionary who listens beyond their
+                        stated needs and is able to serve
+                        your customers in ways that
+                        significantly shift their behaviors and
+                        delight them </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar11 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page_6">
+        <div class="page_6">
+          <div class="report_page">
+            <div class="report_content">
+              <div class="sortmax">
+                <div *ngIf="sortingObject[2] === 'Trustworthiness'">
+                  <h3 class="text-center">TRUSTWORTHINESS</h3>
+                  <p class="text-center">Measures the extent to which you are deserving of the trust/confidence you
+                    receive from those around you</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar1 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Trustworthiness< 62.5 ? 'red_active': opmData?.Trustworthiness>= 62.5 && opmData?.Trustworthiness< 75? 'yellow_active': opmData?.Trustworthiness>= 75 && opmData?.Trustworthiness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are not consistently acting in
+                        accordance to the rules and policies.
+                        There is a risk that corners will be
+                        cut, and trust will be broken, in
+                        exchange for short term personal
+                        gains.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You operate in accordance to the
+                        rules, which is the most fundamental,
+                        base level of trust in all relationships.
+                        However, in more ambiguous
+                        situations, where the rules might not
+                        apply as easily, there is a risk of
+                        incongruent behaviour and hence an
+                        erosion of trust. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You not only act in accordance to the
+                        rules, but you also demonstrate a
+                        high level of integrity in more
+                        complex situations where rules and
+                        policies can sometimes be misinterpreted. You feel empowered to
+                        trust your judgment and learn from
+                        your mistakes. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have consistently demonstrated
+                        that you act according to a very clear
+                        set of shared values and principles.
+                        This strong inner compass eliminates
+                        the need for rules and policies and
+                        ensures that all situations will be
+                        resolved with the highest level of
+                        integrity</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar1 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[2] === 'Employee_Engagement'">
+                  <h3 class="text-center">EMPLOYEE ENGAGEMENT</h3>
+                  <p class="text-center">Measures your level of dedication and commitment exhibited in your
+                    professional day-to-day work activities</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar3 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="OpmData?.Employee_Engagement< 62.5 ? 'red_active': OpmData?.Employee_Engagement>= 62.5 && OpmData?.Employee_Engagement< 75? 'yellow_active': OpmData?.Employee_Engagement>= 75 && OpmData?.Employee_Engagement< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+
+                      <p>You have a low level of intrinsic motivation. You don't see the meaning in your work and
+                        simply do the minimum that is required of you in order to collect a pay check.</p>
+                    </div>
+                    <div class="box yellow">
+
+                      <p>You are extrinsically motivated. You work hard in pursuit of the next promotion and raise.
+                        At the end of the day however, this single minded focus on perfomance leaves you feeling
+                        unfulfilled or in some cases, even burnt out. </p>
+                    </div>
+                    <div class="box green">
+
+                      <p>You are seeing deeper meaning in your work. You experience your job as an extension of who
+                        your are, in the sense that more of your unique strengths and talents are being valued in
+                        the work that you do. </p>
+                    </div>
+                    <div class="box purple">
+
+                      <p>You act as a true owner of the business. You not only bring the best of yourself to work,
+                        but you are also motivated to step beyond your roles and responsibilities to challenge the
+                        status quo and proactively bring new ideas into the organization.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar3 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[2] === 'SelfLeadership'">
+                  <h3 class="text-center">SELF LEADERSHIP</h3>
+                  <p class="text-center">Self-Leadership is about becoming an expert on yourself through a
+                    commitment to honest self-reflection and the ongoing process of learning and
+                    growing from your experiences.</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar5 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.SelfLeadership< 62.5 ? 'red_active': opmData?.SelfLeadership>= 62.5 && opmData?.SelfLeadership< 75? 'yellow_active': opmData?.SelfLeadership>= 75 && opmData?.SelfLeadership< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You often exhibit triggered or
+                        reactive behavior. You might feel
+                        powerless or victimized to others and
+                        situations. You are mostly unaware
+                        of your own thoughts, feelings, and
+                        behaviors and/or would be dishonest
+                        about your true motivations. You can
+                        be more self-observing </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You may be aware of your own inner
+                        experience, but more often than not
+                        respond out of habit. You fluctuate
+                        between your triggers/reactions on
+                        the one hand, and the ability to have
+                        perspective on self, others and
+                        events</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are well aware of your own inner
+                        experience and are able to respond
+                        out of choice in productive and
+                        flexible ways. You rise above your
+                        triggers & reactions to understand
+                        multiple views and others'
+                        perspectives affecting the situation.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are fully in-tune with your own
+                        inner state while also being able to
+                        sense into the energy of those
+                        around you. You have mastered the
+                        ability to respond to any situation
+                        compassionately and in service of
+                        the greater good. You recognize the
+                        opportunity in all situations.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar5 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[2] === 'Inventiveness'">
+                  <h3 class="text-center">INVENTIVENESS</h3>
+                  <p class="text-center">Measures your ability to create breakthrough ideas and produce radically
+                    new products and services (that may or may not have direct market
+                    application)
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar7 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Inventiveness< 62.5 ? 'red_active': opmData?.Inventiveness>= 62.5 && opmData?.Inventiveness< 75? 'yellow_active': opmData?.Inventiveness>= 75 && opmData?.Inventiveness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are ineffective at bringing new
+                        ideas into your work. An overreliance on the status quo may be
+                        sustainable in the short term, but
+                        longer term a lack of new ideas will
+                        make it increasingly difficult to
+                        remain relevant in your current
+                        position. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are mainly focused on
+                        incremental changes. This consists
+                        of small, yet meaningful
+                        improvements in the way you work
+                        and conduct your business. These
+                        tend to be process type of
+                        innovations.</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at thinking "out of
+                        the box" and unlocking new ideas
+                        that significantly improve the way you
+                        work and perform in your current
+                        role.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are poised to deliver
+                        transformational thinking into the
+                        organization. Your creativity
+                        significantly influences the strategies
+                        and plans of the organization. You
+                        are considered a thought-leader with
+                        the ability to imagine exciting new
+                        possibilities. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar7 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[2] === 'Gettingdonediscuss'">
+                  <h3 class="text-center">GETTING THINGS DONE</h3>
+                  <p class="text-center">Measures your ability to execute and deliver concrete results</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar9 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Gettingdonediscuss< 62.5 ? 'red_active': opmData?.Gettingdonediscuss>= 62.5 && opmData?.Gettingdonediscuss< 75? 'yellow_active': opmData?.Gettingdonediscuss>= 75 && opmData?.Gettingdonediscuss< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have an opportunity to be more
+                        decisive in bringing your ideas to life.
+                        Please investigate if you carry the
+                        energy of procrastination or lethargy
+                        within you. You will likely benefit from
+                        more structure and a clear decision
+                        making process. Also, a sharper
+                        vision and strategy will help you
+                        make choices and prioritize
+                        resources.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are moderately effective at
+                        getting things done. There is a
+                        reluctance to move projects forward
+                        without reaching consensus. You
+                        might be prone to 'paralysis by
+                        analysis'. Your tolerance for risk is
+                        low and therefore some of your
+                        initiatives may not get the support
+                        they need to grow into their full
+                        potential. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at getting things
+                        done. You have established clear
+                        processes,structure or techniques to
+                        speed up the decision-making.
+                        However, in more ambiguous
+                        situations you may not be willing, or
+                        feeling empowered, to take the
+                        necessary risks needed to move
+                        ahead purposefully. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are extremely effective at getting
+                        things done. You define deliverables
+                        clearly and execute efficiently. In
+                        situations where speed to market is
+                        key, you dare to make decisions
+                        without lengthy deliberations.
+                        Whereas, in environments requiring
+                        greater creativity, collaboration and
+                        innovation, you are able to delegate
+                        and mobilise others in order to get
+                        things done. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar9 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div *ngIf="sortingObject[2] === 'Customer_Orientation'">
+                  <h3 class="text-center">CUSTOMER ORIENTATION: </h3>
+                  <p class="text-center">Measures how well you listen and respond to
+                    the explicit AND implicit desires of your organization's customers
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar11 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Customer_Orientation< 62.5 ? 'red_active': opmData?.Customer_Orientation>= 62.5 && opmData?.Customer_Orientation< 75? 'yellow_active': opmData?.Customer_Orientation>= 75 && opmData?.Customer_Orientation< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        no longer feel valued or listened to.
+                        Unless the switching costs are too
+                        high they are likely to consider
+                        changing allegiance or moving to
+                        another service provider. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        see you as a reliable partner. You
+                        deliver a product or service that
+                        meets their basic expectations.
+                        However, they may not feel a strong
+                        loyalty. There is an opportunity to
+                        engage with their needs more
+                        deeply, and translate this into
+                        products and services that will make
+                        you an essential business partner in
+                        the future. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        feel listened to. You take their needs
+                        and aspirations into account and
+                        significantly influence the direction of
+                        their projects. Your stakeholders
+                        usually respond enthusiastically and
+                        with great loyalty to the new products
+                        and services you offer</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have the unique ability to see
+                        into the future and anticipate
+                        emerging needs of your (internal or
+                        external) customers often before they
+                        are able to articulate them. You are a
+                        visionary who listens beyond their
+                        stated needs and is able to serve
+                        your customers in ways that
+                        significantly shift their behaviors and
+                        delight them </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar11 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page_7">
+        <div class="page_7">
+          <div class="report_page">
+            <div class="report_content">
+              <div class="sortmax">
+                <div *ngIf="sortingObject[3] === 'Trustworthiness'">
+                  <h3 class="text-center">TRUSTWORTHINESS</h3>
+                  <p class="text-center">Measures the extent to which you are deserving of the trust/confidence you
+                    receive from those around you</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar1 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Trustworthiness< 62.5 ? 'red_active': opmData?.Trustworthiness>= 62.5 && opmData?.Trustworthiness< 75? 'yellow_active': opmData?.Trustworthiness>= 75 && opmData?.Trustworthiness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are not consistently acting in
+                        accordance to the rules and policies.
+                        There is a risk that corners will be
+                        cut, and trust will be broken, in
+                        exchange for short term personal
+                        gains.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You operate in accordance to the
+                        rules, which is the most fundamental,
+                        base level of trust in all relationships.
+                        However, in more ambiguous
+                        situations, where the rules might not
+                        apply as easily, there is a risk of
+                        incongruent behaviour and hence an
+                        erosion of trust. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You not only act in accordance to the
+                        rules, but you also demonstrate a
+                        high level of integrity in more
+                        complex situations where rules and
+                        policies can sometimes be misinterpreted. You feel empowered to
+                        trust your judgment and learn from
+                        your mistakes. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have consistently demonstrated
+                        that you act according to a very clear
+                        set of shared values and principles.
+                        This strong inner compass eliminates
+                        the need for rules and policies and
+                        ensures that all situations will be
+                        resolved with the highest level of
+                        integrity</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar1 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[3] === 'Employee_Engagement'">
+                  <h3 class="text-center">EMPLOYEE ENGAGEMENT</h3>
+                  <p class="text-center">Measures your level of dedication and commitment exhibited in your
+                    professional day-to-day work activities</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar3 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="OpmData?.Employee_Engagement< 62.5 ? 'red_active': OpmData?.Employee_Engagement>= 62.5 && OpmData?.Employee_Engagement< 75? 'yellow_active': OpmData?.Employee_Engagement>= 75 && OpmData?.Employee_Engagement< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+
+                      <p>You have a low level of intrinsic motivation. You don't see the meaning in your work and
+                        simply do the minimum that is required of you in order to collect a pay check.</p>
+                    </div>
+                    <div class="box yellow">
+
+                      <p>You are extrinsically motivated. You work hard in pursuit of the next promotion and raise.
+                        At the end of the day however, this single minded focus on perfomance leaves you feeling
+                        unfulfilled or in some cases, even burnt out. </p>
+                    </div>
+                    <div class="box green">
+
+                      <p>You are seeing deeper meaning in your work. You experience your job as an extension of who
+                        your are, in the sense that more of your unique strengths and talents are being valued in
+                        the work that you do. </p>
+                    </div>
+                    <div class="box purple">
+
+                      <p>You act as a true owner of the business. You not only bring the best of yourself to work,
+                        but you are also motivated to step beyond your roles and responsibilities to challenge the
+                        status quo and proactively bring new ideas into the organization.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar3 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[3] === 'SelfLeadership'">
+                  <h3 class="text-center">SELF LEADERSHIP</h3>
+                  <p class="text-center">Self-Leadership is about becoming an expert on yourself through a
+                    commitment to honest self-reflection and the ongoing process of learning and
+                    growing from your experiences.</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar5 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.SelfLeadership< 62.5 ? 'red_active': opmData?.SelfLeadership>= 62.5 && opmData?.SelfLeadership< 75? 'yellow_active': opmData?.SelfLeadership>= 75 && opmData?.SelfLeadership< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You often exhibit triggered or
+                        reactive behavior. You might feel
+                        powerless or victimized to others and
+                        situations. You are mostly unaware
+                        of your own thoughts, feelings, and
+                        behaviors and/or would be dishonest
+                        about your true motivations. You can
+                        be more self-observing </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You may be aware of your own inner
+                        experience, but more often than not
+                        respond out of habit. You fluctuate
+                        between your triggers/reactions on
+                        the one hand, and the ability to have
+                        perspective on self, others and
+                        events</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are well aware of your own inner
+                        experience and are able to respond
+                        out of choice in productive and
+                        flexible ways. You rise above your
+                        triggers & reactions to understand
+                        multiple views and others'
+                        perspectives affecting the situation.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are fully in-tune with your own
+                        inner state while also being able to
+                        sense into the energy of those
+                        around you. You have mastered the
+                        ability to respond to any situation
+                        compassionately and in service of
+                        the greater good. You recognize the
+                        opportunity in all situations.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar5 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[3] === 'Inventiveness'">
+                  <h3 class="text-center">INVENTIVENESS</h3>
+                  <p class="text-center">Measures your ability to create breakthrough ideas and produce radically
+                    new products and services (that may or may not have direct market
+                    application)
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar7 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Inventiveness< 62.5 ? 'red_active': opmData?.Inventiveness>= 62.5 && opmData?.Inventiveness< 75? 'yellow_active': opmData?.Inventiveness>= 75 && opmData?.Inventiveness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are ineffective at bringing new
+                        ideas into your work. An overreliance on the status quo may be
+                        sustainable in the short term, but
+                        longer term a lack of new ideas will
+                        make it increasingly difficult to
+                        remain relevant in your current
+                        position. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are mainly focused on
+                        incremental changes. This consists
+                        of small, yet meaningful
+                        improvements in the way you work
+                        and conduct your business. These
+                        tend to be process type of
+                        innovations.</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at thinking "out of
+                        the box" and unlocking new ideas
+                        that significantly improve the way you
+                        work and perform in your current
+                        role.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are poised to deliver
+                        transformational thinking into the
+                        organization. Your creativity
+                        significantly influences the strategies
+                        and plans of the organization. You
+                        are considered a thought-leader with
+                        the ability to imagine exciting new
+                        possibilities. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar7 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[3] === 'Gettingdonediscuss'">
+                  <h3 class="text-center">GETTING THINGS DONE</h3>
+                  <p class="text-center">Measures your ability to execute and deliver concrete results</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar9 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Gettingdonediscuss< 62.5 ? 'red_active': opmData?.Gettingdonediscuss>= 62.5 && opmData?.Gettingdonediscuss< 75? 'yellow_active': opmData?.Gettingdonediscuss>= 75 && opmData?.Gettingdonediscuss< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have an opportunity to be more
+                        decisive in bringing your ideas to life.
+                        Please investigate if you carry the
+                        energy of procrastination or lethargy
+                        within you. You will likely benefit from
+                        more structure and a clear decision
+                        making process. Also, a sharper
+                        vision and strategy will help you
+                        make choices and prioritize
+                        resources.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are moderately effective at
+                        getting things done. There is a
+                        reluctance to move projects forward
+                        without reaching consensus. You
+                        might be prone to 'paralysis by
+                        analysis'. Your tolerance for risk is
+                        low and therefore some of your
+                        initiatives may not get the support
+                        they need to grow into their full
+                        potential. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at getting things
+                        done. You have established clear
+                        processes,structure or techniques to
+                        speed up the decision-making.
+                        However, in more ambiguous
+                        situations you may not be willing, or
+                        feeling empowered, to take the
+                        necessary risks needed to move
+                        ahead purposefully. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are extremely effective at getting
+                        things done. You define deliverables
+                        clearly and execute efficiently. In
+                        situations where speed to market is
+                        key, you dare to make decisions
+                        without lengthy deliberations.
+                        Whereas, in environments requiring
+                        greater creativity, collaboration and
+                        innovation, you are able to delegate
+                        and mobilise others in order to get
+                        things done. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar9 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div *ngIf="sortingObject[3] === 'Customer_Orientation'">
+                  <h3 class="text-center">CUSTOMER ORIENTATION: </h3>
+                  <p class="text-center">Measures how well you listen and respond to
+                    the explicit AND implicit desires of your organization's customers
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar11 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Customer_Orientation< 62.5 ? 'red_active': opmData?.Customer_Orientation>= 62.5 && opmData?.Customer_Orientation< 75? 'yellow_active': opmData?.Customer_Orientation>= 75 && opmData?.Customer_Orientation< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        no longer feel valued or listened to.
+                        Unless the switching costs are too
+                        high they are likely to consider
+                        changing allegiance or moving to
+                        another service provider. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        see you as a reliable partner. You
+                        deliver a product or service that
+                        meets their basic expectations.
+                        However, they may not feel a strong
+                        loyalty. There is an opportunity to
+                        engage with their needs more
+                        deeply, and translate this into
+                        products and services that will make
+                        you an essential business partner in
+                        the future. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        feel listened to. You take their needs
+                        and aspirations into account and
+                        significantly influence the direction of
+                        their projects. Your stakeholders
+                        usually respond enthusiastically and
+                        with great loyalty to the new products
+                        and services you offer</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have the unique ability to see
+                        into the future and anticipate
+                        emerging needs of your (internal or
+                        external) customers often before they
+                        are able to articulate them. You are a
+                        visionary who listens beyond their
+                        stated needs and is able to serve
+                        your customers in ways that
+                        significantly shift their behaviors and
+                        delight them </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar11 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page_8">
+        <div class="page_8">
+          <div class="report_page">
+            <div class="report_content">
+              <div class="sortmax">
+                <div *ngIf="sortingObject[4] === 'Trustworthiness'">
+                  <h3 class="text-center">TRUSTWORTHINESS</h3>
+                  <p class="text-center">Measures the extent to which you are deserving of the trust/confidence you
+                    receive from those around you</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar1 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Trustworthiness< 62.5 ? 'red_active': opmData?.Trustworthiness>= 62.5 && opmData?.Trustworthiness< 75? 'yellow_active': opmData?.Trustworthiness>= 75 && opmData?.Trustworthiness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are not consistently acting in
+                        accordance to the rules and policies.
+                        There is a risk that corners will be
+                        cut, and trust will be broken, in
+                        exchange for short term personal
+                        gains.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You operate in accordance to the
+                        rules, which is the most fundamental,
+                        base level of trust in all relationships.
+                        However, in more ambiguous
+                        situations, where the rules might not
+                        apply as easily, there is a risk of
+                        incongruent behaviour and hence an
+                        erosion of trust. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You not only act in accordance to the
+                        rules, but you also demonstrate a
+                        high level of integrity in more
+                        complex situations where rules and
+                        policies can sometimes be misinterpreted. You feel empowered to
+                        trust your judgment and learn from
+                        your mistakes. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have consistently demonstrated
+                        that you act according to a very clear
+                        set of shared values and principles.
+                        This strong inner compass eliminates
+                        the need for rules and policies and
+                        ensures that all situations will be
+                        resolved with the highest level of
+                        integrity</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar1 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[4] === 'Employee_Engagement'">
+                  <h3 class="text-center">EMPLOYEE ENGAGEMENT</h3>
+                  <p class="text-center">Measures your level of dedication and commitment exhibited in your
+                    professional day-to-day work activities</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar3 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="OpmData?.Employee_Engagement< 62.5 ? 'red_active': OpmData?.Employee_Engagement>= 62.5 && OpmData?.Employee_Engagement< 75? 'yellow_active': OpmData?.Employee_Engagement>= 75 && OpmData?.Employee_Engagement< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+
+                      <p>You have a low level of intrinsic motivation. You don't see the meaning in your work and
+                        simply do the minimum that is required of you in order to collect a pay check.</p>
+                    </div>
+                    <div class="box yellow">
+
+                      <p>You are extrinsically motivated. You work hard in pursuit of the next promotion and raise.
+                        At the end of the day however, this single minded focus on perfomance leaves you feeling
+                        unfulfilled or in some cases, even burnt out. </p>
+                    </div>
+                    <div class="box green">
+
+                      <p>You are seeing deeper meaning in your work. You experience your job as an extension of who
+                        your are, in the sense that more of your unique strengths and talents are being valued in
+                        the work that you do. </p>
+                    </div>
+                    <div class="box purple">
+
+                      <p>You act as a true owner of the business. You not only bring the best of yourself to work,
+                        but you are also motivated to step beyond your roles and responsibilities to challenge the
+                        status quo and proactively bring new ideas into the organization.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar3 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[4] === 'SelfLeadership'">
+                  <h3 class="text-center">SELF LEADERSHIP</h3>
+                  <p class="text-center">Self-Leadership is about becoming an expert on yourself through a
+                    commitment to honest self-reflection and the ongoing process of learning and
+                    growing from your experiences.</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar5 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.SelfLeadership< 62.5 ? 'red_active': opmData?.SelfLeadership>= 62.5 && opmData?.SelfLeadership< 75? 'yellow_active': opmData?.SelfLeadership>= 75 && opmData?.SelfLeadership< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You often exhibit triggered or
+                        reactive behavior. You might feel
+                        powerless or victimized to others and
+                        situations. You are mostly unaware
+                        of your own thoughts, feelings, and
+                        behaviors and/or would be dishonest
+                        about your true motivations. You can
+                        be more self-observing </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You may be aware of your own inner
+                        experience, but more often than not
+                        respond out of habit. You fluctuate
+                        between your triggers/reactions on
+                        the one hand, and the ability to have
+                        perspective on self, others and
+                        events</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are well aware of your own inner
+                        experience and are able to respond
+                        out of choice in productive and
+                        flexible ways. You rise above your
+                        triggers & reactions to understand
+                        multiple views and others'
+                        perspectives affecting the situation.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are fully in-tune with your own
+                        inner state while also being able to
+                        sense into the energy of those
+                        around you. You have mastered the
+                        ability to respond to any situation
+                        compassionately and in service of
+                        the greater good. You recognize the
+                        opportunity in all situations.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar5 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[4] === 'Inventiveness'">
+                  <h3 class="text-center">INVENTIVENESS</h3>
+                  <p class="text-center">Measures your ability to create breakthrough ideas and produce radically
+                    new products and services (that may or may not have direct market
+                    application)
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar7 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Inventiveness< 62.5 ? 'red_active': opmData?.Inventiveness>= 62.5 && opmData?.Inventiveness< 75? 'yellow_active': opmData?.Inventiveness>= 75 && opmData?.Inventiveness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are ineffective at bringing new
+                        ideas into your work. An overreliance on the status quo may be
+                        sustainable in the short term, but
+                        longer term a lack of new ideas will
+                        make it increasingly difficult to
+                        remain relevant in your current
+                        position. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are mainly focused on
+                        incremental changes. This consists
+                        of small, yet meaningful
+                        improvements in the way you work
+                        and conduct your business. These
+                        tend to be process type of
+                        innovations.</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at thinking "out of
+                        the box" and unlocking new ideas
+                        that significantly improve the way you
+                        work and perform in your current
+                        role.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are poised to deliver
+                        transformational thinking into the
+                        organization. Your creativity
+                        significantly influences the strategies
+                        and plans of the organization. You
+                        are considered a thought-leader with
+                        the ability to imagine exciting new
+                        possibilities. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar7 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[4] === 'Gettingdonediscuss'">
+                  <h3 class="text-center">GETTING THINGS DONE</h3>
+                  <p class="text-center">Measures your ability to execute and deliver concrete results</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar9 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Gettingdonediscuss< 62.5 ? 'red_active': opmData?.Gettingdonediscuss>= 62.5 && opmData?.Gettingdonediscuss< 75? 'yellow_active': opmData?.Gettingdonediscuss>= 75 && opmData?.Gettingdonediscuss< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have an opportunity to be more
+                        decisive in bringing your ideas to life.
+                        Please investigate if you carry the
+                        energy of procrastination or lethargy
+                        within you. You will likely benefit from
+                        more structure and a clear decision
+                        making process. Also, a sharper
+                        vision and strategy will help you
+                        make choices and prioritize
+                        resources.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are moderately effective at
+                        getting things done. There is a
+                        reluctance to move projects forward
+                        without reaching consensus. You
+                        might be prone to 'paralysis by
+                        analysis'. Your tolerance for risk is
+                        low and therefore some of your
+                        initiatives may not get the support
+                        they need to grow into their full
+                        potential. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at getting things
+                        done. You have established clear
+                        processes,structure or techniques to
+                        speed up the decision-making.
+                        However, in more ambiguous
+                        situations you may not be willing, or
+                        feeling empowered, to take the
+                        necessary risks needed to move
+                        ahead purposefully. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are extremely effective at getting
+                        things done. You define deliverables
+                        clearly and execute efficiently. In
+                        situations where speed to market is
+                        key, you dare to make decisions
+                        without lengthy deliberations.
+                        Whereas, in environments requiring
+                        greater creativity, collaboration and
+                        innovation, you are able to delegate
+                        and mobilise others in order to get
+                        things done. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar9 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div *ngIf="sortingObject[4] === 'Customer_Orientation'">
+                  <h3 class="text-center">CUSTOMER ORIENTATION: </h3>
+                  <p class="text-center">Measures how well you listen and respond to
+                    the explicit AND implicit desires of your organization's customers
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar11 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Customer_Orientation< 62.5 ? 'red_active': opmData?.Customer_Orientation>= 62.5 && opmData?.Customer_Orientation< 75? 'yellow_active': opmData?.Customer_Orientation>= 75 && opmData?.Customer_Orientation< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        no longer feel valued or listened to.
+                        Unless the switching costs are too
+                        high they are likely to consider
+                        changing allegiance or moving to
+                        another service provider. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        see you as a reliable partner. You
+                        deliver a product or service that
+                        meets their basic expectations.
+                        However, they may not feel a strong
+                        loyalty. There is an opportunity to
+                        engage with their needs more
+                        deeply, and translate this into
+                        products and services that will make
+                        you an essential business partner in
+                        the future. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        feel listened to. You take their needs
+                        and aspirations into account and
+                        significantly influence the direction of
+                        their projects. Your stakeholders
+                        usually respond enthusiastically and
+                        with great loyalty to the new products
+                        and services you offer</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have the unique ability to see
+                        into the future and anticipate
+                        emerging needs of your (internal or
+                        external) customers often before they
+                        are able to articulate them. You are a
+                        visionary who listens beyond their
+                        stated needs and is able to serve
+                        your customers in ways that
+                        significantly shift their behaviors and
+                        delight them </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar11 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page_9">
+        <div class="page_9">
+          <div class="report_page">
+            <div class="report_content">
+              <div class="sortmax">
+                <div *ngIf="sortingObject[5] === 'Trustworthiness'">
+                  <h3 class="text-center">TRUSTWORTHINESS</h3>
+                  <p class="text-center">Measures the extent to which you are deserving of the trust/confidence you
+                    receive from those around you</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar1 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Trustworthiness< 62.5 ? 'red_active': opmData?.Trustworthiness>= 62.5 && opmData?.Trustworthiness< 75? 'yellow_active': opmData?.Trustworthiness>= 75 && opmData?.Trustworthiness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are not consistently acting in
+                        accordance to the rules and policies.
+                        There is a risk that corners will be
+                        cut, and trust will be broken, in
+                        exchange for short term personal
+                        gains.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You operate in accordance to the
+                        rules, which is the most fundamental,
+                        base level of trust in all relationships.
+                        However, in more ambiguous
+                        situations, where the rules might not
+                        apply as easily, there is a risk of
+                        incongruent behaviour and hence an
+                        erosion of trust. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You not only act in accordance to the
+                        rules, but you also demonstrate a
+                        high level of integrity in more
+                        complex situations where rules and
+                        policies can sometimes be misinterpreted. You feel empowered to
+                        trust your judgment and learn from
+                        your mistakes. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have consistently demonstrated
+                        that you act according to a very clear
+                        set of shared values and principles.
+                        This strong inner compass eliminates
+                        the need for rules and policies and
+                        ensures that all situations will be
+                        resolved with the highest level of
+                        integrity</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar1 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar2 + '%'}">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[5] === 'Employee_Engagement'">
+                  <h3 class="text-center">EMPLOYEE ENGAGEMENT</h3>
+                  <p class="text-center">Measures your level of dedication and commitment exhibited in your
+                    professional day-to-day work activities</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar3 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="OpmData?.Employee_Engagement< 62.5 ? 'red_active': OpmData?.Employee_Engagement>= 62.5 && OpmData?.Employee_Engagement< 75? 'yellow_active': OpmData?.Employee_Engagement>= 75 && OpmData?.Employee_Engagement< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+
+                      <p>You have a low level of intrinsic motivation. You don't see the meaning in your work and
+                        simply do the minimum that is required of you in order to collect a pay check.</p>
+                    </div>
+                    <div class="box yellow">
+
+                      <p>You are extrinsically motivated. You work hard in pursuit of the next promotion and raise.
+                        At the end of the day however, this single minded focus on perfomance leaves you feeling
+                        unfulfilled or in some cases, even burnt out. </p>
+                    </div>
+                    <div class="box green">
+
+                      <p>You are seeing deeper meaning in your work. You experience your job as an extension of who
+                        your are, in the sense that more of your unique strengths and talents are being valued in
+                        the work that you do. </p>
+                    </div>
+                    <div class="box purple">
+
+                      <p>You act as a true owner of the business. You not only bring the best of yourself to work,
+                        but you are also motivated to step beyond your roles and responsibilities to challenge the
+                        status quo and proactively bring new ideas into the organization.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar3 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar4 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[5] === 'SelfLeadership'">
+                  <h3 class="text-center">SELF LEADERSHIP</h3>
+                  <p class="text-center">Self-Leadership is about becoming an expert on yourself through a
+                    commitment to honest self-reflection and the ongoing process of learning and
+                    growing from your experiences.</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar5 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.SelfLeadership< 62.5 ? 'red_active': opmData?.SelfLeadership>= 62.5 && opmData?.SelfLeadership< 75? 'yellow_active': opmData?.SelfLeadership>= 75 && opmData?.SelfLeadership< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You often exhibit triggered or
+                        reactive behavior. You might feel
+                        powerless or victimized to others and
+                        situations. You are mostly unaware
+                        of your own thoughts, feelings, and
+                        behaviors and/or would be dishonest
+                        about your true motivations. You can
+                        be more self-observing </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You may be aware of your own inner
+                        experience, but more often than not
+                        respond out of habit. You fluctuate
+                        between your triggers/reactions on
+                        the one hand, and the ability to have
+                        perspective on self, others and
+                        events</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are well aware of your own inner
+                        experience and are able to respond
+                        out of choice in productive and
+                        flexible ways. You rise above your
+                        triggers & reactions to understand
+                        multiple views and others'
+                        perspectives affecting the situation.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are fully in-tune with your own
+                        inner state while also being able to
+                        sense into the energy of those
+                        around you. You have mastered the
+                        ability to respond to any situation
+                        compassionately and in service of
+                        the greater good. You recognize the
+                        opportunity in all situations.</p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar5 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar6 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[5] === 'Inventiveness'">
+                  <h3 class="text-center">INVENTIVENESS</h3>
+                  <p class="text-center">Measures your ability to create breakthrough ideas and produce radically
+                    new products and services (that may or may not have direct market
+                    application)
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar7 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Inventiveness< 62.5 ? 'red_active': opmData?.Inventiveness>= 62.5 && opmData?.Inventiveness< 75? 'yellow_active': opmData?.Inventiveness>= 75 && opmData?.Inventiveness< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are ineffective at bringing new
+                        ideas into your work. An overreliance on the status quo may be
+                        sustainable in the short term, but
+                        longer term a lack of new ideas will
+                        make it increasingly difficult to
+                        remain relevant in your current
+                        position. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are mainly focused on
+                        incremental changes. This consists
+                        of small, yet meaningful
+                        improvements in the way you work
+                        and conduct your business. These
+                        tend to be process type of
+                        innovations.</p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at thinking "out of
+                        the box" and unlocking new ideas
+                        that significantly improve the way you
+                        work and perform in your current
+                        role.</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are poised to deliver
+                        transformational thinking into the
+                        organization. Your creativity
+                        significantly influences the strategies
+                        and plans of the organization. You
+                        are considered a thought-leader with
+                        the ability to imagine exciting new
+                        possibilities. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar7 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar8 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="sortingObject[5] === 'Gettingdonediscuss'">
+                  <h3 class="text-center">GETTING THINGS DONE</h3>
+                  <p class="text-center">Measures your ability to execute and deliver concrete results</p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar9 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Gettingdonediscuss< 62.5 ? 'red_active': opmData?.Gettingdonediscuss>= 62.5 && opmData?.Gettingdonediscuss< 75? 'yellow_active': opmData?.Gettingdonediscuss>= 75 && opmData?.Gettingdonediscuss< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have an opportunity to be more
+                        decisive in bringing your ideas to life.
+                        Please investigate if you carry the
+                        energy of procrastination or lethargy
+                        within you. You will likely benefit from
+                        more structure and a clear decision
+                        making process. Also, a sharper
+                        vision and strategy will help you
+                        make choices and prioritize
+                        resources.</p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are moderately effective at
+                        getting things done. There is a
+                        reluctance to move projects forward
+                        without reaching consensus. You
+                        might be prone to 'paralysis by
+                        analysis'. Your tolerance for risk is
+                        low and therefore some of your
+                        initiatives may not get the support
+                        they need to grow into their full
+                        potential. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are effective at getting things
+                        done. You have established clear
+                        processes,structure or techniques to
+                        speed up the decision-making.
+                        However, in more ambiguous
+                        situations you may not be willing, or
+                        feeling empowered, to take the
+                        necessary risks needed to move
+                        ahead purposefully. </p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You are extremely effective at getting
+                        things done. You define deliverables
+                        clearly and execute efficiently. In
+                        situations where speed to market is
+                        key, you dare to make decisions
+                        without lengthy deliberations.
+                        Whereas, in environments requiring
+                        greater creativity, collaboration and
+                        innovation, you are able to delegate
+                        and mobilise others in order to get
+                        things done. </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar9 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar10 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div *ngIf="sortingObject[5] === 'Customer_Orientation'">
+                  <h3 class="text-center">CUSTOMER ORIENTATION: </h3>
+                  <p class="text-center">Measures how well you listen and respond to
+                    the explicit AND implicit desires of your organization's customers
+                  </p>
+                  <div class="four-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': bar11 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="four_box"
+                    [ngClass]="opmData?.Customer_Orientation< 62.5 ? 'red_active': opmData?.Customer_Orientation>= 62.5 && opmData?.Customer_Orientation< 75? 'yellow_active': opmData?.Customer_Orientation>= 75 && opmData?.Customer_Orientation< 90 ? 'green_active':'purple_active'">
+                    <div class="box red">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        no longer feel valued or listened to.
+                        Unless the switching costs are too
+                        high they are likely to consider
+                        changing allegiance or moving to
+                        another service provider. </p>
+                    </div>
+                    <div class="box yellow">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        see you as a reliable partner. You
+                        deliver a product or service that
+                        meets their basic expectations.
+                        However, they may not feel a strong
+                        loyalty. There is an opportunity to
+                        engage with their needs more
+                        deeply, and translate this into
+                        products and services that will make
+                        you an essential business partner in
+                        the future. </p>
+                    </div>
+                    <div class="box green">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>Your (internal or external) customers
+                        feel listened to. You take their needs
+                        and aspirations into account and
+                        significantly influence the direction of
+                        their projects. Your stakeholders
+                        usually respond enthusiastically and
+                        with great loyalty to the new products
+                        and services you offer</p>
+                    </div>
+                    <div class="box purple">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <p>You have the unique ability to see
+                        into the future and anticipate
+                        emerging needs of your (internal or
+                        external) customers often before they
+                        are able to articulate them. You are a
+                        visionary who listens beyond their
+                        stated needs and is able to serve
+                        your customers in ways that
+                        significantly shift their behaviors and
+                        delight them </p>
+                    </div>
+                  </div>
+                  <div class="four-box-gradient bottom">
+                    <div>
+                      <div class="text-right" [ngStyle]="{'width': bar11 + '%'}">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': bar12 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page_10">
+        <div class="page_10">
+          <h2 class="text-center mb-4">Human Potential Meter</h2>
+          <div class="custom_report hp_image bar-image">
+            <div class="bar-relative">
+              <img src="assets/images/bar.png" />
+              <div class="bar-position">
+                <div>
+                  <div [ngStyle]="{'width': circle1 + '%'}">
+                  </div>
+                  <div [ngStyle]="{'width': circle2 + '%'}">
+                  </div>
+                </div>
+              </div>
+              <p class="one">Unexpressed</p>
+              <p class="two">Under expressed</p>
+              <p class="three">Well expressed</p>
+              <p class="four">Fully expressed</p>
+              <h5>{{hpData | number:'0.0-1'}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page_11">
+        <div class="page_11">
+          <div class="report_page">
+            <div class="report_content">
+              <div class="four_states">
+                <div class="color_code">
+                    <p> <span class="purple square"></span>Fully Expressed</p>
+                    <p> <span class="green square"></span>Well Expressed</p>
+                    <p> <span class="yellow square"></span>Under Expressed</p>
+                    <p> <span class="red square"></span>Unexpressed</p>
+                </div>
+                <div class="flex_img">
+                    <img src="assets/images/{{fourData?.Overall_Score < 62.5 ? 'red_top': fourData?.Overall_Score >= 62.5 && fourData?.Overall_Score < 75? 'yellow_top': fourData?.Overall_Score >= 75 && fourData?.Overall_Score < 90 ? 'green_top': 'purble_top'}}.png"
+                        alt="">
+                </div>
+                <div class="flex_box">
+                    <div class="box">
+                        <div class="title">
+                            <p>Being Inspired </p>
+                        </div>
+                        <ul>
+                            <li
+                                [class]="fourData?.Being_Inspired?.Play < 62.5 ? 'red': fourData?.Being_Inspired?.Play >= 62.5 && fourData?.Being_Inspired?.Play < 75? 'yellow': fourData?.Being_Inspired?.Play >= 75 && fourData?.Being_Inspired?.Play < 90 ? 'green':'purple'">
+                                Play</li>
+                            <li
+                                [class]="fourData?.Being_Inspired?.Curiosity < 62.5 ? 'red': fourData?.Being_Inspired?.Curiosity >= 62.5 && fourData?.Being_Inspired?.Curiosity < 75? 'yellow': fourData?.Being_Inspired?.Curiosity >= 75 && fourData?.Being_Inspired?.Curiosity < 90 ? 'green':'purple'">
+                                Curiosity</li>
+                            <li
+                                [class]="fourData?.Being_Inspired?.Not_knowing < 62.5 ? 'red': fourData?.Being_Inspired?.Not_knowing >= 62.5 && fourData?.Being_Inspired?.Not_knowing < 75? 'yellow': fourData?.Being_Inspired?.Not_knowing >= 75 && fourData?.Being_Inspired?.Not_knowing < 90 ? 'green':'purple'">
+                                Facing unknown</li>
+                            <li
+                                [class]="fourData?.Being_Inspired?.Flow < 62.5 ? 'red': fourData?.Being_Inspired?.Flow >= 62.5 && fourData?.Being_Inspired?.Flow < 75? 'yellow': fourData?.Being_Inspired?.Flow >= 75 && fourData?.Being_Inspired?.Flow < 90 ? 'green':'purple'">
+                                Being in flow</li>
+                            <li
+                                [class]="fourData?.Being_Inspired?.Openess_to_new_ideas < 62.5 ? 'red': fourData?.Being_Inspired?.Openess_to_new_ideas >= 62.5 && fourData?.Being_Inspired?.Openess_to_new_ideas < 75? 'yellow': fourData?.Being_Inspired?.Openess_to_new_ideas >= 75 && fourData?.Being_Inspired?.Openess_to_new_ideas < 90 ? 'green':'purple'">
+                                Open to new possibility</li>
+                            <li
+                                [class]="fourData?.Being_Inspired?.Holistic_view < 62.5 ? 'red': fourData?.Being_Inspired?.Holistic_view >= 62.5 && fourData?.Being_Inspired?.Holistic_view < 75? 'yellow': fourData?.Being_Inspired?.Holistic_view >= 75 && fourData?.Being_Inspired?.Holistic_view < 90 ? 'green':'purple'">
+                                Holistic view</li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <div class="title">
+                            <p>Being Abundant</p>
+                        </div>
+                        <ul>
+                            <li
+                                [class]="fourData?.Being_Abundant?.Collaboration_vs_competition < 62.5 ? 'red': fourData?.Being_Abundant?.Collaboration_vs_competition >= 62.5 && fourData?.Being_Abundant?.Collaboration_vs_competition < 75? 'yellow': fourData?.Being_Abundant?.Collaboration_vs_competition >= 75 && fourData?.Being_Abundant?.Collaboration_vs_competition < 90 ? 'green':'purple'">
+                                Collaboration vs competition</li>
+                            <li
+                                [class]="fourData?.Being_Abundant?.Being_from_Doing < 62.5 ? 'red': fourData?.Being_Abundant?.Being_from_Doing >= 62.5 && fourData?.Being_Abundant?.Being_from_Doing < 75? 'yellow': fourData?.Being_Abundant?.Being_from_Doing >= 75 && fourData?.Being_Abundant?.Being_from_Doing < 90 ? 'green':'purple'">
+                                Doing from Being</li>
+                            <li
+                                [class]="fourData?.Being_Abundant?.Trust_vs_control < 62.5 ? 'red': fourData?.Being_Abundant?.Trust_vs_control >= 62.5 && fourData?.Being_Abundant?.Trust_vs_control < 75? 'yellow': fourData?.Being_Abundant?.Trust_vs_control >= 75 && fourData?.Being_Abundant?.Trust_vs_control < 90 ? 'green':'purple'">
+                                Trust vs control</li>
+                            <li
+                                [class]="fourData?.Being_Abundant?.Gratitude < 62.5 ? 'red': fourData?.Being_Abundant?.Gratitude >= 62.5 && fourData?.Being_Abundant?.Gratitude < 75? 'yellow': fourData?.Being_Abundant?.Gratitude >= 75 && fourData?.Being_Abundant?.Gratitude < 90 ? 'green':'purple'">
+                                Gratitude</li>
+                            <li
+                                [class]="fourData?.Being_Abundant?.Acknowledgment < 62.5 ? 'red': fourData?.Being_Abundant?.Acknowledgment >= 62.5 && fourData?.Being_Abundant?.Acknowledgment < 75? 'yellow': fourData?.Being_Abundant?.Acknowledgment >= 75 && fourData?.Being_Abundant?.Acknowledgment < 90 ? 'green':'purple'">
+                                Acknowledgment</li>
+                            <li
+                                [class]="fourData?.Being_Abundant?.Generosity < 62.5 ? 'red': fourData?.Being_Abundant?.Generosity >= 62.5 && fourData?.Being_Abundant?.Generosity < 75? 'yellow': fourData?.Being_Abundant?.Generosity >= 75 && fourData?.Being_Abundant?.Generosity < 90 ? 'green':'purple'">
+                                Generosity</li>
+                        </ul>
+                    </div>
+                    <div class="box">
+                        <div class="title">
+                            <p>Being In Service</p>
+                        </div>
+                        <ul>
+                            <li
+                                [class]="fourData?.Being_Service?.True_diversity < 62.5 ? 'red': fourData?.Being_Service?.True_diversity >= 62.5 && fourData?.Being_Service?.True_diversity < 75? 'yellow': fourData?.Being_Service?.True_diversity >= 75 && fourData?.Being_Service?.True_diversity < 90 ? 'green':'purple'">
+                                Greater Good</li>
+                            <li
+                                [class]="fourData?.Being_Service?.Connectedness < 62.5 ? 'red': fourData?.Being_Service?.Connectedness >= 62.5 && fourData?.Being_Service?.Connectedness < 75? 'yellow': fourData?.Being_Service?.Connectedness >= 75 && fourData?.Being_Service?.Connectedness < 90 ? 'green':'purple'">
+                                Connectedness</li>
+                            <li
+                                [class]="fourData?.Being_Service?.Compassion < 62.5 ? 'red': fourData?.Being_Service?.Compassion >= 62.5 && fourData?.Being_Service?.Compassion < 75? 'yellow': fourData?.Being_Service?.Compassion >= 75 && fourData?.Being_Service?.Compassion < 90 ? 'green':'purple'">
+                                Compassion</li>
+                            <li
+                                [class]="fourData?.Being_Service?.Harmony < 62.5 ? 'red': fourData?.Being_Service?.Harmony >= 62.5 && fourData?.Being_Service?.Harmony < 75? 'yellow': fourData?.Being_Service?.Harmony >= 75 && fourData?.Being_Service?.Harmony < 90 ? 'green':'purple'">
+                                Harmony</li>
+                            <li
+                                [class]="fourData?.Being_Service?.Humility < 62.5 ? 'red': fourData?.Being_Service?.Humility >= 62.5 && fourData?.Being_Service?.Humility < 75? 'yellow': fourData?.Being_Service?.Humility >= 75 && fourData?.Being_Service?.Humility < 90 ? 'green':'purple'">
+                                Humility</li>
+                            <li
+                                [class]="fourData?.Being_Service?.Passion < 62.5 ? 'red': fourData?.Being_Service?.Passion >= 62.5 && fourData?.Being_Service?.Passion < 75? 'yellow': fourData?.Being_Service?.Passion >= 75 && fourData?.Being_Service?.Passion < 90 ? 'green':'purple'">
+                                Living my calling</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex_bottom">
+                    <div class="title">
+                        <p class="text-center">Being Aware</p>
+                    </div>
+                    <ul>
+                        <li
+                            [class]="fourData?.Being_Aware?.Individual_awareness < 62.5 ? 'red': fourData?.Being_Aware?.Individual_awareness >= 62.5 && fourData?.Being_Aware?.Individual_awareness < 75? 'yellow': fourData?.Being_Aware?.Individual_awareness >= 75 && fourData?.Being_Aware?.Individual_awareness < 90 ? 'green':'purple'">
+                            Individual Awareness</li>
+                        <li
+                            [class]="fourData?.Being_Aware?.Team_awareness < 62.5 ? 'red': fourData?.Being_Aware?.Team_awareness >= 62.5 && fourData?.Being_Aware?.Team_awareness < 75? 'yellow': fourData?.Being_Aware?.Team_awareness >= 75 && fourData?.Being_Aware?.Team_awareness < 90 ? 'green':'purple'">
+                            Interpersonal Awareness </li>
+                        <li
+                            [class]="fourData?.Being_Aware?.Organizational_awareness < 62.5 ? 'red': fourData?.Being_Aware?.Organizational_awareness >= 62.5 && fourData?.Being_Aware?.Organizational_awareness < 75? 'yellow': fourData?.Being_Aware?.Organizational_awareness >= 75 && fourData?.Being_Aware?.Organizational_awareness < 90 ? 'green':'purple'">
+                            Environmental Awareness</li>
+                        <li
+                            [class]="fourData?.Being_Aware?.Societal_awareness < 62.5 ? 'red': fourData?.Being_Aware?.Societal_awareness >= 62.5 && fourData?.Being_Aware?.Societal_awareness < 75? 'yellow': fourData?.Being_Aware?.Societal_awareness >= 75 && fourData?.Being_Aware?.Societal_awareness < 90 ? 'green':'purple'">
+                            Societal Awareness</li>
+                        <li
+                            [class]="fourData?.Being_Aware?.Personal_development < 62.5 ? 'red': fourData?.Being_Aware?.Personal_development >= 62.5 && fourData?.Being_Aware?.Personal_development < 75? 'yellow': fourData?.Being_Aware?.Personal_development >= 75 && fourData?.Being_Aware?.Personal_development < 90 ? 'green':'purple'">
+                            Personal Development</li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page_12">
+        <div class="page_12">
+          <h2 class="text-center mb-2" style="position: relative;">23 Dimensions</h2>
+          <div class="report_page">
+            <div class="report_content">
+              <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                  <ul class="detail">
+                    <li class="text-justify" *ngFor="let item of dimensions"
+                      [class]="item?.value < 62.5 ? 'red': item?.value >= 62.5 && item?.value < 75? 'yellow': item?.value >= 75 && item?.value < 90 ? 'green':'purple'">
+                      {{item.name}}
+                      <div class="value"><span>{{item.value | number: '0.0-1'}}</span></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page_13">
+        <div class="page_13">
+          <h2 class="text-center mb-4" style="position: relative;">Organizational Maturity Index</h2>
+            <div class="maturity-index">
+              <div class="five-box-gradient">
+                <div>
+                  <div [ngStyle]="{'width': five1 + '%'}">
+                  </div>
+                  <div [ngStyle]="{'width': five2 + '%'}">
+                  </div>
+                </div>
+              </div>
+              <div class="five_box">
+                <div class="box red">
+    
+                  <h4>Physical</h4>
+                  <p>Fear based consciousness</p>
+                </div>
+                <div class="box orange">
+    
+                  <h4>Emotional</h4>
+                  <p>Feel good-basedconsciousness </p>
+                </div>
+                <div class="box yellow">
+    
+                  <h4>Mental</h4>
+                  <p>Reason-based consciousness</p>
+                </div>
+                <div class="box blue">
+    
+                  <h4>Awareness</h4>
+                  <p>Wisdom-based consciousness</p>
+                </div>
+                <div class="box purple">
+    
+                  <h4>Bliss</h4>
+                  <p>Service-based consciousness</p>
+                </div>
+              </div>
+              <div class="five-box-gradient bottom">
+                <div>
+                  <div class="text-right" [ngStyle]="{'width': five1 + '%'}">
+                    <i class="fa fa-long-arrow-up"></i>
+                  </div>
+                  <div [ngStyle]="{'width': five2 + '%'}">
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div id="page_14">
+        <div class="page_14">
+          <div class="report_page">
+            <div class="report_content">
+              <h2 class="text-center mb-4" style="position: relative;">Being Attitudes</h2>
+              <div>
+                <div class="be-full" *ngIf="eightfull">
+                    <div class="one">
+                        <img
+                            src="assets/images/{{eightfull?.Be_Authentic < 58 ? 'be-red-red' : (eightfull?.Be_Authentic >= 58 && eightfull?.Be_Authentic <= 62.5) ? 'be-red-yellow': (eightfull?.Be_Authentic > 62.5 && eightfull?.Be_Authentic <= 66.6) ? 'be-yellow-red': (eightfull?.Be_Authentic > 66.6 && eightfull?.Be_Authentic <= 70.5) ? 'be-yellow-yellow' : (eightfull?.Be_Authentic > 70.5 && eightfull?.Be_Authentic <= 74.9) ? 'be-yellow-green': (eightfull?.Be_Authentic >= 75 && eightfull?.Be_Authentic <= 79.9) ? 'be-green-yellow' : (eightfull?.Be_Authentic >= 80 && eightfull?.Be_Authentic <= 84.9) ? 'be-green-green' : (eightfull?.Be_Authentic >= 85 && eightfull?.Be_Authentic <= 89.9) ? 'be-green-purble' : (eightfull?.Be_Authentic >= 90 && eightfull?.Be_Authentic <= 92.9) ? 'be-purble-green' : eightfull?.Be_Authentic > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+            
+                        <p [ngClass]="{'text-black': eightfull?.Be_Authentic >= 62.5 && eightfull?.Be_Authentic < 75}">Fierce
+                            Authenticity <br /> ({{eightfull?.Be_Authentic | number:'0.0-1'}})</p>
+                    </div>
+                    <div class="two">
+                        <img
+                            src="assets/images/{{eightfull?.Commit_To_A_Higher_Cause < 58 ? 'be-red-red' : (eightfull?.Commit_To_A_Higher_Cause >= 58 && eightfull?.Commit_To_A_Higher_Cause <= 62.5) ? 'be-red-yellow': (eightfull?.Commit_To_A_Higher_Cause > 62.5 && eightfull?.Commit_To_A_Higher_Cause <= 66.6) ? 'be-yellow-red': (eightfull?.Commit_To_A_Higher_Cause > 66.6 && eightfull?.Commit_To_A_Higher_Cause <= 70.5) ? 'be-yellow-yellow' : (eightfull?.Commit_To_A_Higher_Cause > 70.5 && eightfull?.Commit_To_A_Higher_Cause <= 74.9) ? 'be-yellow-green': (eightfull?.Commit_To_A_Higher_Cause >= 75 && eightfull?.Commit_To_A_Higher_Cause <= 79.9) ? 'be-green-yellow' : (eightfull?.Commit_To_A_Higher_Cause >= 80 && eightfull?.Commit_To_A_Higher_Cause <= 84.9) ? 'be-green-green' : (eightfull?.Commit_To_A_Higher_Cause >= 85 && eightfull?.Commit_To_A_Higher_Cause <= 89.9) ? 'be-green-purble' : (eightfull?.Commit_To_A_Higher_Cause >= 90 && eightfull?.Commit_To_A_Higher_Cause <= 92.9) ? 'be-purble-green' : eightfull?.Commit_To_A_Higher_Cause > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+            
+                        <p
+                            [ngClass]="{'text-black': eightfull?.Commit_To_A_Higher_Cause >= 62.5 && eightfull?.Commit_To_A_Higher_Cause < 75}">
+                            Commit to a Higher Cause <br /> {{eightfull?.Commit_To_A_Higher_Cause | number:'0.0-1'}})</p>
+                    </div>
+                    <div class="three">
+                        <img
+                            src="assets/images/{{eightfull?.Help_Others_Shine < 58 ? 'be-red-red' : (eightfull?.Help_Others_Shine >= 58 && eightfull?.Help_Others_Shine <= 62.5) ? 'be-red-yellow': (eightfull?.Help_Others_Shine > 62.5 && eightfull?.Help_Others_Shine <= 66.6) ? 'be-yellow-red': (eightfull?.Help_Others_Shine > 66.6 && eightfull?.Help_Others_Shine <= 70.5) ? 'be-yellow-yellow' : (eightfull?.Help_Others_Shine > 70.5 && eightfull?.Help_Others_Shine <= 74.9) ? 'be-yellow-green': (eightfull?.Help_Others_Shine >= 75 && eightfull?.Help_Others_Shine <= 79.9) ? 'be-green-yellow' : (eightfull?.Help_Others_Shine >= 80 && eightfull?.Help_Others_Shine <= 84.9) ? 'be-green-green' : (eightfull?.Help_Others_Shine >= 85 && eightfull?.Help_Others_Shine <= 89.9) ? 'be-green-purble' : (eightfull?.Help_Others_Shine >= 90 && eightfull?.Help_Others_Shine <= 92.9) ? 'be-purble-green' : eightfull?.Help_Others_Shine > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+            
+                        <p [ngClass]="{'text-black': eightfull?.Help_Others_Shine >= 62.5 && eightfull?.Help_Others_Shine < 75}">
+                            Help Others Shine <br /> ({{eightfull?.Help_Others_Shine | number:'0.0-1'}})</p>
+                    </div>
+                    <div class="four">
+                        <img
+                            src="assets/images/{{eightfull?.Sync_Ind_Collective_Purpose < 58 ? 'be-red-red' : (eightfull?.Sync_Ind_Collective_Purpose >= 58 && eightfull?.Sync_Ind_Collective_Purpose <= 62.5) ? 'be-red-yellow': (eightfull?.Sync_Ind_Collective_Purpose > 62.5 && eightfull?.Sync_Ind_Collective_Purpose <= 66.6) ? 'be-yellow-red': (eightfull?.Sync_Ind_Collective_Purpose > 66.6 && eightfull?.Sync_Ind_Collective_Purpose <= 70.5) ? 'be-yellow-yellow' : (eightfull?.Sync_Ind_Collective_Purpose > 70.5 && eightfull?.Sync_Ind_Collective_Purpose <= 74.9) ? 'be-yellow-green': (eightfull?.Sync_Ind_Collective_Purpose >= 75 && eightfull?.Sync_Ind_Collective_Purpose <= 79.9) ? 'be-green-yellow' : (eightfull?.Sync_Ind_Collective_Purpose >= 80 && eightfull?.Sync_Ind_Collective_Purpose <= 84.9) ? 'be-green-green' : (eightfull?.Sync_Ind_Collective_Purpose >= 85 && eightfull?.Sync_Ind_Collective_Purpose <= 89.9) ? 'be-green-purble' : (eightfull?.Sync_Ind_Collective_Purpose >= 90 && eightfull?.Sync_Ind_Collective_Purpose <= 92.9) ? 'be-purble-green' : eightfull?.Sync_Ind_Collective_Purpose > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+            
+                        <p
+                            [ngClass]="{'text-black': eightfull?.Sync_Ind_Collective_Purpose >= 62.5 && eightfull?.Sync_Ind_Collective_Purpose < 75}">
+                            Sync Individual and Collective purpose <br />
+                            ({{eightfull?.Sync_Ind_Collective_Purpose | number:'0.0-1'}})</p>
+                    </div>
+                    <div class="five">
+                        <img
+                            src="assets/images/{{eightfull?.Alter_Your_Relationship_to_All_Adverties < 58 ? 'be-red-red' : (eightfull?.Alter_Your_Relationship_to_All_Adverties >= 58 && eightfull?.Alter_Your_Relationship_to_All_Adverties <= 62.5) ? 'be-red-yellow': (eightfull?.Alter_Your_Relationship_to_All_Adverties > 62.5 && eightfull?.Alter_Your_Relationship_to_All_Adverties <= 66.6) ? 'be-yellow-red': (eightfull?.Alter_Your_Relationship_to_All_Adverties > 66.6 && eightfull?.Alter_Your_Relationship_to_All_Adverties <= 70.5) ? 'be-yellow-yellow' : (eightfull?.Alter_Your_Relationship_to_All_Adverties > 70.5 && eightfull?.Alter_Your_Relationship_to_All_Adverties <= 74.9) ? 'be-yellow-green': (eightfull?.Alter_Your_Relationship_to_All_Adverties >= 75 && eightfull?.Alter_Your_Relationship_to_All_Adverties <= 79.9) ? 'be-green-yellow' : (eightfull?.Alter_Your_Relationship_to_All_Adverties >= 80 && eightfull?.Alter_Your_Relationship_to_All_Adverties <= 84.9) ? 'be-green-green' : (eightfull?.Alter_Your_Relationship_to_All_Adverties >= 85 && eightfull?.Alter_Your_Relationship_to_All_Adverties <= 89.9) ? 'be-green-purble' : (eightfull?.Alter_Your_Relationship_to_All_Adverties >= 90 && eightfull?.Alter_Your_Relationship_to_All_Adverties <= 92.9) ? 'be-purble-green' : eightfull?.Alter_Your_Relationship_to_All_Adverties > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+            
+                        <p
+                            [ngClass]="{'text-black': eightfull?.Alter_Your_Relationship_to_All_Adverties >= 62.5 && eightfull?.Alter_Your_Relationship_to_All_Adverties < 75}">
+                            Alter relationship to all adversities <br />
+                            ({{eightfull?.Alter_Your_Relationship_to_All_Adverties | number:'0.0-1'}})</p>
+                    </div>
+                    <div class="six">
+                        <img
+                            src="assets/images/{{eightfull?.Turning_Ideas_Into_Action < 58 ? 'be-red-red' : (eightfull?.Turning_Ideas_Into_Action >= 58 && eightfull?.Turning_Ideas_Into_Action <= 62.5) ? 'be-red-yellow': (eightfull?.Turning_Ideas_Into_Action > 62.5 && eightfull?.Turning_Ideas_Into_Action <= 66.6) ? 'be-yellow-red': (eightfull?.Turning_Ideas_Into_Action > 66.6 && eightfull?.Turning_Ideas_Into_Action <= 70.5) ? 'be-yellow-yellow' : (eightfull?.Turning_Ideas_Into_Action > 70.5 && eightfull?.Turning_Ideas_Into_Action <= 74.9) ? 'be-yellow-green': (eightfull?.Turning_Ideas_Into_Action >= 75 && eightfull?.Turning_Ideas_Into_Action <= 79.9) ? 'be-green-yellow' : (eightfull?.Turning_Ideas_Into_Action >= 80 && eightfull?.Turning_Ideas_Into_Action <= 84.9) ? 'be-green-green' : (eightfull?.Turning_Ideas_Into_Action >= 85 && eightfull?.Turning_Ideas_Into_Action <= 89.9) ? 'be-green-purble' : (eightfull?.Turning_Ideas_Into_Action >= 90 && eightfull?.Turning_Ideas_Into_Action <= 92.9) ? 'be-purble-green' : eightfull?.Turning_Ideas_Into_Action > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+            
+                        <p
+                            [ngClass]="{'text-black': eightfull?.Turning_Ideas_Into_Action >= 62.5 && eightfull?.Turning_Ideas_Into_Action < 75}">
+                            Harness the intuitive mind <br /> {{eightfull?.Turning_Ideas_Into_Action | number:'0.0-1'}})</p>
+                    </div>
+                    <div class="seven">
+                        <img
+                            src="assets/images/{{eightfull?.Experiment_Play < 58 ? 'be-red-red' : (eightfull?.Experiment_Play >= 58 && eightfull?.Experiment_Play <= 62.5) ? 'be-red-yellow': (eightfull?.Experiment_Play > 62.5 && eightfull?.Experiment_Play <= 66.6) ? 'be-yellow-red': (eightfull?.Experiment_Play > 66.6 && eightfull?.Experiment_Play <= 70.5) ? 'be-yellow-yellow' : (eightfull?.Experiment_Play > 70.5 && eightfull?.Experiment_Play <= 74.9) ? 'be-yellow-green': (eightfull?.Experiment_Play >= 75 && eightfull?.Experiment_Play <= 79.9) ? 'be-green-yellow' : (eightfull?.Experiment_Play >= 80 && eightfull?.Experiment_Play <= 84.9) ? 'be-green-green' : (eightfull?.Experiment_Play >= 85 && eightfull?.Experiment_Play <= 89.9) ? 'be-green-purble' : (eightfull?.Experiment_Play >= 90 && eightfull?.Experiment_Play <= 92.9) ? 'be-purble-green' : eightfull?.Experiment_Play > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+            
+                        <p [ngClass]="{'text-black': eightfull?.Experiment_Play >= 62.5 && eightfull?.Experiment_Play < 75}">
+                            Relentless experimentation and play <br /> ({{eightfull?.Experiment_Play | number:'0.0-1'}})</p>
+                    </div>
+                    <div class="eight">
+                        <img
+                            src="assets/images/{{eightfull?.Question_Existing_Belief < 58 ? 'be-red-red' : (eightfull?.Question_Existing_Belief >= 58 && eightfull?.Question_Existing_Belief <= 62.5) ? 'be-red-yellow': (eightfull?.Question_Existing_Belief > 62.5 && eightfull?.Question_Existing_Belief <= 66.6) ? 'be-yellow-red': (eightfull?.Question_Existing_Belief > 66.6 && eightfull?.Question_Existing_Belief <= 70.5) ? 'be-yellow-yellow' : (eightfull?.Question_Existing_Belief > 70.5 && eightfull?.Question_Existing_Belief <= 74.9) ? 'be-yellow-green': (eightfull?.Question_Existing_Belief >= 75 && eightfull?.Question_Existing_Belief <= 79.9) ? 'be-green-yellow' : (eightfull?.Question_Existing_Belief >= 80 && eightfull?.Question_Existing_Belief <= 84.9) ? 'be-green-green' : (eightfull?.Question_Existing_Belief >= 85 && eightfull?.Question_Existing_Belief <= 89.9) ? 'be-green-purble' : (eightfull?.Question_Existing_Belief >= 90 && eightfull?.Question_Existing_Belief <= 92.9) ? 'be-purble-green' : eightfull?.Question_Existing_Belief > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+            
+            
+                        <p
+                            [ngClass]="{'text-black': eightfull?.Question_Existing_Belief >= 62.5 && eightfull?.Question_Existing_Belief < 75}">
+                            Live in a state of enquiry <br /> ({{eightfull?.Question_Existing_Belief | number:'0.0-1'}})</p>
+                    </div>
+                    <div class="nine">
+                        <h4>Being Attitudes</h4>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page_15">
+        <div class="page_15">
+          <div class="report_page">
+            <div class="report_content">
+              <h2 class="text-center mb-4" style="position: relative;">Full Potential Team Measures</h2>
+              <div>
+                <div class="full-po" *ngIf="mesure">
+                  <div class="one">
+                      <img src="assets/images/{{mesure.Unconditional_dependability < 58 ? 'full-red-red' : (mesure.Unconditional_dependability >= 58 && mesure.Unconditional_dependability <= 62.5) ? 'full-red-yellow': (mesure.Unconditional_dependability > 62.5 && mesure.Unconditional_dependability <= 66.6) ? 'full-yellow-red': (mesure.Unconditional_dependability > 66.6 && mesure.Unconditional_dependability <= 70.5) ? 'full-yellow-yellow' : (mesure.Unconditional_dependability > 70.5 && mesure.Unconditional_dependability <= 74.9) ? 'full-yellow-green': (mesure.Unconditional_dependability >= 75 && mesure.Unconditional_dependability <= 79.9) ? 'full-green-yellow' : (mesure.Unconditional_dependability > 79.9 && mesure.Unconditional_dependability <= 84.9) ? 'full-green-green' : (mesure.Unconditional_dependability >= 85 && mesure.Unconditional_dependability <= 89.9) ? 'full-green-purble' : (mesure.Unconditional_dependability >= 90 && mesure.Unconditional_dependability <= 92.9) ? 'full-purble-green' : mesure.Unconditional_dependability > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                      <p [ngClass]="{'text-black': mesure.Unconditional_dependability >= 62.5 && mesure.Unconditional_dependability < 75}">Unconditional dependability <br> ({{mesure.Unconditional_dependability | number:'0.0-1'}})</p>
+                  </div>
+                  <div class="two">
+                    <img src="assets/images/{{mesure.Disciplined_investment_in_SSOB < 58 ? 'full-red-red' : (mesure.Disciplined_investment_in_SSOB >= 58 && mesure.Disciplined_investment_in_SSOB <= 62.5) ? 'full-red-yellow': (mesure.Disciplined_investment_in_SSOB > 62.5 && mesure.Disciplined_investment_in_SSOB <= 66.6) ? 'full-yellow-red': (mesure.Disciplined_investment_in_SSOB > 66.6 && mesure.Disciplined_investment_in_SSOB <= 70.5) ? 'full-yellow-yellow' : (mesure.Disciplined_investment_in_SSOB > 70.5 && mesure.Disciplined_investment_in_SSOB <= 74.9) ? 'full-yellow-green': (mesure.Disciplined_investment_in_SSOB >= 75 && mesure.Disciplined_investment_in_SSOB <= 79.9) ? 'full-green-yellow' : (mesure.Disciplined_investment_in_SSOB > 79.9 && mesure.Disciplined_investment_in_SSOB <= 84.9) ? 'full-green-green' : (mesure.Disciplined_investment_in_SSOB >= 85 && mesure.Disciplined_investment_in_SSOB <= 89.9) ? 'full-green-purble' : (mesure.Disciplined_investment_in_SSOB >= 90 && mesure.Disciplined_investment_in_SSOB <= 92.9) ? 'full-purble-green' : mesure.Disciplined_investment_in_SSOB > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                    <p [ngClass]="{'text-black': mesure.Disciplined_investment_in_SSOB >= 62.5 && mesure.Disciplined_investment_in_SSOB < 75}">Disciplined investment in shared standards of Being <br> ({{mesure.Disciplined_investment_in_SSOB | number:'0.0-1'}})</p>
+                </div>
+                <div class="three">
+                  <img src="assets/images/{{mesure.Embody_a_meaningful_purpose < 58 ? 'full-red-red' : (mesure.Embody_a_meaningful_purpose >= 58 && mesure.Embody_a_meaningful_purpose <= 62.5) ? 'full-red-yellow': (mesure.Embody_a_meaningful_purpose > 62.5 && mesure.Embody_a_meaningful_purpose <= 66.6) ? 'full-yellow-red': (mesure.Embody_a_meaningful_purpose > 66.6 && mesure.Embody_a_meaningful_purpose <= 70.5) ? 'full-yellow-yellow' : (mesure.Embody_a_meaningful_purpose > 70.5 && mesure.Embody_a_meaningful_purpose <= 74.9) ? 'full-yellow-green': (mesure.Embody_a_meaningful_purpose >= 75 && mesure.Embody_a_meaningful_purpose <= 79.9) ? 'full-green-yellow' : (mesure.Embody_a_meaningful_purpose > 79.9 && mesure.Embody_a_meaningful_purpose <= 84.9) ? 'full-green-green' : (mesure.Embody_a_meaningful_purpose >= 85 && mesure.Embody_a_meaningful_purpose <= 89.9) ? 'full-green-purble' : (mesure.Embody_a_meaningful_purpose >= 90 && mesure.Embody_a_meaningful_purpose <= 92.9) ? 'full-purble-green' : mesure.Embody_a_meaningful_purpose > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                  <p [ngClass]="{'text-black': mesure.Embody_a_meaningful_purpose >= 62.5 && mesure.Embody_a_meaningful_purpose < 75}">Collectively embody a meaningful purpose <br> ({{mesure.Embody_a_meaningful_purpose | number:'0.0-1'}})</p>
+                 </div>
+                 
+                  <div class="four">
+                    <img src="assets/images/{{mesure.Opportunity_seeking < 58 ? 'full-red-red' : (mesure.Opportunity_seeking >= 58 && mesure.Opportunity_seeking <= 62.5) ? 'full-red-yellow': (mesure.Opportunity_seeking > 62.5 && mesure.Opportunity_seeking <= 66.6) ? 'full-yellow-red': (mesure.Opportunity_seeking > 66.6 && mesure.Opportunity_seeking <= 70.5) ? 'full-yellow-yellow' : (mesure.Opportunity_seeking > 70.5 && mesure.Opportunity_seeking <= 74.9) ? 'full-yellow-green': (mesure.Opportunity_seeking >= 75 && mesure.Opportunity_seeking <= 79.9) ? 'full-green-yellow' : (mesure.Opportunity_seeking > 79.9 && mesure.Opportunity_seeking <= 84.9) ? 'full-green-green' : (mesure.Opportunity_seeking >= 85 && mesure.Opportunity_seeking <= 89.9) ? 'full-green-purble' : (mesure.Opportunity_seeking >= 90 && mesure.Opportunity_seeking <= 92.9) ? 'full-purble-green' : mesure.Opportunity_seeking > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                      <p [ngClass]="{'text-black': mesure.Opportunity_seeking >= 62.5 && mesure.Opportunity_seeking < 75}">Opportunity seeking vs Problem solving <br> ({{mesure.Opportunity_seeking | number:'0.0-1'}})</p>
+                  </div>
+                  <div class="five">
+                    <img src="assets/images/{{mesure.Help_each_other_shine < 58 ? 'full-red-red' : (mesure.Help_each_other_shine >= 58 && mesure.Help_each_other_shine <= 62.5) ? 'full-red-yellow': (mesure.Help_each_other_shine > 62.5 && mesure.Help_each_other_shine <= 66.6) ? 'full-yellow-red': (mesure.Help_each_other_shine > 66.6 && mesure.Help_each_other_shine <= 70.5) ? 'full-yellow-yellow' : (mesure.Help_each_other_shine > 70.5 && mesure.Help_each_other_shine <= 74.9) ? 'full-yellow-green': (mesure.Help_each_other_shine >= 75 && mesure.Help_each_other_shine <= 79.9) ? 'full-green-yellow' : (mesure.Help_each_other_shine > 79.9 && mesure.Help_each_other_shine <= 84.9) ? 'full-green-green' : (mesure.Help_each_other_shine >= 85 && mesure.Help_each_other_shine <= 89.9) ? 'full-green-purble' : (mesure.Help_each_other_shine >= 90 && mesure.Help_each_other_shine <= 92.9) ? 'full-purble-green' : mesure.Help_each_other_shine > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                    <p [ngClass]="{'text-black': mesure.Help_each_other_shine >= 62.5 && mesure.Help_each_other_shine < 75}">Help each other shine in their wholeness <br> ({{mesure.Help_each_other_shine | number:'0.0-1'}})</p>
+                </div>
+                 <div class="six">
+                    <h4>Full Potential Team Measures</h4>
+                 </div>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

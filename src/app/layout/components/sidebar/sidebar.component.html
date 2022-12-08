@@ -1,0 +1,101 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+    <div class="list-group">
+       <a routerLink="/dashboard" (click)="bodyScroll()"
+            [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp; Dashboard
+        </a>
+    </div>
+    <!-- <div class="list-group">
+        <a routerLink="/role" (click)="bodyScroll()"
+             [routerLinkActive]="['router-link-active']" class="list-group-item">
+             <i class="fa fa-graduation-cap"></i>&nbsp; Role
+         </a>
+     </div>
+     <div class="list-group">
+        <a routerLink="/admin-users" (click)="bodyScroll()"
+             [routerLinkActive]="['router-link-active']" class="list-group-item">
+             <i class="fa fa-graduation-cap"></i>&nbsp; Admin Users
+         </a>
+     </div>
+     <div class="list-group">
+        <a routerLink="/organizations" (click)="bodyScroll()"
+             [routerLinkActive]="['router-link-active']" class="list-group-item">
+             <i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp; Organizations
+         </a>
+     </div>
+     <div class="list-group">
+        <a routerLink="/registered-users" (click)="bodyScroll()"
+             [routerLinkActive]="['router-link-active']" class="list-group-item">
+             <i class="fa fa-graduation-cap"></i>&nbsp; Registered Users
+         </a>
+     </div> -->
+     <div class="nested-menu list-group">
+        <a class="list-group-item" (click)="addExpandClass('pages')">
+            <i class="fa fa-line-chart" aria-hidden="true"></i> &nbsp; Report   &nbsp; <i class="fa fa-sort-desc"></i>
+        </a>
+        <li class="nested" [class.expand]="showMenu === 'pages'">
+            <ul class="submenu">
+                <li routerLink="/report/hp-score" (click)="bodyScroll()"
+                [routerLinkActive]="['router-link-active']">
+                    <a href="javascript:void(0)">
+                        <span>HP Score</span>
+                    </a>
+                </li>
+                <li routerLink="/report/opm" (click)="bodyScroll()"
+                [routerLinkActive]="['router-link-active']">
+                    <a href="javascript:void(0)">
+                        <span>OPM</span>
+                    </a>
+                </li>
+                <li routerLink="/report/four-being-states" (click)="bodyScroll()"
+                [routerLinkActive]="['router-link-active']">
+                    <a href="javascript:void(0)">
+                        <span>4 Being states</span>
+                    </a>
+                </li>
+                <li routerLink="/report/dimensions" (click)="bodyScroll()"
+                [routerLinkActive]="['router-link-active']">
+                    <a href="javascript:void(0)">
+                        <span>23 Dimensions</span>
+                    </a>
+                </li>
+                <li routerLink="/report/eight-attitudes" (click)="bodyScroll()"
+                [routerLinkActive]="['router-link-active']">
+                    <a href="javascript:void(0)">
+                        <span>8 Being attitudes</span>
+                    </a>
+                </li>
+                <li routerLink="/report/team-measures" (click)="bodyScroll()"
+                [routerLinkActive]="['router-link-active']">
+                    <a href="javascript:void(0)">
+                        <span>5 team measures</span>
+                    </a>
+                </li>
+                <li routerLink="/report/maturity" (click)="bodyScroll()"
+                [routerLinkActive]="['router-link-active']">
+                    <a href="javascript:void(0)">
+                        <span>Maturity index</span>
+                    </a>
+                </li>
+                <li *ngIf="_auth.getOrgId() == '79'" routerLink="/report/360-report" (click)="bodyScroll()"
+                [routerLinkActive]="['router-link-active']">
+                    <a href="javascript:void(0)">
+                        <span>360 Report</span>
+                    </a>
+                </li>
+                <li routerLink="/report/heart-measure" (click)="bodyScroll()"
+                [routerLinkActive]="['router-link-active']">
+                    <a href="javascript:void(0)">
+                        <span>Heart measures</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </div>
+    <div class="list-group">
+        <a routerLink="/comparision" (click)="bodyScroll()"
+             [routerLinkActive]="['router-link-active']" class="list-group-item">
+             <i class="fa fa-compress" aria-hidden="true"></i>&nbsp; Comparision
+         </a>
+     </div>
+</nav>

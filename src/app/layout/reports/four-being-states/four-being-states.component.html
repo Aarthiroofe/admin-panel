@@ -1,0 +1,111 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="pull-left">
+          <h4>4 Being States</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 mt-20">
+    <form class="form-block row">
+      <div class="col-md-4" *ngFor="let item of ListData;let i = index">
+        <div class="form-group mb-2"  *ngIf="item.label && item.label != 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <select name="{{item.label}}" class="form-control" [(ngModel)]="FilterData[item.label]">
+            <option  [value]="undefined" disabled [selected]=true>Select {{item.label}}</option>
+            <option [value]="data.answer" *ngFor="let data of item.answer">{{data.answer}}</option>
+          </select>
+        </div>
+        <div class="form-group mb-2"  *ngIf="item.label && item.label == 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <ng-multiselect-dropdown
+          [placeholder]="item.label | titlecase "
+          name="{{item.label}}"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="FilterData[item.label]"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group mb-2 text-center">
+          <button class="btn btn-primary mr-3" (click)="GetFilterData()">Submit</button>
+          <button class="btn btn-primary" (click)="resetData()">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-12 bg" *ngIf="show">
+    <div class="four_states" >
+      <div class="flex_img">
+        <img
+        src="assets/images/{{score < 62.5 ? 'red_top': score >= 62.5 && score < 75? 'yellow_top': score >= 75 && score < 90 ? 'green_top': 'purble_top'}}.png"
+        alt="" >
+      </div>
+      <div class="flex_box">
+        <div class="box">
+          <div class="title">
+            <p>Being Inspired </p>
+          </div>
+          <ul>
+            <li [class]="UserData.Being_Inspired.Play < 62.5 ? 'red': UserData.Being_Inspired.Play >= 62.5 && UserData.Being_Inspired.Play < 75? 'yellow': UserData.Being_Inspired.Play >= 75 && UserData.Being_Inspired.Play < 90 ? 'green':'purple'">Play</li>
+            <li [class]="UserData.Being_Inspired.Curiosity < 62.5 ? 'red': UserData.Being_Inspired.Curiosity >= 62.5 && UserData.Being_Inspired.Curiosity < 75? 'yellow': UserData.Being_Inspired.Curiosity >= 75 && UserData.Being_Inspired.Curiosity < 90 ? 'green':'purple'">Curiosity</li>
+            <li [class]="UserData.Being_Inspired.Not_knowing < 62.5 ? 'red': UserData.Being_Inspired.Not_knowing >= 62.5 && UserData.Being_Inspired.Not_knowing < 75? 'yellow': UserData.Being_Inspired.Not_knowing >= 75 && UserData.Being_Inspired.Not_knowing < 90 ? 'green':'purple'">Facing unknown</li>
+            <li [class]="UserData.Being_Inspired.Flow < 62.5 ? 'red': UserData.Being_Inspired.Flow >= 62.5 && UserData.Being_Inspired.Flow < 75? 'yellow': UserData.Being_Inspired.Flow >= 75 && UserData.Being_Inspired.Flow < 90 ? 'green':'purple'">Being in flow</li>
+            <li [class]="UserData.Being_Inspired.Openess_to_new_ideas < 62.5 ? 'red': UserData.Being_Inspired.Openess_to_new_ideas >= 62.5 && UserData.Being_Inspired.Openess_to_new_ideas < 75? 'yellow': UserData.Being_Inspired.Openess_to_new_ideas >= 75 && UserData.Being_Inspired.Openess_to_new_ideas < 90 ? 'green':'purple'">Open to new possibility</li>
+            <li [class]="UserData.Being_Inspired.Holistic_view < 62.5 ? 'red': UserData.Being_Inspired.Holistic_view >= 62.5 && UserData.Being_Inspired.Holistic_view < 75? 'yellow': UserData.Being_Inspired.Holistic_view >= 75 && UserData.Being_Inspired.Holistic_view < 90 ? 'green':'purple'">Holistic view</li>
+          </ul>
+        </div>
+        <div class="box">
+          <div class="title">
+            <p>Being Abundant</p>
+          </div>
+          <ul>
+            <li [class]="UserData.Being_Abundant.Collaboration_vs_competition < 62.5 ? 'red': UserData.Being_Abundant.Collaboration_vs_competition >= 62.5 && UserData.Being_Abundant.Collaboration_vs_competition < 75? 'yellow': UserData.Being_Abundant.Collaboration_vs_competition >= 75 && UserData.Being_Abundant.Collaboration_vs_competition < 90 ? 'green':'purple'">Collaboration vs competition</li>
+            <li [class]="UserData.Being_Abundant.Being_from_Doing < 62.5 ? 'red': UserData.Being_Abundant.Being_from_Doing >= 62.5 && UserData.Being_Abundant.Being_from_Doing < 75? 'yellow': UserData.Being_Abundant.Being_from_Doing >= 75 && UserData.Being_Abundant.Being_from_Doing < 90 ? 'green':'purple'">Doing from Being</li>
+            <li [class]="UserData.Being_Abundant.Trust_vs_control < 62.5 ? 'red': UserData.Being_Abundant.Trust_vs_control >= 62.5 && UserData.Being_Abundant.Trust_vs_control < 75? 'yellow': UserData.Being_Abundant.Trust_vs_control >= 75 && UserData.Being_Abundant.Trust_vs_control < 90 ? 'green':'purple'">Trust vs control</li>
+            <li [class]="UserData.Being_Abundant.Gratitude < 62.5 ? 'red': UserData.Being_Abundant.Gratitude >= 62.5 && UserData.Being_Abundant.Gratitude < 75? 'yellow': UserData.Being_Abundant.Gratitude >= 75 && UserData.Being_Abundant.Gratitude < 90 ? 'green':'purple'">Gratitude</li>
+            <li [class]="UserData.Being_Abundant.Acknowledgment < 62.5 ? 'red': UserData.Being_Abundant.Acknowledgment >= 62.5 && UserData.Being_Abundant.Acknowledgment < 75? 'yellow': UserData.Being_Abundant.Acknowledgment >= 75 && UserData.Being_Abundant.Acknowledgment < 90 ? 'green':'purple'">Acknowledgment</li>
+            <li [class]="UserData.Being_Abundant.Generosity < 62.5 ? 'red': UserData.Being_Abundant.Generosity >= 62.5 && UserData.Being_Abundant.Generosity < 75? 'yellow': UserData.Being_Abundant.Generosity >= 75 && UserData.Being_Abundant.Generosity < 90 ? 'green':'purple'">Generosity</li>
+          </ul>
+        </div>
+        <div class="box">
+          <div class="title">
+            <p>Being In Service</p>
+          </div>
+          <ul>
+            <li [class]="UserData.Being_Service.True_diversity < 62.5 ? 'red': UserData.Being_Service.True_diversity >= 62.5 && UserData.Being_Service.True_diversity < 75? 'yellow': UserData.Being_Service.True_diversity >= 75 && UserData.Being_Service.True_diversity < 90 ? 'green':'purple'">Greater Good</li>
+            <li [class]="UserData.Being_Service.Connectedness < 62.5 ? 'red': UserData.Being_Service.Connectedness >= 62.5 && UserData.Being_Service.Connectedness < 75? 'yellow': UserData.Being_Service.Connectedness >= 75 && UserData.Being_Service.Connectedness < 90 ? 'green':'purple'">Connectedness</li>
+            <li [class]="UserData.Being_Service.Compassion < 62.5 ? 'red': UserData.Being_Service.Compassion >= 62.5 && UserData.Being_Service.Compassion < 75? 'yellow': UserData.Being_Service.Compassion >= 75 && UserData.Being_Service.Compassion < 90 ? 'green':'purple'">Compassion</li>
+            <li [class]="UserData.Being_Service.Harmony < 62.5 ? 'red': UserData.Being_Service.Harmony >= 62.5 && UserData.Being_Service.Harmony < 75? 'yellow': UserData.Being_Service.Harmony >= 75 && UserData.Being_Service.Harmony < 90 ? 'green':'purple'">Harmony</li>
+            <li [class]="UserData.Being_Service.Humility < 62.5 ? 'red': UserData.Being_Service.Humility >= 62.5 && UserData.Being_Service.Humility < 75? 'yellow': UserData.Being_Service.Humility >= 75 && UserData.Being_Service.Humility < 90 ? 'green':'purple'">Humility</li>
+            <li [class]="UserData.Being_Service.Passion < 62.5 ? 'red': UserData.Being_Service.Passion >= 62.5 && UserData.Being_Service.Passion < 75? 'yellow': UserData.Being_Service.Passion >= 75 && UserData.Being_Service.Passion < 90 ? 'green':'purple'">Living my calling</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex_bottom">
+        <div class="title">
+          <p>Being Aware</p>
+        </div>
+        <ul>
+          <li [class]="UserData.Being_Aware.Individual_awareness < 62.5 ? 'red': UserData.Being_Aware.Individual_awareness >= 62.5 && UserData.Being_Aware.Individual_awareness < 75? 'yellow': UserData.Being_Aware.Individual_awareness >= 75 && UserData.Being_Aware.Individual_awareness < 90 ? 'green':'purple'">Individual Awareness</li>
+          <li [class]="UserData.Being_Aware.Team_awareness < 62.5 ? 'red': UserData.Being_Aware.Team_awareness >= 62.5 && UserData.Being_Aware.Team_awareness < 75? 'yellow': UserData.Being_Aware.Team_awareness >= 75 && UserData.Being_Aware.Team_awareness < 90 ? 'green':'purple'">Interpersonal Awareness </li>
+          <li [class]="UserData.Being_Aware.Organizational_awareness < 62.5 ? 'red': UserData.Being_Aware.Organizational_awareness >= 62.5 && UserData.Being_Aware.Organizational_awareness < 75? 'yellow': UserData.Being_Aware.Organizational_awareness >= 75 && UserData.Being_Aware.Organizational_awareness < 90 ? 'green':'purple'">Environmental Awareness</li>
+          <li [class]="UserData.Being_Aware.Societal_awareness < 62.5 ? 'red': UserData.Being_Aware.Societal_awareness >= 62.5 && UserData.Being_Aware.Societal_awareness < 75? 'yellow': UserData.Being_Aware.Societal_awareness >= 75 && UserData.Being_Aware.Societal_awareness < 90 ? 'green':'purple'">Societal Awareness</li>
+          <li [class]="UserData.Being_Aware.Personal_development < 62.5 ? 'red': UserData.Being_Aware.Personal_development >= 62.5 && UserData.Being_Aware.Personal_development < 75? 'yellow': UserData.Being_Aware.Personal_development >= 75 && UserData.Being_Aware.Personal_development < 90 ? 'green':'purple'">Personal Development</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Loading -->
+<div class="loader" *ngIf="loading">
+  <div class="loader_wrapper">
+      <img src="./assets/images/loader.gif">
+  </div>
+</div>

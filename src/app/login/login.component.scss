@@ -1,0 +1,121 @@
+$topnav-background-color: #fff;
+:host {
+    display: block;
+}
+.login_img img{
+    height:100%;
+    max-height: 150px;
+}
+form.form-horizontal .row{
+    margin-left:0;
+    margin-right:0;
+}
+.login-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background: url(../../assets/images/lsor_bg.jpg);
+    background-color: #e4e5e6;
+    background-size: cover;
+    .login_bg_color {
+       background: rgba(228, 229, 230, 0.5);
+    }
+    .loginbox {
+        padding: 0px;
+        background: #fff;
+        border-radius: 5px;
+        .login_box {
+            h4 {
+                color: #000;
+            }
+        }
+        
+    }
+    
+    .input-lg {
+        height: 35px;
+        padding: 0px 15px;
+        font-family: 'SanFranciscoText-Regular';
+    }
+    .input-underline {
+        font-size: 14px;
+    }
+    .input-underline:focus {
+        box-shadow: none;
+    }
+    .rounded-btn {
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        color: rgba(255, 255, 255, 0.8);
+        background: $topnav-background-color;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        line-height: 40px;
+        padding: 0 25px;
+    }
+    .rounded-btn:hover,
+    .rounded-btn:focus,
+    .rounded-btn:active,
+    .rounded-btn:visited {
+        color: rgba(255, 255, 255, 1);
+        border: 2px solid rgba(255, 255, 255, 1);
+        outline: none;
+    }
+    h1 {
+        font-weight: 400;
+        font-size: 30px;
+        color: #1c2225;
+        small {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+
+
+    .form-group {
+        margin-bottom: 25px;
+        position: relative;
+        .has_error {
+            position: absolute;
+            p {
+                margin-bottom: 0;
+                font-family: 'PT Sans', sans-serif;
+                                
+            }
+        }
+        label {
+            margin: 0;
+            a {
+                color: #f9930d;
+            }
+        }
+        input::-webkit-input-placeholder {
+            color: #666 !important;
+            font-size: 14px;
+        }
+        input:-moz-placeholder {
+            /* Firefox 18- */
+            color: #666 !important;
+            font-size: 14px;
+        }
+        input::-moz-placeholder {
+            /* Firefox 19+ */
+            color: #666 !important;
+            font-size: 14px;
+        }
+        input:-ms-input-placeholder {
+            color: #666 !important;
+            font-size: 14px;
+        }
+    }
+    .mt-15 {
+        margin-top: 10px;
+    }
+}
+.login_background{
+    background-color: #1683D5;
+}
+.login_box{
+    padding:25px 0px;
+}

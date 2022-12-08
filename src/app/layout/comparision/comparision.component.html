@@ -1,0 +1,964 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="pull-left">
+          <h4>Comparision</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mt-20">
+    <form class="form-block row" role="form" name="LogInForm" #loginform="ngForm" novalidate autocomplete="off">
+      <div class="col-md-6" *ngFor="let item of ListData">
+        <div class="form-group mb-2" *ngIf="item.answer && item.label && item.label != 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <select name="{{item.label}}" class="form-control" [(ngModel)]="FilterData[item.label]">
+            <option [value]="undefined" disabled [selected]=true>Select {{item.label}}</option>
+            <option [value]="data.answer" *ngFor="let data of item.answer">{{data.answer}}</option>
+          </select>
+        </div>
+        <div class="form-group mb-2" *ngIf="item.answer && item.label && item.label == 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <ng-multiselect-dropdown [placeholder]="item.label | titlecase" name="{{item.label}}"
+            [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="FilterData[item.label]"
+            (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+          </ng-multiselect-dropdown>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6 mt-20">
+    <form class="form-block row" role="form" name="LogInForm" #loginform="ngForm" novalidate autocomplete="off">
+      <div class="col-md-6" *ngFor="let item of ListData">
+        <div class="form-group mb-2" *ngIf="item.answer && item.label && item.label != 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <select name="{{item.label}}" class="form-control" [(ngModel)]="CompareData[item.label]">
+            <option [value]="undefined" disabled [selected]=true>Select {{item.label}}</option>
+            <option [value]="data.answer" *ngFor="let data of item.answer">{{data.answer}}</option>
+          </select>
+        </div>
+        <div class="form-group mb-2" *ngIf="item.answer && item.label && item.label == 'name'">
+          <label class="mr-20">{{item.label |titlecase  }}</label>
+          <ng-multiselect-dropdown [placeholder]="item.label | titlecase" name="{{item.label}}"
+            [settings]="dropdownSettings" [data]="dropdownList" [(ngModel)]="CompareData[item.label]"
+            (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+          </ng-multiselect-dropdown>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group mb-2 text-center">
+        <button class="btn btn-primary mr-3" (click)="GetFilterData()">Submit</button>
+        <button class="btn btn-primary" (click)="resetData(loginform)">Reset</button>
+    </div>
+  </div>
+</div>
+<ngb-tabset *ngIf="show">
+  <ngb-tab title="HP Level">
+    <ng-template ngbTabContent>
+      <div class="row mt-20">
+        <div class="col-md-6">
+          <div class="custom_report hp_image bar-image" *ngIf="UserData.hplevel1; else elseBlock">
+            <div class="bar-relative">
+              <img src="assets/images/bar.png" />
+              <div class="bar-position">
+                <div>
+                  <div [ngStyle]="{'width': circle1 + '%'}">
+                  </div>
+                  <div [ngStyle]="{'width': circle2 + '%'}">
+                  </div>
+                </div>
+              </div>
+              <p class="one">Unexpressed</p>
+              <p class="two">Under expressed</p>
+              <p class="three">Well expressed</p>
+              <p class="four">Fully expressed</p>
+              <h5>{{UserData.hplevel1 | number:'0.0-1'}}</h5>
+            </div>
+            <!-- <img src="./assets/images/{{UserData.hplevel1 < 62.5 ? 'unexpressed': UserData.hplevel1 >= 62.5 && UserData.hplevel1 < 75? 'underexpressed': UserData.hplevel1 >= 75 && UserData.hplevel1 < 90 ? 'wellexpressed':'fullyexpressed'}}.png" alt=""> -->
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+        <div class="col-md-6">
+          <div class="custom_report  hp_image bar-image" *ngIf="UserData.hplevel2; else elseBlock">
+            <div class="bar-relative">
+              <img src="assets/images/bar.png" />
+              <div class="bar-position">
+                <div>
+                  <div [ngStyle]="{'width': circle3 + '%'}">
+                  </div>
+                  <div [ngStyle]="{'width': circle4 + '%'}">
+                  </div>
+                </div>
+              </div>
+              <p class="one">Unexpressed</p>
+              <p class="two">Under expressed</p>
+              <p class="three">Well expressed</p>
+              <p class="four">Fully expressed</p>
+              <h5>{{UserData.hplevel2 | number:'0.0-1'}}</h5>
+            </div>
+            <!-- <img src="./assets/images/{{UserData.hplevel2 < 62.5 ? 'unexpressed': UserData.hplevel2 >= 62.5 && UserData.hplevel2 < 75? 'underexpressed': UserData.hplevel2 >= 75 && UserData.hplevel2 < 90 ? 'wellexpressed':'fullyexpressed'}}.png" alt=""> -->
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="OPM">
+    <ng-template ngbTabContent>
+      <div class="row mt-20">
+        <div class="col-md-6">
+          <div class="canvas_width" *ngIf="UserData.opm1; else elseBlock">
+            
+            <div>
+              <div class="org-full mt-5" *ngIf="UserData && UserData.opm1">
+                <div class="one">
+                  <img
+                  src="assets/images/{{UserData.opm1.Gettingdonediscuss < 58 ? 'org-red-red' : (UserData.opm1.Gettingdonediscuss >= 58 && UserData.opm1.Gettingdonediscuss <= 62.5) ? 'org-red-yellow': (UserData.opm1.Gettingdonediscuss > 62.5 && UserData.opm1.Gettingdonediscuss <= 66.6) ? 'org-yellow-red': (UserData.opm1.Gettingdonediscuss > 66.6 && UserData.opm1.Gettingdonediscuss <= 70.5) ? 'org-yellow-yellow' : (UserData.opm1.Gettingdonediscuss > 70.5 && UserData.opm1.Gettingdonediscuss <= 74.9) ? 'org-yellow-green': (UserData.opm1.Gettingdonediscuss >= 75 && UserData.opm1.Gettingdonediscuss <= 79.9) ? 'org-green-yellow' : (UserData.opm1.Gettingdonediscuss >= 80 && UserData.opm1.Gettingdonediscuss <= 84.9) ? 'org-green-green' : (UserData.opm1.Gettingdonediscuss >= 85 && UserData.opm1.Gettingdonediscuss <= 89.9) ? 'org-green-purble' : (UserData.opm1.Gettingdonediscuss >= 90 && UserData.opm1.Gettingdonediscuss <= 92.9) ? 'org-purble-green' : UserData.opm1.Gettingdonediscuss > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                  
+                  <p [ngClass]="{'text-black': UserData.opm1.Gettingdonediscuss >= 62.5 && UserData.opm1.Gettingdonediscuss < 75}">Getting Things Done <br /> ({{UserData.opm1.Gettingdonediscuss | number:'0.0-1'}})</p>
+                </div>
+            
+                <div class="two">
+                  <img
+                  src="assets/images/{{UserData.opm1.Trustworthiness < 58 ? 'org-red-red' : (UserData.opm1.Trustworthiness >= 58 && UserData.opm1.Trustworthiness <= 62.5) ? 'org-red-yellow': (UserData.opm1.Trustworthiness > 62.5 && UserData.opm1.Trustworthiness <= 66.6) ? 'org-yellow-red': (UserData.opm1.Trustworthiness > 66.6 && UserData.opm1.Trustworthiness <= 70.5) ? 'org-yellow-yellow' : (UserData.opm1.Trustworthiness > 70.5 && UserData.opm1.Trustworthiness <= 74.9) ? 'org-yellow-green': (UserData.opm1.Trustworthiness >= 75 && UserData.opm1.Trustworthiness <= 79.9) ? 'org-green-yellow' : (UserData.opm1.Trustworthiness >= 80 && UserData.opm1.Trustworthiness <= 84.9) ? 'org-green-green' : (UserData.opm1.Trustworthiness >= 85 && UserData.opm1.Trustworthiness <= 89.9) ? 'org-green-purble' : (UserData.opm1.Trustworthiness >= 90 && UserData.opm1.Trustworthiness <= 92.9) ? 'org-purble-green' : UserData.opm1.Trustworthiness > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                   
+                  <p [ngClass]="{'text-black': UserData.opm1.Trustworthiness >= 62.5 && UserData.opm1.Trustworthiness < 75}">Trustworthiness <br /> ({{UserData.opm1.Trustworthiness | number:'0.0-1'}})</p>
+                </div>
+                <div class="three">
+                  <img
+                  src="assets/images/{{UserData.opm1.Customer_Orientation < 58 ? 'org-red-red' : (UserData.opm1.Customer_Orientation >= 58 && UserData.opm1.Customer_Orientation <= 62.5) ? 'org-red-yellow': (UserData.opm1.Customer_Orientation > 62.5 && UserData.opm1.Customer_Orientation <= 66.6) ? 'org-yellow-red': (UserData.opm1.Customer_Orientation > 66.6 && UserData.opm1.Customer_Orientation <= 70.5) ? 'org-yellow-yellow' : (UserData.opm1.Customer_Orientation > 70.5 && UserData.opm1.Customer_Orientation <= 74.9) ? 'org-yellow-green': (UserData.opm1.Customer_Orientation >= 75 && UserData.opm1.Customer_Orientation <= 79.9) ? 'org-green-yellow' : (UserData.opm1.Customer_Orientation >= 80 && UserData.opm1.Customer_Orientation <= 84.9) ? 'org-green-green' : (UserData.opm1.Customer_Orientation >= 85 && UserData.opm1.Customer_Orientation <= 89.9) ? 'org-green-purble' : (UserData.opm1.Customer_Orientation >= 90 && UserData.opm1.Customer_Orientation <= 92.9) ? 'org-purble-green' : UserData.opm1.Customer_Orientation > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                   
+                  <p [ngClass]="{'text-black': UserData.opm1.Customer_Orientation >= 62.5 && UserData.opm1.Customer_Orientation < 75}">Customer Orientation <br /> ({{UserData.opm1.Customer_Orientation | number:'0.0-1'}})</p>
+                </div>
+                <div class="four">
+                  <img
+                  src="assets/images/{{UserData.opm1.SelfLeadership < 58 ? 'org-red-red' : (UserData.opm1.SelfLeadership >= 58 && UserData.opm1.SelfLeadership <= 62.5) ? 'org-red-yellow': (UserData.opm1.SelfLeadership > 62.5 && UserData.opm1.SelfLeadership <= 66.6) ? 'org-yellow-red': (UserData.opm1.SelfLeadership > 66.6 && UserData.opm1.SelfLeadership <= 70.5) ? 'org-yellow-yellow' : (UserData.opm1.SelfLeadership > 70.5 && UserData.opm1.SelfLeadership <= 74.9) ? 'org-yellow-green': (UserData.opm1.SelfLeadership >= 75 && UserData.opm1.SelfLeadership <= 79.9) ? 'org-green-yellow' : (UserData.opm1.SelfLeadership >= 80 && UserData.opm1.SelfLeadership <= 84.9) ? 'org-green-green' : (UserData.opm1.SelfLeadership >= 85 && UserData.opm1.SelfLeadership <= 89.9) ? 'org-green-purble' : (UserData.opm1.SelfLeadership >= 90 && UserData.opm1.SelfLeadership <= 92.9) ? 'org-purble-green' : UserData.opm1.SelfLeadership > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                   
+                  <p [ngClass]="{'text-black': UserData.opm1.SelfLeadership >= 62.5 && UserData.opm1.SelfLeadership < 75}">Self Leadership <br /> ({{UserData.opm1.SelfLeadership | number:'0.0-1'}})</p>
+                </div>
+                <div class="five">
+                  <img
+                  src="assets/images/{{UserData.opm1.Employee_Engagement < 58 ? 'org-red-red' : (UserData.opm1.Employee_Engagement >= 58 && UserData.opm1.Employee_Engagement <= 62.5) ? 'org-red-yellow': (UserData.opm1.Employee_Engagement > 62.5 && UserData.opm1.Employee_Engagement <= 66.6) ? 'org-yellow-red': (UserData.opm1.Employee_Engagement > 66.6 && UserData.opm1.Employee_Engagement <= 70.5) ? 'org-yellow-yellow' : (UserData.opm1.Employee_Engagement > 70.5 && UserData.opm1.Employee_Engagement <= 74.9) ? 'org-yellow-green': (UserData.opm1.Employee_Engagement >= 75 && UserData.opm1.Employee_Engagement <= 79.9) ? 'org-green-yellow' : (UserData.opm1.Employee_Engagement >= 80 && UserData.opm1.Employee_Engagement <= 84.9) ? 'org-green-green' : (UserData.opm1.Employee_Engagement >= 85 && UserData.opm1.Employee_Engagement <= 89.9) ? 'org-green-purble' : (UserData.opm1.Employee_Engagement >= 90 && UserData.opm1.Employee_Engagement <= 92.9) ? 'org-purble-green' : UserData.opm1.Employee_Engagement > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                   
+                  <p [ngClass]="{'text-black': UserData.opm1.Employee_Engagement >= 62.5 && UserData.opm1.Employee_Engagement < 75}">Employee Engagement <br /> ({{UserData.opm1.Employee_Engagement | number:'0.0-1'}})</p>
+                </div>
+                <div class="six">
+                  <img
+                  src="assets/images/{{UserData.opm1.Inventiveness < 58 ? 'org-red-red' : (UserData.opm1.Inventiveness >= 58 && UserData.opm1.Inventiveness <= 62.5) ? 'org-red-yellow': (UserData.opm1.Inventiveness > 62.5 && UserData.opm1.Inventiveness <= 66.6) ? 'org-yellow-red': (UserData.opm1.Inventiveness > 66.6 && UserData.opm1.Inventiveness <= 70.5) ? 'org-yellow-yellow' : (UserData.opm1.Inventiveness > 70.5 && UserData.opm1.Inventiveness <= 74.9) ? 'org-yellow-green': (UserData.opm1.Inventiveness >= 75 && UserData.opm1.Inventiveness <= 79.9) ? 'org-green-yellow' : (UserData.opm1.Inventiveness >= 80 && UserData.opm1.Inventiveness <= 84.9) ? 'org-green-green' : (UserData.opm1.Inventiveness >= 85 && UserData.opm1.Inventiveness <= 89.9) ? 'org-green-purble' : (UserData.opm1.Inventiveness >= 90 && UserData.opm1.Inventiveness <= 92.9) ? 'org-purble-green' : UserData.opm1.Inventiveness > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                   
+                  <p [ngClass]="{'text-black': UserData.opm1.Inventiveness >= 62.5 && UserData.opm1.Inventiveness < 75}">Inventiveness <br /> ({{UserData.opm1.Inventiveness | number:'0.0-1'}})</p>
+                </div>
+                <div class="seven">
+                  <h4>Organizational Performance Metrics</h4>
+                </div>
+            </div>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+        <div class="col-md-6">
+          <div class="canvas_width" *ngIf="UserData.opm2; else elseBlock">
+           
+            <div>
+              <div class="org-full mt-5" *ngIf="UserData && UserData.opm2">
+                <div class="one">
+                  <img
+                  src="assets/images/{{UserData.opm2.Gettingdonediscuss < 58 ? 'org-red-red' : (UserData.opm2.Gettingdonediscuss >= 58 && UserData.opm2.Gettingdonediscuss <= 62.5) ? 'org-red-yellow': (UserData.opm2.Gettingdonediscuss > 62.5 && UserData.opm2.Gettingdonediscuss <= 66.6) ? 'org-yellow-red': (UserData.opm2.Gettingdonediscuss > 66.6 && UserData.opm2.Gettingdonediscuss <= 70.5) ? 'org-yellow-yellow' : (UserData.opm2.Gettingdonediscuss > 70.5 && UserData.opm2.Gettingdonediscuss <= 74.9) ? 'org-yellow-green': (UserData.opm2.Gettingdonediscuss >= 75 && UserData.opm2.Gettingdonediscuss <= 79.9) ? 'org-green-yellow' : (UserData.opm2.Gettingdonediscuss >= 80 && UserData.opm2.Gettingdonediscuss <= 84.9) ? 'org-green-green' : (UserData.opm2.Gettingdonediscuss >= 85 && UserData.opm2.Gettingdonediscuss <= 89.9) ? 'org-green-purble' : (UserData.opm2.Gettingdonediscuss >= 90 && UserData.opm2.Gettingdonediscuss <= 92.9) ? 'org-purble-green' : UserData.opm2.Gettingdonediscuss > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                  
+                  <p [ngClass]="{'text-black': UserData.opm2.Gettingdonediscuss >= 62.5 && UserData.opm2.Gettingdonediscuss < 75}">Getting Things Done <br /> ({{UserData.opm2.Gettingdonediscuss | number:'0.0-1'}})</p>
+                </div>
+            
+                <div class="two">
+                  <img
+                  src="assets/images/{{UserData.opm2.Trustworthiness < 58 ? 'org-red-red' : (UserData.opm2.Trustworthiness >= 58 && UserData.opm2.Trustworthiness <= 62.5) ? 'org-red-yellow': (UserData.opm2.Trustworthiness > 62.5 && UserData.opm2.Trustworthiness <= 66.6) ? 'org-yellow-red': (UserData.opm2.Trustworthiness > 66.6 && UserData.opm2.Trustworthiness <= 70.5) ? 'org-yellow-yellow' : (UserData.opm2.Trustworthiness > 70.5 && UserData.opm2.Trustworthiness <= 74.9) ? 'org-yellow-green': (UserData.opm2.Trustworthiness >= 75 && UserData.opm2.Trustworthiness <= 79.9) ? 'org-green-yellow' : (UserData.opm2.Trustworthiness >= 80 && UserData.opm2.Trustworthiness <= 84.9) ? 'org-green-green' : (UserData.opm2.Trustworthiness >= 85 && UserData.opm2.Trustworthiness <= 89.9) ? 'org-green-purble' : (UserData.opm2.Trustworthiness >= 90 && UserData.opm2.Trustworthiness <= 92.9) ? 'org-purble-green' : UserData.opm2.Trustworthiness > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                   
+                  <p [ngClass]="{'text-black': UserData.opm2.Trustworthiness >= 62.5 && UserData.opm2.Trustworthiness < 75}">Trustworthiness <br /> ({{UserData.opm2.Trustworthiness | number:'0.0-1'}})</p>
+                </div>
+                <div class="three">
+                  <img
+                  src="assets/images/{{UserData.opm2.Customer_Orientation < 58 ? 'org-red-red' : (UserData.opm2.Customer_Orientation >= 58 && UserData.opm2.Customer_Orientation <= 62.5) ? 'org-red-yellow': (UserData.opm2.Customer_Orientation > 62.5 && UserData.opm2.Customer_Orientation <= 66.6) ? 'org-yellow-red': (UserData.opm2.Customer_Orientation > 66.6 && UserData.opm2.Customer_Orientation <= 70.5) ? 'org-yellow-yellow' : (UserData.opm2.Customer_Orientation > 70.5 && UserData.opm2.Customer_Orientation <= 74.9) ? 'org-yellow-green': (UserData.opm2.Customer_Orientation >= 75 && UserData.opm2.Customer_Orientation <= 79.9) ? 'org-green-yellow' : (UserData.opm2.Customer_Orientation >= 80 && UserData.opm2.Customer_Orientation <= 84.9) ? 'org-green-green' : (UserData.opm2.Customer_Orientation >= 85 && UserData.opm2.Customer_Orientation <= 89.9) ? 'org-green-purble' : (UserData.opm2.Customer_Orientation >= 90 && UserData.opm2.Customer_Orientation <= 92.9) ? 'org-purble-green' : UserData.opm2.Customer_Orientation > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                   
+                  <p [ngClass]="{'text-black': UserData.opm2.Customer_Orientation >= 62.5 && UserData.opm2.Customer_Orientation < 75}">Customer Orientation <br /> ({{UserData.opm2.Customer_Orientation | number:'0.0-1'}})</p>
+                </div>
+                <div class="four">
+                  <img
+                  src="assets/images/{{UserData.opm2.SelfLeadership < 58 ? 'org-red-red' : (UserData.opm2.SelfLeadership >= 58 && UserData.opm2.SelfLeadership <= 62.5) ? 'org-red-yellow': (UserData.opm2.SelfLeadership > 62.5 && UserData.opm2.SelfLeadership <= 66.6) ? 'org-yellow-red': (UserData.opm2.SelfLeadership > 66.6 && UserData.opm2.SelfLeadership <= 70.5) ? 'org-yellow-yellow' : (UserData.opm2.SelfLeadership > 70.5 && UserData.opm2.SelfLeadership <= 74.9) ? 'org-yellow-green': (UserData.opm2.SelfLeadership >= 75 && UserData.opm2.SelfLeadership <= 79.9) ? 'org-green-yellow' : (UserData.opm2.SelfLeadership >= 80 && UserData.opm2.SelfLeadership <= 84.9) ? 'org-green-green' : (UserData.opm2.SelfLeadership >= 85 && UserData.opm2.SelfLeadership <= 89.9) ? 'org-green-purble' : (UserData.opm2.SelfLeadership >= 90 && UserData.opm2.SelfLeadership <= 92.9) ? 'org-purble-green' : UserData.opm2.SelfLeadership > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                   
+                  <p [ngClass]="{'text-black': UserData.opm2.SelfLeadership >= 62.5 && UserData.opm2.SelfLeadership < 75}">Self Leadership <br /> ({{UserData.opm2.SelfLeadership | number:'0.0-1'}})</p>
+                </div>
+                <div class="five">
+                  <img
+                  src="assets/images/{{UserData.opm2.Employee_Engagement < 58 ? 'org-red-red' : (UserData.opm2.Employee_Engagement >= 58 && UserData.opm2.Employee_Engagement <= 62.5) ? 'org-red-yellow': (UserData.opm2.Employee_Engagement > 62.5 && UserData.opm2.Employee_Engagement <= 66.6) ? 'org-yellow-red': (UserData.opm2.Employee_Engagement > 66.6 && UserData.opm2.Employee_Engagement <= 70.5) ? 'org-yellow-yellow' : (UserData.opm2.Employee_Engagement > 70.5 && UserData.opm2.Employee_Engagement <= 74.9) ? 'org-yellow-green': (UserData.opm2.Employee_Engagement >= 75 && UserData.opm2.Employee_Engagement <= 79.9) ? 'org-green-yellow' : (UserData.opm2.Employee_Engagement >= 80 && UserData.opm2.Employee_Engagement <= 84.9) ? 'org-green-green' : (UserData.opm2.Employee_Engagement >= 85 && UserData.opm2.Employee_Engagement <= 89.9) ? 'org-green-purble' : (UserData.opm2.Employee_Engagement >= 90 && UserData.opm2.Employee_Engagement <= 92.9) ? 'org-purble-green' : UserData.opm2.Employee_Engagement > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                   
+                  <p [ngClass]="{'text-black': UserData.opm2.Employee_Engagement >= 62.5 && UserData.opm2.Employee_Engagement < 75}">Employee Engagement <br /> ({{UserData.opm2.Employee_Engagement | number:'0.0-1'}})</p>
+                </div>
+                <div class="six">
+                  <img
+                  src="assets/images/{{UserData.opm2.Inventiveness < 58 ? 'org-red-red' : (UserData.opm2.Inventiveness >= 58 && UserData.opm2.Inventiveness <= 62.5) ? 'org-red-yellow': (UserData.opm2.Inventiveness > 62.5 && UserData.opm2.Inventiveness <= 66.6) ? 'org-yellow-red': (UserData.opm2.Inventiveness > 66.6 && UserData.opm2.Inventiveness <= 70.5) ? 'org-yellow-yellow' : (UserData.opm2.Inventiveness > 70.5 && UserData.opm2.Inventiveness <= 74.9) ? 'org-yellow-green': (UserData.opm2.Inventiveness >= 75 && UserData.opm2.Inventiveness <= 79.9) ? 'org-green-yellow' : (UserData.opm2.Inventiveness >= 80 && UserData.opm2.Inventiveness <= 84.9) ? 'org-green-green' : (UserData.opm2.Inventiveness >= 85 && UserData.opm2.Inventiveness <= 89.9) ? 'org-green-purble' : (UserData.opm2.Inventiveness >= 90 && UserData.opm2.Inventiveness <= 92.9) ? 'org-purble-green' : UserData.opm2.Inventiveness > 92.9 ? 'org-purble-purble' : 'org-purble-purble'}}.png" />
+            
+                   
+                  <p [ngClass]="{'text-black': UserData.opm2.Inventiveness >= 62.5 && UserData.opm2.Inventiveness < 75}">Inventiveness <br /> ({{UserData.opm2.Inventiveness | number:'0.0-1'}})</p>
+                </div>
+                <div class="seven">
+                  <h4>Organizational Performance Metrics</h4>
+                </div>
+            </div>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="4 Being states">
+    <ng-template ngbTabContent>
+      <div class="row mt-20">
+        <div class="col-md-6">
+          <div class="four_states" *ngIf="UserData.fourthbeingattitude1; else elseBlock">
+            <div class="flex_img">
+              <img
+                src="assets/images/{{UserData.fourthbeingattitude1.Overall_Score < 62.5 ? 'red_top': UserData.fourthbeingattitude1.Overall_Score >= 62.5 && UserData.fourthbeingattitude1.Overall_Score < 75? 'yellow_top': UserData.fourthbeingattitude1.Overall_Score >= 75 && UserData.fourthbeingattitude1.Overall_Score < 90 ? 'green_top': 'purble_top'}}.png"
+                alt="">
+            </div>
+            <div class="flex_box">
+              <div class="box">
+                <div class="title">
+                  <p>Being Inspired </p>
+                </div>
+                <ul>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Inspired.Play < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Inspired.Play >= 62.5 && UserData.fourthbeingattitude1.Being_Inspired.Play < 75? 'yellow': UserData.fourthbeingattitude1.Being_Inspired.Play >= 75 && UserData.fourthbeingattitude1.Being_Inspired.Play < 90 ? 'green':'purple'">
+                    Play</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Inspired.Curiosity < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Inspired.Curiosity >= 62.5 && UserData.fourthbeingattitude1.Being_Inspired.Curiosity < 75? 'yellow': UserData.fourthbeingattitude1.Being_Inspired.Curiosity >= 75 && UserData.fourthbeingattitude1.Being_Inspired.Curiosity < 90 ? 'green':'purple'">
+                    Curiosity</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Inspired.Not_knowing < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Inspired.Not_knowing >= 62.5 && UserData.fourthbeingattitude1.Being_Inspired.Not_knowing < 75? 'yellow': UserData.fourthbeingattitude1.Being_Inspired.Not_knowing >= 75 && UserData.fourthbeingattitude1.Being_Inspired.Not_knowing < 90 ? 'green':'purple'">
+                    Facing unknown</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Inspired.Flow < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Inspired.Flow >= 62.5 && UserData.fourthbeingattitude1.Being_Inspired.Flow < 75? 'yellow': UserData.fourthbeingattitude1.Being_Inspired.Flow >= 75 && UserData.fourthbeingattitude1.Being_Inspired.Flow < 90 ? 'green':'purple'">
+                    Being in flow</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Inspired.Openess_to_new_ideas < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Inspired.Openess_to_new_ideas >= 62.5 && UserData.fourthbeingattitude1.Being_Inspired.Openess_to_new_ideas < 75? 'yellow': UserData.fourthbeingattitude1.Being_Inspired.Openess_to_new_ideas >= 75 && UserData.fourthbeingattitude1.Being_Inspired.Openess_to_new_ideas < 90 ? 'green':'purple'">
+                    Open to new possibility</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Inspired.Holistic_view < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Inspired.Holistic_view >= 62.5 && UserData.fourthbeingattitude1.Being_Inspired.Holistic_view < 75? 'yellow': UserData.fourthbeingattitude1.Being_Inspired.Holistic_view >= 75 && UserData.fourthbeingattitude1.Being_Inspired.Holistic_view < 90 ? 'green':'purple'">
+                    Holistic view</li>
+                </ul>
+              </div>
+              <div class="box">
+                <div class="title">
+                  <p>Being Abundant</p>
+                </div>
+                <ul>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Abundant.Collaboration_vs_competition < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Abundant.Collaboration_vs_competition >= 62.5 && UserData.fourthbeingattitude1.Being_Abundant.Collaboration_vs_competition < 75? 'yellow': UserData.fourthbeingattitude1.Being_Abundant.Collaboration_vs_competition >= 75 && UserData.fourthbeingattitude1.Being_Abundant.Collaboration_vs_competition < 90 ? 'green':'purple'">
+                    Collaboration vs competition</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Abundant.Being_from_Doing < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Abundant.Being_from_Doing >= 62.5 && UserData.fourthbeingattitude1.Being_Abundant.Being_from_Doing < 75? 'yellow': UserData.fourthbeingattitude1.Being_Abundant.Being_from_Doing >= 75 && UserData.fourthbeingattitude1.Being_Abundant.Being_from_Doing < 90 ? 'green':'purple'">
+                    Doing from Being</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Abundant.Trust_vs_control < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Abundant.Trust_vs_control >= 62.5 && UserData.fourthbeingattitude1.Being_Abundant.Trust_vs_control < 75? 'yellow': UserData.fourthbeingattitude1.Being_Abundant.Trust_vs_control >= 75 && UserData.fourthbeingattitude1.Being_Abundant.Trust_vs_control < 90 ? 'green':'purple'">
+                    Trust vs control</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Abundant.Gratitude < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Abundant.Gratitude >= 62.5 && UserData.fourthbeingattitude1.Being_Abundant.Gratitude < 75? 'yellow': UserData.fourthbeingattitude1.Being_Abundant.Gratitude >= 75 && UserData.fourthbeingattitude1.Being_Abundant.Gratitude < 90 ? 'green':'purple'">
+                    Gratitude</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Abundant.Acknowledgment < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Abundant.Acknowledgment >= 62.5 && UserData.fourthbeingattitude1.Being_Abundant.Acknowledgment < 75? 'yellow': UserData.fourthbeingattitude1.Being_Abundant.Acknowledgment >= 75 && UserData.fourthbeingattitude1.Being_Abundant.Acknowledgment < 90 ? 'green':'purple'">
+                    Acknowledgment</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Abundant.Generosity < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Abundant.Generosity >= 62.5 && UserData.fourthbeingattitude1.Being_Abundant.Generosity < 75? 'yellow': UserData.fourthbeingattitude1.Being_Abundant.Generosity >= 75 && UserData.fourthbeingattitude1.Being_Abundant.Generosity < 90 ? 'green':'purple'">
+                    Generosity</li>
+                </ul>
+              </div>
+              <div class="box">
+                <div class="title">
+                  <p>Being In Service</p>
+                </div>
+                <ul>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Service.True_diversity < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Service.True_diversity >= 62.5 && UserData.fourthbeingattitude1.Being_Service.True_diversity < 75? 'yellow': UserData.fourthbeingattitude1.Being_Service.True_diversity >= 75 && UserData.fourthbeingattitude1.Being_Service.True_diversity < 90 ? 'green':'purple'">
+                    Greater Good</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Service.Connectedness < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Service.Connectedness >= 62.5 && UserData.fourthbeingattitude1.Being_Service.Connectedness < 75? 'yellow': UserData.fourthbeingattitude1.Being_Service.Connectedness >= 75 && UserData.fourthbeingattitude1.Being_Service.Connectedness < 90 ? 'green':'purple'">
+                    Connectedness</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Service.Compassion < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Service.Compassion >= 62.5 && UserData.fourthbeingattitude1.Being_Service.Compassion < 75? 'yellow': UserData.fourthbeingattitude1.Being_Service.Compassion >= 75 && UserData.fourthbeingattitude1.Being_Service.Compassion < 90 ? 'green':'purple'">
+                    Compassion</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Service.Harmony < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Service.Harmony >= 62.5 && UserData.fourthbeingattitude1.Being_Service.Harmony < 75? 'yellow': UserData.fourthbeingattitude1.Being_Service.Harmony >= 75 && UserData.fourthbeingattitude1.Being_Service.Harmony < 90 ? 'green':'purple'">
+                    Harmony</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Service.Humility < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Service.Humility >= 62.5 && UserData.fourthbeingattitude1.Being_Service.Humility < 75? 'yellow': UserData.fourthbeingattitude1.Being_Service.Humility >= 75 && UserData.fourthbeingattitude1.Being_Service.Humility < 90 ? 'green':'purple'">
+                    Humility</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude1.Being_Service.Passion < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Service.Passion >= 62.5 && UserData.fourthbeingattitude1.Being_Service.Passion < 75? 'yellow': UserData.fourthbeingattitude1.Being_Service.Passion >= 75 && UserData.fourthbeingattitude1.Being_Service.Passion < 90 ? 'green':'purple'">
+                    Living my calling</li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex_bottom">
+              <div class="title">
+                <p>Being Aware</p>
+              </div>
+              <ul>
+                <li
+                  [class]="UserData.fourthbeingattitude1.Being_Aware.Individual_awareness < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Aware.Individual_awareness >= 62.5 && UserData.fourthbeingattitude1.Being_Aware.Individual_awareness < 75? 'yellow': UserData.fourthbeingattitude1.Being_Aware.Individual_awareness >= 75 && UserData.fourthbeingattitude1.Being_Aware.Individual_awareness < 90 ? 'green':'purple'">
+                  Individual Awareness</li>
+                <li
+                  [class]="UserData.fourthbeingattitude1.Being_Aware.Team_awareness < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Aware.Team_awareness >= 62.5 && UserData.fourthbeingattitude1.Being_Aware.Team_awareness < 75? 'yellow': UserData.fourthbeingattitude1.Being_Aware.Team_awareness >= 75 && UserData.fourthbeingattitude1.Being_Aware.Team_awareness < 90 ? 'green':'purple'">
+                  Interpersonal Awareness </li>
+                <li
+                  [class]="UserData.fourthbeingattitude1.Being_Aware.Organizational_awareness < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Aware.Organizational_awareness >= 62.5 && UserData.fourthbeingattitude1.Being_Aware.Organizational_awareness < 75? 'yellow': UserData.fourthbeingattitude1.Being_Aware.Organizational_awareness >= 75 && UserData.fourthbeingattitude1.Being_Aware.Organizational_awareness < 90 ? 'green':'purple'">
+                  Environmental Awareness</li>
+                <li
+                  [class]="UserData.fourthbeingattitude1.Being_Aware.Societal_awareness < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Aware.Societal_awareness >= 62.5 && UserData.fourthbeingattitude1.Being_Aware.Societal_awareness < 75? 'yellow': UserData.fourthbeingattitude1.Being_Aware.Societal_awareness >= 75 && UserData.fourthbeingattitude1.Being_Aware.Societal_awareness < 90 ? 'green':'purple'">
+                  Societal Awareness</li>
+                <li
+                  [class]="UserData.fourthbeingattitude1.Being_Aware.Personal_development < 62.5 ? 'red': UserData.fourthbeingattitude1.Being_Aware.Personal_development >= 62.5 && UserData.fourthbeingattitude1.Being_Aware.Personal_development < 75? 'yellow': UserData.fourthbeingattitude1.Being_Aware.Personal_development >= 75 && UserData.fourthbeingattitude1.Being_Aware.Personal_development < 90 ? 'green':'purple'">
+                  Personal Development</li>
+              </ul>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+        <div class="col-md-6">
+          <div class="four_states">
+            <div class="flex_img">
+              <img
+                src="assets/images/{{UserData.fourthbeingattitude2.Overall_Score < 62.5 ? 'red_top': UserData.fourthbeingattitude2.Overall_Score >= 62.5 && UserData.fourthbeingattitude2.Overall_Score < 75? 'yellow_top': UserData.fourthbeingattitude2.Overall_Score >= 75 && UserData.fourthbeingattitude2.Overall_Score < 90 ? 'green_top': 'purble_top'}}.png"
+                alt="">
+            </div>
+            <div class="flex_box">
+              <div class="box">
+                <div class="title">
+                  <p>Being Inspired </p>
+                </div>
+                <ul>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Inspired.Play < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Inspired.Play >= 62.5 && UserData.fourthbeingattitude2.Being_Inspired.Play < 75? 'yellow': UserData.fourthbeingattitude2.Being_Inspired.Play >= 75 && UserData.fourthbeingattitude2.Being_Inspired.Play < 90 ? 'green':'purple'">
+                    Play</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Inspired.Curiosity < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Inspired.Curiosity >= 62.5 && UserData.fourthbeingattitude2.Being_Inspired.Curiosity < 75? 'yellow': UserData.fourthbeingattitude2.Being_Inspired.Curiosity >= 75 && UserData.fourthbeingattitude2.Being_Inspired.Curiosity < 90 ? 'green':'purple'">
+                    Curiosity</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Inspired.Not_knowing < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Inspired.Not_knowing >= 62.5 && UserData.fourthbeingattitude2.Being_Inspired.Not_knowing < 75? 'yellow': UserData.fourthbeingattitude2.Being_Inspired.Not_knowing >= 75 && UserData.fourthbeingattitude2.Being_Inspired.Not_knowing < 90 ? 'green':'purple'">
+                    Facing unknown</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Inspired.Flow < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Inspired.Flow >= 62.5 && UserData.fourthbeingattitude2.Being_Inspired.Flow < 75? 'yellow': UserData.fourthbeingattitude2.Being_Inspired.Flow >= 75 && UserData.fourthbeingattitude2.Being_Inspired.Flow < 90 ? 'green':'purple'">
+                    Being in flow</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Inspired.Openess_to_new_ideas < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Inspired.Openess_to_new_ideas >= 62.5 && UserData.fourthbeingattitude2.Being_Inspired.Openess_to_new_ideas < 75? 'yellow': UserData.fourthbeingattitude2.Being_Inspired.Openess_to_new_ideas >= 75 && UserData.fourthbeingattitude2.Being_Inspired.Openess_to_new_ideas < 90 ? 'green':'purple'">
+                    Open to new possibility</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Inspired.Holistic_view < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Inspired.Holistic_view >= 62.5 && UserData.fourthbeingattitude2.Being_Inspired.Holistic_view < 75? 'yellow': UserData.fourthbeingattitude2.Being_Inspired.Holistic_view >= 75 && UserData.fourthbeingattitude2.Being_Inspired.Holistic_view < 90 ? 'green':'purple'">
+                    Holistic view</li>
+                </ul>
+              </div>
+              <div class="box">
+                <div class="title">
+                  <p>Being Abundant</p>
+                </div>
+                <ul>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Abundant.Collaboration_vs_competition < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Abundant.Collaboration_vs_competition >= 62.5 && UserData.fourthbeingattitude2.Being_Abundant.Collaboration_vs_competition < 75? 'yellow': UserData.fourthbeingattitude2.Being_Abundant.Collaboration_vs_competition >= 75 && UserData.fourthbeingattitude2.Being_Abundant.Collaboration_vs_competition < 90 ? 'green':'purple'">
+                    Collaboration vs competition</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Abundant.Being_from_Doing < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Abundant.Being_from_Doing >= 62.5 && UserData.fourthbeingattitude2.Being_Abundant.Being_from_Doing < 75? 'yellow': UserData.fourthbeingattitude2.Being_Abundant.Being_from_Doing >= 75 && UserData.fourthbeingattitude2.Being_Abundant.Being_from_Doing < 90 ? 'green':'purple'">
+                    Doing from Being</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Abundant.Trust_vs_control < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Abundant.Trust_vs_control >= 62.5 && UserData.fourthbeingattitude2.Being_Abundant.Trust_vs_control < 75? 'yellow': UserData.fourthbeingattitude2.Being_Abundant.Trust_vs_control >= 75 && UserData.fourthbeingattitude2.Being_Abundant.Trust_vs_control < 90 ? 'green':'purple'">
+                    Trust vs control</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Abundant.Gratitude < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Abundant.Gratitude >= 62.5 && UserData.fourthbeingattitude2.Being_Abundant.Gratitude < 75? 'yellow': UserData.fourthbeingattitude2.Being_Abundant.Gratitude >= 75 && UserData.fourthbeingattitude2.Being_Abundant.Gratitude < 90 ? 'green':'purple'">
+                    Gratitude</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Abundant.Acknowledgment < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Abundant.Acknowledgment >= 62.5 && UserData.fourthbeingattitude2.Being_Abundant.Acknowledgment < 75? 'yellow': UserData.fourthbeingattitude2.Being_Abundant.Acknowledgment >= 75 && UserData.fourthbeingattitude2.Being_Abundant.Acknowledgment < 90 ? 'green':'purple'">
+                    Acknowledgment</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Abundant.Generosity < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Abundant.Generosity >= 62.5 && UserData.fourthbeingattitude2.Being_Abundant.Generosity < 75? 'yellow': UserData.fourthbeingattitude2.Being_Abundant.Generosity >= 75 && UserData.fourthbeingattitude2.Being_Abundant.Generosity < 90 ? 'green':'purple'">
+                    Generosity</li>
+                </ul>
+              </div>
+              <div class="box">
+                <div class="title">
+                  <p>Being In Service</p>
+                </div>
+                <ul>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Service.True_diversity < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Service.True_diversity >= 62.5 && UserData.fourthbeingattitude2.Being_Service.True_diversity < 75? 'yellow': UserData.fourthbeingattitude2.Being_Service.True_diversity >= 75 && UserData.fourthbeingattitude2.Being_Service.True_diversity < 90 ? 'green':'purple'">
+                    Greater Good</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Service.Connectedness < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Service.Connectedness >= 62.5 && UserData.fourthbeingattitude2.Being_Service.Connectedness < 75? 'yellow': UserData.fourthbeingattitude2.Being_Service.Connectedness >= 75 && UserData.fourthbeingattitude2.Being_Service.Connectedness < 90 ? 'green':'purple'">
+                    Connectedness</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Service.Compassion < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Service.Compassion >= 62.5 && UserData.fourthbeingattitude2.Being_Service.Compassion < 75? 'yellow': UserData.fourthbeingattitude2.Being_Service.Compassion >= 75 && UserData.fourthbeingattitude2.Being_Service.Compassion < 90 ? 'green':'purple'">
+                    Compassion</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Service.Harmony < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Service.Harmony >= 62.5 && UserData.fourthbeingattitude2.Being_Service.Harmony < 75? 'yellow': UserData.fourthbeingattitude2.Being_Service.Harmony >= 75 && UserData.fourthbeingattitude2.Being_Service.Harmony < 90 ? 'green':'purple'">
+                    Harmony</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Service.Humility < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Service.Humility >= 62.5 && UserData.fourthbeingattitude2.Being_Service.Humility < 75? 'yellow': UserData.fourthbeingattitude2.Being_Service.Humility >= 75 && UserData.fourthbeingattitude2.Being_Service.Humility < 90 ? 'green':'purple'">
+                    Humility</li>
+                  <li
+                    [class]="UserData.fourthbeingattitude2.Being_Service.Passion < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Service.Passion >= 62.5 && UserData.fourthbeingattitude2.Being_Service.Passion < 75? 'yellow': UserData.fourthbeingattitude2.Being_Service.Passion >= 75 && UserData.fourthbeingattitude2.Being_Service.Passion < 90 ? 'green':'purple'">
+                    Living my calling</li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex_bottom">
+              <div class="title">
+                <p>Being Aware</p>
+              </div>
+              <ul>
+                <li
+                  [class]="UserData.fourthbeingattitude2.Being_Aware.Individual_awareness < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Aware.Individual_awareness >= 62.5 && UserData.fourthbeingattitude2.Being_Aware.Individual_awareness < 75? 'yellow': UserData.fourthbeingattitude2.Being_Aware.Individual_awareness >= 75 && UserData.fourthbeingattitude2.Being_Aware.Individual_awareness < 90 ? 'green':'purple'">
+                  Individual Awareness</li>
+                <li
+                  [class]="UserData.fourthbeingattitude2.Being_Aware.Team_awareness < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Aware.Team_awareness >= 62.5 && UserData.fourthbeingattitude2.Being_Aware.Team_awareness < 75? 'yellow': UserData.fourthbeingattitude2.Being_Aware.Team_awareness >= 75 && UserData.fourthbeingattitude2.Being_Aware.Team_awareness < 90 ? 'green':'purple'">
+                  Interpersonal Awareness </li>
+                <li
+                  [class]="UserData.fourthbeingattitude2.Being_Aware.Organizational_awareness < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Aware.Organizational_awareness >= 62.5 && UserData.fourthbeingattitude2.Being_Aware.Organizational_awareness < 75? 'yellow': UserData.fourthbeingattitude2.Being_Aware.Organizational_awareness >= 75 && UserData.fourthbeingattitude2.Being_Aware.Organizational_awareness < 90 ? 'green':'purple'">
+                  Environmental Awareness</li>
+                <li
+                  [class]="UserData.fourthbeingattitude2.Being_Aware.Societal_awareness < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Aware.Societal_awareness >= 62.5 && UserData.fourthbeingattitude2.Being_Aware.Societal_awareness < 75? 'yellow': UserData.fourthbeingattitude2.Being_Aware.Societal_awareness >= 75 && UserData.fourthbeingattitude2.Being_Aware.Societal_awareness < 90 ? 'green':'purple'">
+                  Societal Awareness</li>
+                <li
+                  [class]="UserData.fourthbeingattitude2.Being_Aware.Personal_development < 62.5 ? 'red': UserData.fourthbeingattitude2.Being_Aware.Personal_development >= 62.5 && UserData.fourthbeingattitude2.Being_Aware.Personal_development < 75? 'yellow': UserData.fourthbeingattitude2.Being_Aware.Personal_development >= 75 && UserData.fourthbeingattitude2.Being_Aware.Personal_development < 90 ? 'green':'purple'">
+                  Personal Development</li>
+              </ul>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="23 Dimensions">
+    <ng-template ngbTabContent>
+      <div class="row mt-20">
+        <div class="col-md-6">
+          <div class="four_states" *ngIf="dimension1 && dimension1.length; else elseBlock">
+            <ul class="detail">
+              <li class="text-justify" *ngFor="let item of dimension1"
+                [class]="item.value < 62.5 ? 'red': item.value >= 62.5 && item.value < 75? 'yellow': item.value >= 75 && item.value < 90 ? 'green':'purple'">
+                {{item.name}}
+                <div class="value"><span>{{item.value | number: '0.0-1'}}</span></div>
+              </li>
+            </ul>
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+        <div class="col-md-6">
+          <div class="four_states" *ngIf="dimension2 && dimension2.length; else elseBlock">
+            <ul class="detail">
+              <li class="text-justify" *ngFor="let item of dimension2"
+                [class]="item.value < 62.5 ? 'red': item.value >= 62.5 && item.value < 75? 'yellow': item.value >= 75 && item.value < 90 ? 'green':'purple'">
+                {{item.name}}
+                <div class="value"><span>{{item.value | number: '0.0-1'}}</span></div>
+              </li>
+            </ul>
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="8 being attitude">
+    <ng-template ngbTabContent>
+      <div class="row mt-20">
+        <div class="col-md-6">
+          <div style="display: block;" *ngIf="UserData.eightbeingattitude1; else elseBlock">
+            
+            <div>
+              <div class="be-full  mt-5" *ngIf="UserData && UserData.eightbeingattitude1">
+                <div class="one">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude1.Be_Authentic < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude1.Be_Authentic >= 58 && UserData && UserData.eightbeingattitude1.Be_Authentic <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude1.Be_Authentic > 62.5 && UserData && UserData.eightbeingattitude1.Be_Authentic <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude1.Be_Authentic > 66.6 && UserData && UserData.eightbeingattitude1.Be_Authentic <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude1.Be_Authentic > 70.5 && UserData && UserData.eightbeingattitude1.Be_Authentic <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude1.Be_Authentic >= 75 && UserData && UserData.eightbeingattitude1.Be_Authentic <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude1.Be_Authentic >= 80 && UserData && UserData.eightbeingattitude1.Be_Authentic <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude1.Be_Authentic >= 85 && UserData && UserData.eightbeingattitude1.Be_Authentic <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude1.Be_Authentic >= 90 && UserData && UserData.eightbeingattitude1.Be_Authentic <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude1.Be_Authentic > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                   
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude1.Be_Authentic >= 62.5 && UserData && UserData.eightbeingattitude1.Be_Authentic < 75}">Fierce Authenticity <br /> ({{UserData && UserData.eightbeingattitude1.Be_Authentic | number:'0.0-1'}})</p>
+                </div>
+                <div class="two">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause >= 58 && UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause > 62.5 && UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause > 66.6 && UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause > 70.5 && UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause >= 75 && UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause >= 80 && UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause >= 85 && UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause >= 90 && UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                    
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause >= 62.5 && UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause < 75}">Commit to a Higher Cause <br /> {{UserData && UserData.eightbeingattitude1.Commit_To_A_Higher_Cause | number:'0.0-1'}})</p>
+                </div>
+                <div class="three">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude1.Help_Others_Shine < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude1.Help_Others_Shine >= 58 && UserData && UserData.eightbeingattitude1.Help_Others_Shine <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude1.Help_Others_Shine > 62.5 && UserData && UserData.eightbeingattitude1.Help_Others_Shine <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude1.Help_Others_Shine > 66.6 && UserData && UserData.eightbeingattitude1.Help_Others_Shine <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude1.Help_Others_Shine > 70.5 && UserData && UserData.eightbeingattitude1.Help_Others_Shine <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude1.Help_Others_Shine >= 75 && UserData && UserData.eightbeingattitude1.Help_Others_Shine <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude1.Help_Others_Shine >= 80 && UserData && UserData.eightbeingattitude1.Help_Others_Shine <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude1.Help_Others_Shine >= 85 && UserData && UserData.eightbeingattitude1.Help_Others_Shine <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude1.Help_Others_Shine >= 90 && UserData && UserData.eightbeingattitude1.Help_Others_Shine <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude1.Help_Others_Shine > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                    
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude1.Help_Others_Shine >= 62.5 && UserData && UserData.eightbeingattitude1.Help_Others_Shine < 75}">Help Others Shine <br /> ({{UserData && UserData.eightbeingattitude1.Help_Others_Shine | number:'0.0-1'}})</p>
+                </div>
+                <div class="four">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose >= 58 && UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose > 62.5 && UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose > 66.6 && UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose > 70.5 && UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose >= 75 && UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose >= 80 && UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose >= 85 && UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose >= 90 && UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                    
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose >= 62.5 && UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose < 75}">Sync Individual and Collective purpose <br /> ({{UserData && UserData.eightbeingattitude1.Sync_Ind_Collective_Purpose | number:'0.0-1'}})</p>
+                </div>
+                <div class="five">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties >= 58 && UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties > 62.5 && UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties > 66.6 && UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties > 70.5 && UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties >= 75 && UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties >= 80 && UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties >= 85 && UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties >= 90 && UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                    
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties >= 62.5 && UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties < 75}">Alter relationship to all adversities <br /> ({{UserData && UserData.eightbeingattitude1.Alter_Your_Relationship_to_All_Adverties | number:'0.0-1'}})</p>
+                </div>
+                <div class="six">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action >= 58 && UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action > 62.5 && UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action > 66.6 && UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action > 70.5 && UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action >= 75 && UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action >= 80 && UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action >= 85 && UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action >= 90 && UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                  
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action >= 62.5 && UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action < 75}">Harness the intuitive mind <br /> {{UserData && UserData.eightbeingattitude1.Turning_Ideas_Into_Action | number:'0.0-1'}})</p>
+                </div>
+                <div class="seven">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude1.Experiment_Play < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude1.Experiment_Play >= 58 && UserData && UserData.eightbeingattitude1.Experiment_Play <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude1.Experiment_Play > 62.5 && UserData && UserData.eightbeingattitude1.Experiment_Play <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude1.Experiment_Play > 66.6 && UserData && UserData.eightbeingattitude1.Experiment_Play <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude1.Experiment_Play > 70.5 && UserData && UserData.eightbeingattitude1.Experiment_Play <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude1.Experiment_Play >= 75 && UserData && UserData.eightbeingattitude1.Experiment_Play <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude1.Experiment_Play >= 80 && UserData && UserData.eightbeingattitude1.Experiment_Play <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude1.Experiment_Play >= 85 && UserData && UserData.eightbeingattitude1.Experiment_Play <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude1.Experiment_Play >= 90 && UserData && UserData.eightbeingattitude1.Experiment_Play <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude1.Experiment_Play > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                   
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude1.Experiment_Play >= 62.5 && UserData && UserData.eightbeingattitude1.Experiment_Play < 75}">Relentless experimentation and play <br /> ({{UserData && UserData.eightbeingattitude1.Experiment_Play | number:'0.0-1'}})</p>
+                </div>
+                <div class="eight">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude1.Question_Existing_Belief < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude1.Question_Existing_Belief >= 58 && UserData && UserData.eightbeingattitude1.Question_Existing_Belief <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude1.Question_Existing_Belief > 62.5 && UserData && UserData.eightbeingattitude1.Question_Existing_Belief <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude1.Question_Existing_Belief > 66.6 && UserData && UserData.eightbeingattitude1.Question_Existing_Belief <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude1.Question_Existing_Belief > 70.5 && UserData && UserData.eightbeingattitude1.Question_Existing_Belief <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude1.Question_Existing_Belief >= 75 && UserData && UserData.eightbeingattitude1.Question_Existing_Belief <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude1.Question_Existing_Belief >= 80 && UserData && UserData.eightbeingattitude1.Question_Existing_Belief <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude1.Question_Existing_Belief >= 85 && UserData && UserData.eightbeingattitude1.Question_Existing_Belief <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude1.Question_Existing_Belief >= 90 && UserData && UserData.eightbeingattitude1.Question_Existing_Belief <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude1.Question_Existing_Belief > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+      
+                   
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude1.Question_Existing_Belief >= 62.5 && UserData && UserData.eightbeingattitude1.Question_Existing_Belief < 75}">Live in a state of enquiry <br /> ({{UserData && UserData.eightbeingattitude1.Question_Existing_Belief | number:'0.0-1'}})</p>
+                </div>
+                <div class="nine">
+                  <h4>Being Attitudes</h4>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+        <div class="col-md-6">
+          <div style="display: block;" *ngIf="UserData.eightbeingattitude2; else elseBlock">
+           
+            <div>
+              <div class="be-full  mt-5" *ngIf="UserData && UserData.eightbeingattitude2">
+                <div class="one">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude2.Be_Authentic < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude2.Be_Authentic >= 58 && UserData && UserData.eightbeingattitude2.Be_Authentic <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude2.Be_Authentic > 62.5 && UserData && UserData.eightbeingattitude2.Be_Authentic <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude2.Be_Authentic > 66.6 && UserData && UserData.eightbeingattitude2.Be_Authentic <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude2.Be_Authentic > 70.5 && UserData && UserData.eightbeingattitude2.Be_Authentic <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude2.Be_Authentic >= 75 && UserData && UserData.eightbeingattitude2.Be_Authentic <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude2.Be_Authentic >= 80 && UserData && UserData.eightbeingattitude2.Be_Authentic <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude2.Be_Authentic >= 85 && UserData && UserData.eightbeingattitude2.Be_Authentic <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude2.Be_Authentic >= 90 && UserData && UserData.eightbeingattitude2.Be_Authentic <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude2.Be_Authentic > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                   
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude2.Be_Authentic >= 62.5 && UserData && UserData.eightbeingattitude2.Be_Authentic < 75}">Fierce Authenticity <br /> ({{UserData && UserData.eightbeingattitude2.Be_Authentic | number:'0.0-1'}})</p>
+                </div>
+                <div class="two">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause >= 58 && UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause > 62.5 && UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause > 66.6 && UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause > 70.5 && UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause >= 75 && UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause >= 80 && UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause >= 85 && UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause >= 90 && UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                    
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause >= 62.5 && UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause < 75}">Commit to a Higher Cause <br /> {{UserData && UserData.eightbeingattitude2.Commit_To_A_Higher_Cause | number:'0.0-1'}})</p>
+                </div>
+                <div class="three">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude2.Help_Others_Shine < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude2.Help_Others_Shine >= 58 && UserData && UserData.eightbeingattitude2.Help_Others_Shine <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude2.Help_Others_Shine > 62.5 && UserData && UserData.eightbeingattitude2.Help_Others_Shine <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude2.Help_Others_Shine > 66.6 && UserData && UserData.eightbeingattitude2.Help_Others_Shine <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude2.Help_Others_Shine > 70.5 && UserData && UserData.eightbeingattitude2.Help_Others_Shine <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude2.Help_Others_Shine >= 75 && UserData && UserData.eightbeingattitude2.Help_Others_Shine <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude2.Help_Others_Shine >= 80 && UserData && UserData.eightbeingattitude2.Help_Others_Shine <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude2.Help_Others_Shine >= 85 && UserData && UserData.eightbeingattitude2.Help_Others_Shine <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude2.Help_Others_Shine >= 90 && UserData && UserData.eightbeingattitude2.Help_Others_Shine <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude2.Help_Others_Shine > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                    
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude2.Help_Others_Shine >= 62.5 && UserData && UserData.eightbeingattitude2.Help_Others_Shine < 75}">Help Others Shine <br /> ({{UserData && UserData.eightbeingattitude2.Help_Others_Shine | number:'0.0-1'}})</p>
+                </div>
+                <div class="four">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose >= 58 && UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose > 62.5 && UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose > 66.6 && UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose > 70.5 && UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose >= 75 && UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose >= 80 && UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose >= 85 && UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose >= 90 && UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                    
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose >= 62.5 && UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose < 75}">Sync Individual and Collective purpose <br /> ({{UserData && UserData.eightbeingattitude2.Sync_Ind_Collective_Purpose | number:'0.0-1'}})</p>
+                </div>
+                <div class="five">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties >= 58 && UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties > 62.5 && UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties > 66.6 && UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties > 70.5 && UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties >= 75 && UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties >= 80 && UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties >= 85 && UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties >= 90 && UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                    
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties >= 62.5 && UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties < 75}">Alter relationship to all adversities <br /> ({{UserData && UserData.eightbeingattitude2.Alter_Your_Relationship_to_All_Adverties | number:'0.0-1'}})</p>
+                </div>
+                <div class="six">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action >= 58 && UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action > 62.5 && UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action > 66.6 && UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action > 70.5 && UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action >= 75 && UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action >= 80 && UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action >= 85 && UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action >= 90 && UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                  
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action >= 62.5 && UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action < 75}">Harness the intuitive mind <br /> {{UserData && UserData.eightbeingattitude2.Turning_Ideas_Into_Action | number:'0.0-1'}})</p>
+                </div>
+                <div class="seven">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude2.Experiment_Play < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude2.Experiment_Play >= 58 && UserData && UserData.eightbeingattitude2.Experiment_Play <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude2.Experiment_Play > 62.5 && UserData && UserData.eightbeingattitude2.Experiment_Play <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude2.Experiment_Play > 66.6 && UserData && UserData.eightbeingattitude2.Experiment_Play <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude2.Experiment_Play > 70.5 && UserData && UserData.eightbeingattitude2.Experiment_Play <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude2.Experiment_Play >= 75 && UserData && UserData.eightbeingattitude2.Experiment_Play <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude2.Experiment_Play >= 80 && UserData && UserData.eightbeingattitude2.Experiment_Play <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude2.Experiment_Play >= 85 && UserData && UserData.eightbeingattitude2.Experiment_Play <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude2.Experiment_Play >= 90 && UserData && UserData.eightbeingattitude2.Experiment_Play <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude2.Experiment_Play > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+                   
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude2.Experiment_Play >= 62.5 && UserData && UserData.eightbeingattitude2.Experiment_Play < 75}">Relentless experimentation and play <br /> ({{UserData && UserData.eightbeingattitude2.Experiment_Play | number:'0.0-1'}})</p>
+                </div>
+                <div class="eight">
+                  <img src="assets/images/{{UserData && UserData.eightbeingattitude2.Question_Existing_Belief < 58 ? 'be-red-red' : (UserData && UserData.eightbeingattitude2.Question_Existing_Belief >= 58 && UserData && UserData.eightbeingattitude2.Question_Existing_Belief <= 62.5) ? 'be-red-yellow': (UserData && UserData.eightbeingattitude2.Question_Existing_Belief > 62.5 && UserData && UserData.eightbeingattitude2.Question_Existing_Belief <= 66.6) ? 'be-yellow-red': (UserData && UserData.eightbeingattitude2.Question_Existing_Belief > 66.6 && UserData && UserData.eightbeingattitude2.Question_Existing_Belief <= 70.5) ? 'be-yellow-yellow' : (UserData && UserData.eightbeingattitude2.Question_Existing_Belief > 70.5 && UserData && UserData.eightbeingattitude2.Question_Existing_Belief <= 74.9) ? 'be-yellow-green': (UserData && UserData.eightbeingattitude2.Question_Existing_Belief >= 75 && UserData && UserData.eightbeingattitude2.Question_Existing_Belief <= 79.9) ? 'be-green-yellow' : (UserData && UserData.eightbeingattitude2.Question_Existing_Belief >= 80 && UserData && UserData.eightbeingattitude2.Question_Existing_Belief <= 84.9) ? 'be-green-green' : (UserData && UserData.eightbeingattitude2.Question_Existing_Belief >= 85 && UserData && UserData.eightbeingattitude2.Question_Existing_Belief <= 89.9) ? 'be-green-purble' : (UserData && UserData.eightbeingattitude2.Question_Existing_Belief >= 90 && UserData && UserData.eightbeingattitude2.Question_Existing_Belief <= 92.9) ? 'be-purble-green' : UserData && UserData.eightbeingattitude2.Question_Existing_Belief > 92.9 ? 'be-purble-purble' : 'be-purble-purble'}}.png" />
+      
+                   
+                    <p [ngClass]="{'text-black': UserData && UserData.eightbeingattitude2.Question_Existing_Belief >= 62.5 && UserData && UserData.eightbeingattitude2.Question_Existing_Belief < 75}">Live in a state of enquiry <br /> ({{UserData && UserData.eightbeingattitude2.Question_Existing_Belief | number:'0.0-1'}})</p>
+                </div>
+                <div class="nine">
+                  <h4>Being Attitudes</h4>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="5 team measures">
+    <ng-template ngbTabContent>
+      <div class="row mt-20">
+        <div class="col-md-6">
+          <div style="display: block;" *ngIf="UserData.measurement1; else elseBlock">
+            
+            <div>
+              <div class="full-po mt-5" *ngIf="UserData && UserData.measurement1">
+                <div class="one">
+                    <img src="assets/images/{{UserData.measurement1.Unconditional_dependability < 58 ? 'full-red-red' : (UserData.measurement1.Unconditional_dependability >= 58 && UserData.measurement1.Unconditional_dependability <= 62.5) ? 'full-red-yellow': (UserData.measurement1.Unconditional_dependability > 62.5 && UserData.measurement1.Unconditional_dependability <= 66.6) ? 'full-yellow-red': (UserData.measurement1.Unconditional_dependability > 66.6 && UserData.measurement1.Unconditional_dependability <= 70.5) ? 'full-yellow-yellow' : (UserData.measurement1.Unconditional_dependability > 70.5 && UserData.measurement1.Unconditional_dependability <= 74.9) ? 'full-yellow-green': (UserData.measurement1.Unconditional_dependability >= 75 && UserData.measurement1.Unconditional_dependability <= 79.9) ? 'full-green-yellow' : (UserData.measurement1.Unconditional_dependability > 79.9 && UserData.measurement1.Unconditional_dependability <= 84.9) ? 'full-green-green' : (UserData.measurement1.Unconditional_dependability >= 85 && UserData.measurement1.Unconditional_dependability <= 89.9) ? 'full-green-purble' : (UserData.measurement1.Unconditional_dependability >= 90 && UserData.measurement1.Unconditional_dependability <= 92.9) ? 'full-purble-green' : UserData.measurement1.Unconditional_dependability > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                    <p [ngClass]="{'text-black': UserData.measurement1.Unconditional_dependability >= 62.5 && UserData.measurement1.Unconditional_dependability < 75}">Unconditional dependability <br> ({{UserData.measurement1.Unconditional_dependability | number:'0.0-1'}})</p>
+                </div>
+                <div class="two">
+                  <img src="assets/images/{{UserData.measurement1.Disciplined_investment_in_SSOB < 58 ? 'full-red-red' : (UserData.measurement1.Disciplined_investment_in_SSOB >= 58 && UserData.measurement1.Disciplined_investment_in_SSOB <= 62.5) ? 'full-red-yellow': (UserData.measurement1.Disciplined_investment_in_SSOB > 62.5 && UserData.measurement1.Disciplined_investment_in_SSOB <= 66.6) ? 'full-yellow-red': (UserData.measurement1.Disciplined_investment_in_SSOB > 66.6 && UserData.measurement1.Disciplined_investment_in_SSOB <= 70.5) ? 'full-yellow-yellow' : (UserData.measurement1.Disciplined_investment_in_SSOB > 70.5 && UserData.measurement1.Disciplined_investment_in_SSOB <= 74.9) ? 'full-yellow-green': (UserData.measurement1.Disciplined_investment_in_SSOB >= 75 && UserData.measurement1.Disciplined_investment_in_SSOB <= 79.9) ? 'full-green-yellow' : (UserData.measurement1.Disciplined_investment_in_SSOB > 79.9 && UserData.measurement1.Disciplined_investment_in_SSOB <= 84.9) ? 'full-green-green' : (UserData.measurement1.Disciplined_investment_in_SSOB >= 85 && UserData.measurement1.Disciplined_investment_in_SSOB <= 89.9) ? 'full-green-purble' : (UserData.measurement1.Disciplined_investment_in_SSOB >= 90 && UserData.measurement1.Disciplined_investment_in_SSOB <= 92.9) ? 'full-purble-green' : UserData.measurement1.Disciplined_investment_in_SSOB > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                  <p [ngClass]="{'text-black': UserData.measurement1.Disciplined_investment_in_SSOB >= 62.5 && UserData.measurement1.Disciplined_investment_in_SSOB < 75}">Disciplined investment in shared standards of Being <br> ({{UserData.measurement1.Disciplined_investment_in_SSOB | number:'0.0-1'}})</p>
+              </div>
+              <div class="three">
+                <img src="assets/images/{{UserData.measurement1.Embody_a_meaningful_purpose < 58 ? 'full-red-red' : (UserData.measurement1.Embody_a_meaningful_purpose >= 58 && UserData.measurement1.Embody_a_meaningful_purpose <= 62.5) ? 'full-red-yellow': (UserData.measurement1.Embody_a_meaningful_purpose > 62.5 && UserData.measurement1.Embody_a_meaningful_purpose <= 66.6) ? 'full-yellow-red': (UserData.measurement1.Embody_a_meaningful_purpose > 66.6 && UserData.measurement1.Embody_a_meaningful_purpose <= 70.5) ? 'full-yellow-yellow' : (UserData.measurement1.Embody_a_meaningful_purpose > 70.5 && UserData.measurement1.Embody_a_meaningful_purpose <= 74.9) ? 'full-yellow-green': (UserData.measurement1.Embody_a_meaningful_purpose >= 75 && UserData.measurement1.Embody_a_meaningful_purpose <= 79.9) ? 'full-green-yellow' : (UserData.measurement1.Embody_a_meaningful_purpose > 79.9 && UserData.measurement1.Embody_a_meaningful_purpose <= 84.9) ? 'full-green-green' : (UserData.measurement1.Embody_a_meaningful_purpose >= 85 && UserData.measurement1.Embody_a_meaningful_purpose <= 89.9) ? 'full-green-purble' : (UserData.measurement1.Embody_a_meaningful_purpose >= 90 && UserData.measurement1.Embody_a_meaningful_purpose <= 92.9) ? 'full-purble-green' : UserData.measurement1.Embody_a_meaningful_purpose > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                <p [ngClass]="{'text-black': UserData.measurement1.Embody_a_meaningful_purpose >= 62.5 && UserData.measurement1.Embody_a_meaningful_purpose < 75}">Collectively embody a meaningful purpose <br> ({{UserData.measurement1.Embody_a_meaningful_purpose | number:'0.0-1'}})</p>
+               </div>
+               
+                <div class="four">
+                  <img src="assets/images/{{UserData.measurement1.Opportunity_seeking < 58 ? 'full-red-red' : (UserData.measurement1.Opportunity_seeking >= 58 && UserData.measurement1.Opportunity_seeking <= 62.5) ? 'full-red-yellow': (UserData.measurement1.Opportunity_seeking > 62.5 && UserData.measurement1.Opportunity_seeking <= 66.6) ? 'full-yellow-red': (UserData.measurement1.Opportunity_seeking > 66.6 && UserData.measurement1.Opportunity_seeking <= 70.5) ? 'full-yellow-yellow' : (UserData.measurement1.Opportunity_seeking > 70.5 && UserData.measurement1.Opportunity_seeking <= 74.9) ? 'full-yellow-green': (UserData.measurement1.Opportunity_seeking >= 75 && UserData.measurement1.Opportunity_seeking <= 79.9) ? 'full-green-yellow' : (UserData.measurement1.Opportunity_seeking > 79.9 && UserData.measurement1.Opportunity_seeking <= 84.9) ? 'full-green-green' : (UserData.measurement1.Opportunity_seeking >= 85 && UserData.measurement1.Opportunity_seeking <= 89.9) ? 'full-green-purble' : (UserData.measurement1.Opportunity_seeking >= 90 && UserData.measurement1.Opportunity_seeking <= 92.9) ? 'full-purble-green' : UserData.measurement1.Opportunity_seeking > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                    <p [ngClass]="{'text-black': UserData.measurement1.Opportunity_seeking >= 62.5 && UserData.measurement1.Opportunity_seeking < 75}">Opportunity seeking vs Problem solving <br> ({{UserData.measurement1.Opportunity_seeking | number:'0.0-1'}})</p>
+                </div>
+                <div class="five">
+                  <img src="assets/images/{{UserData.measurement1.Help_each_other_shine < 58 ? 'full-red-red' : (UserData.measurement1.Help_each_other_shine >= 58 && UserData.measurement1.Help_each_other_shine <= 62.5) ? 'full-red-yellow': (UserData.measurement1.Help_each_other_shine > 62.5 && UserData.measurement1.Help_each_other_shine <= 66.6) ? 'full-yellow-red': (UserData.measurement1.Help_each_other_shine > 66.6 && UserData.measurement1.Help_each_other_shine <= 70.5) ? 'full-yellow-yellow' : (UserData.measurement1.Help_each_other_shine > 70.5 && UserData.measurement1.Help_each_other_shine <= 74.9) ? 'full-yellow-green': (UserData.measurement1.Help_each_other_shine >= 75 && UserData.measurement1.Help_each_other_shine <= 79.9) ? 'full-green-yellow' : (UserData.measurement1.Help_each_other_shine > 79.9 && UserData.measurement1.Help_each_other_shine <= 84.9) ? 'full-green-green' : (UserData.measurement1.Help_each_other_shine >= 85 && UserData.measurement1.Help_each_other_shine <= 89.9) ? 'full-green-purble' : (UserData.measurement1.Help_each_other_shine >= 90 && UserData.measurement1.Help_each_other_shine <= 92.9) ? 'full-purble-green' : UserData.measurement1.Help_each_other_shine > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                  <p [ngClass]="{'text-black': UserData.measurement1.Help_each_other_shine >= 62.5 && UserData.measurement1.Help_each_other_shine < 75}">Help each other shine in their wholeness <br> ({{UserData.measurement1.Help_each_other_shine | number:'0.0-1'}})</p>
+              </div>
+               <div class="six">
+                  <h4>Full Potential Team Measures</h4>
+               </div>
+               
+              </div>
+            
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+        <div class="col-md-6">
+          <div style="display: block;" *ngIf="UserData.measurement2; else elseBlock">
+           
+            <div>
+              <div class="full-po mt-5" *ngIf="UserData && UserData.measurement2">
+                <div class="one">
+                    <img src="assets/images/{{UserData.measurement2.Unconditional_dependability < 58 ? 'full-red-red' : (UserData.measurement2.Unconditional_dependability >= 58 && UserData.measurement2.Unconditional_dependability <= 62.5) ? 'full-red-yellow': (UserData.measurement2.Unconditional_dependability > 62.5 && UserData.measurement2.Unconditional_dependability <= 66.6) ? 'full-yellow-red': (UserData.measurement2.Unconditional_dependability > 66.6 && UserData.measurement2.Unconditional_dependability <= 70.5) ? 'full-yellow-yellow' : (UserData.measurement2.Unconditional_dependability > 70.5 && UserData.measurement2.Unconditional_dependability <= 74.9) ? 'full-yellow-green': (UserData.measurement2.Unconditional_dependability >= 75 && UserData.measurement2.Unconditional_dependability <= 79.9) ? 'full-green-yellow' : (UserData.measurement2.Unconditional_dependability > 79.9 && UserData.measurement2.Unconditional_dependability <= 84.9) ? 'full-green-green' : (UserData.measurement2.Unconditional_dependability >= 85 && UserData.measurement2.Unconditional_dependability <= 89.9) ? 'full-green-purble' : (UserData.measurement2.Unconditional_dependability >= 90 && UserData.measurement2.Unconditional_dependability <= 92.9) ? 'full-purble-green' : UserData.measurement2.Unconditional_dependability > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                    <p [ngClass]="{'text-black': UserData.measurement2.Unconditional_dependability >= 62.5 && UserData.measurement2.Unconditional_dependability < 75}">Unconditional dependability <br> ({{UserData.measurement2.Unconditional_dependability | number:'0.0-1'}})</p>
+                </div>
+                <div class="two">
+                  <img src="assets/images/{{UserData.measurement2.Disciplined_investment_in_SSOB < 58 ? 'full-red-red' : (UserData.measurement2.Disciplined_investment_in_SSOB >= 58 && UserData.measurement2.Disciplined_investment_in_SSOB <= 62.5) ? 'full-red-yellow': (UserData.measurement2.Disciplined_investment_in_SSOB > 62.5 && UserData.measurement2.Disciplined_investment_in_SSOB <= 66.6) ? 'full-yellow-red': (UserData.measurement2.Disciplined_investment_in_SSOB > 66.6 && UserData.measurement2.Disciplined_investment_in_SSOB <= 70.5) ? 'full-yellow-yellow' : (UserData.measurement2.Disciplined_investment_in_SSOB > 70.5 && UserData.measurement2.Disciplined_investment_in_SSOB <= 74.9) ? 'full-yellow-green': (UserData.measurement2.Disciplined_investment_in_SSOB >= 75 && UserData.measurement2.Disciplined_investment_in_SSOB <= 79.9) ? 'full-green-yellow' : (UserData.measurement2.Disciplined_investment_in_SSOB > 79.9 && UserData.measurement2.Disciplined_investment_in_SSOB <= 84.9) ? 'full-green-green' : (UserData.measurement2.Disciplined_investment_in_SSOB >= 85 && UserData.measurement2.Disciplined_investment_in_SSOB <= 89.9) ? 'full-green-purble' : (UserData.measurement2.Disciplined_investment_in_SSOB >= 90 && UserData.measurement2.Disciplined_investment_in_SSOB <= 92.9) ? 'full-purble-green' : UserData.measurement2.Disciplined_investment_in_SSOB > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                  <p [ngClass]="{'text-black': UserData.measurement2.Disciplined_investment_in_SSOB >= 62.5 && UserData.measurement2.Disciplined_investment_in_SSOB < 75}">Disciplined investment in shared standards of Being <br> ({{UserData.measurement2.Disciplined_investment_in_SSOB | number:'0.0-1'}})</p>
+              </div>
+              <div class="three">
+                <img src="assets/images/{{UserData.measurement2.Embody_a_meaningful_purpose < 58 ? 'full-red-red' : (UserData.measurement2.Embody_a_meaningful_purpose >= 58 && UserData.measurement2.Embody_a_meaningful_purpose <= 62.5) ? 'full-red-yellow': (UserData.measurement2.Embody_a_meaningful_purpose > 62.5 && UserData.measurement2.Embody_a_meaningful_purpose <= 66.6) ? 'full-yellow-red': (UserData.measurement2.Embody_a_meaningful_purpose > 66.6 && UserData.measurement2.Embody_a_meaningful_purpose <= 70.5) ? 'full-yellow-yellow' : (UserData.measurement2.Embody_a_meaningful_purpose > 70.5 && UserData.measurement2.Embody_a_meaningful_purpose <= 74.9) ? 'full-yellow-green': (UserData.measurement2.Embody_a_meaningful_purpose >= 75 && UserData.measurement2.Embody_a_meaningful_purpose <= 79.9) ? 'full-green-yellow' : (UserData.measurement2.Embody_a_meaningful_purpose > 79.9 && UserData.measurement2.Embody_a_meaningful_purpose <= 84.9) ? 'full-green-green' : (UserData.measurement2.Embody_a_meaningful_purpose >= 85 && UserData.measurement2.Embody_a_meaningful_purpose <= 89.9) ? 'full-green-purble' : (UserData.measurement2.Embody_a_meaningful_purpose >= 90 && UserData.measurement2.Embody_a_meaningful_purpose <= 92.9) ? 'full-purble-green' : UserData.measurement2.Embody_a_meaningful_purpose > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                <p [ngClass]="{'text-black': UserData.measurement2.Embody_a_meaningful_purpose >= 62.5 && UserData.measurement2.Embody_a_meaningful_purpose < 75}">Collectively embody a meaningful purpose <br> ({{UserData.measurement2.Embody_a_meaningful_purpose | number:'0.0-1'}})</p>
+               </div>
+               
+                <div class="four">
+                  <img src="assets/images/{{UserData.measurement2.Opportunity_seeking < 58 ? 'full-red-red' : (UserData.measurement2.Opportunity_seeking >= 58 && UserData.measurement2.Opportunity_seeking <= 62.5) ? 'full-red-yellow': (UserData.measurement2.Opportunity_seeking > 62.5 && UserData.measurement2.Opportunity_seeking <= 66.6) ? 'full-yellow-red': (UserData.measurement2.Opportunity_seeking > 66.6 && UserData.measurement2.Opportunity_seeking <= 70.5) ? 'full-yellow-yellow' : (UserData.measurement2.Opportunity_seeking > 70.5 && UserData.measurement2.Opportunity_seeking <= 74.9) ? 'full-yellow-green': (UserData.measurement2.Opportunity_seeking >= 75 && UserData.measurement2.Opportunity_seeking <= 79.9) ? 'full-green-yellow' : (UserData.measurement2.Opportunity_seeking > 79.9 && UserData.measurement2.Opportunity_seeking <= 84.9) ? 'full-green-green' : (UserData.measurement2.Opportunity_seeking >= 85 && UserData.measurement2.Opportunity_seeking <= 89.9) ? 'full-green-purble' : (UserData.measurement2.Opportunity_seeking >= 90 && UserData.measurement2.Opportunity_seeking <= 92.9) ? 'full-purble-green' : UserData.measurement2.Opportunity_seeking > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                    <p [ngClass]="{'text-black': UserData.measurement2.Opportunity_seeking >= 62.5 && UserData.measurement2.Opportunity_seeking < 75}">Opportunity seeking vs Problem solving <br> ({{UserData.measurement2.Opportunity_seeking | number:'0.0-1'}})</p>
+                </div>
+                <div class="five">
+                  <img src="assets/images/{{UserData.measurement2.Help_each_other_shine < 58 ? 'full-red-red' : (UserData.measurement2.Help_each_other_shine >= 58 && UserData.measurement2.Help_each_other_shine <= 62.5) ? 'full-red-yellow': (UserData.measurement2.Help_each_other_shine > 62.5 && UserData.measurement2.Help_each_other_shine <= 66.6) ? 'full-yellow-red': (UserData.measurement2.Help_each_other_shine > 66.6 && UserData.measurement2.Help_each_other_shine <= 70.5) ? 'full-yellow-yellow' : (UserData.measurement2.Help_each_other_shine > 70.5 && UserData.measurement2.Help_each_other_shine <= 74.9) ? 'full-yellow-green': (UserData.measurement2.Help_each_other_shine >= 75 && UserData.measurement2.Help_each_other_shine <= 79.9) ? 'full-green-yellow' : (UserData.measurement2.Help_each_other_shine > 79.9 && UserData.measurement2.Help_each_other_shine <= 84.9) ? 'full-green-green' : (UserData.measurement2.Help_each_other_shine >= 85 && UserData.measurement2.Help_each_other_shine <= 89.9) ? 'full-green-purble' : (UserData.measurement2.Help_each_other_shine >= 90 && UserData.measurement2.Help_each_other_shine <= 92.9) ? 'full-purble-green' : UserData.measurement2.Help_each_other_shine > 92.9 ? 'full-purble-purble' : 'full-purble-purble'}}.png" />
+                  <p [ngClass]="{'text-black': UserData.measurement2.Help_each_other_shine >= 62.5 && UserData.measurement2.Help_each_other_shine < 75}">Help each other shine in their wholeness <br> ({{UserData.measurement2.Help_each_other_shine | number:'0.0-1'}})</p>
+              </div>
+               <div class="six">
+                  <h4>Full Potential Team Measures</h4>
+               </div>
+               
+              </div>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Maturity index">
+    <ng-template ngbTabContent>
+      <div class="row mt-20">
+        <div class="col-md-12 mb-5">
+          <div class="maturity-index">
+            <div class="five-box-gradient">
+              <div>
+                <div [ngStyle]="{'width': five1 + '%'}">
+                </div>
+                <div [ngStyle]="{'width': five2 + '%'}">
+                </div>
+              </div>
+            </div>
+            <div class="five_box">
+              <div class="box red">
+  
+                <h4>Physical</h4>
+                <p>Fear based consciousness</p>
+              </div>
+              <div class="box orange">
+  
+                <h4>Emotional</h4>
+                <p>Feel good-basedconsciousness </p>
+              </div>
+              <div class="box yellow">
+  
+                <h4>Mental</h4>
+                <p>Reason-based consciousness</p>
+              </div>
+              <div class="box blue">
+  
+                <h4>Awareness</h4>
+                <p>Wisdom-based consciousness</p>
+              </div>
+              <div class="box purple">
+  
+                <h4>Bliss</h4>
+                <p>Service-based consciousness</p>
+              </div>
+            </div>
+            <div class="five-box-gradient bottom">
+              <div>
+                <div class="text-right" [ngStyle]="{'width': five1 + '%'}">
+                  <i class="fa fa-long-arrow-up"></i>
+                </div>
+                <div [ngStyle]="{'width': five2 + '%'}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="maturity-index">
+            <div class="five-box-gradient">
+              <div>
+                <div [ngStyle]="{'width': five3 + '%'}">
+                </div>
+                <div [ngStyle]="{'width': five4 + '%'}">
+                </div>
+              </div>
+            </div>
+            <div class="five_box">
+              <div class="box red">
+  
+                <h4>Physical</h4>
+                <p>Fear based consciousness</p>
+              </div>
+              <div class="box orange">
+  
+                <h4>Emotional</h4>
+                <p>Feel good-basedconsciousness </p>
+              </div>
+              <div class="box yellow">
+  
+                <h4>Mental</h4>
+                <p>Reason-based consciousness</p>
+              </div>
+              <div class="box blue">
+  
+                <h4>Awareness</h4>
+                <p>Wisdom-based consciousness</p>
+              </div>
+              <div class="box purple">
+  
+                <h4>Bliss</h4>
+                <p>Service-based consciousness</p>
+              </div>
+            </div>
+            <div class="five-box-gradient bottom">
+              <div>
+                <div class="text-right" [ngStyle]="{'width': five3 + '%'}">
+                  <i class="fa fa-long-arrow-up"></i>
+                </div>
+                <div [ngStyle]="{'width': five4 + '%'}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Heart measures">
+    <ng-template ngbTabContent>
+      <div class="row mt-20">
+        <div class="d-flex heart_measure_flex" *ngIf="show">
+          <div class="heart_measure_diagram" *ngIf="UserData?.heartinbussiness1?.overall_hp_score;  else elseBlock1" [ngClass]="UserData?.heartinbussiness1?.overall_hp_score < 62.5 ? 'red_background': UserData?.heartinbussiness1?.overall_hp_score >= 62.5 && UserData?.heartinbussiness1?.overall_hp_score < 75? 'yellow_background': UserData?.heartinbussiness1?.overall_hp_score >= 75 && UserData?.heartinbussiness1?.overall_hp_score < 90 ? 'green_background':'purple_background'">
+            <div class="heart_measure_img_wrapper" [ngClass]="UserData?.heartinbussiness1?.overall_hp_score < 62.5 ? 'red_bg': UserData?.heartinbussiness1?.overall_hp_score >= 62.5 && UserData?.heartinbussiness1?.overall_hp_score < 75? 'yellow_bg': UserData?.heartinbussiness1?.overall_hp_score >= 75 && UserData?.heartinbussiness1?.overall_hp_score < 90 ? 'green_bg':'purple_bg'">
+              <p  class="three_heart_name heart_name_individual">Conscious Individual</p>
+              <p  class="three_heart_name heart_name_org">Conscious Organisation</p>
+              <p  class="three_heart_name heart_name_habit">Habits</p>
+              <div class="heart_circle alignment_to_individual_purpose" [ngClass]="UserData?.heartinbussiness1?.individual_alignment_purpose < 62.5 ? 'red': UserData?.heartinbussiness1?.individual_alignment_purpose >= 62.5 && UserData?.heartinbussiness1?.individual_alignment_purpose < 75? 'yellow': UserData?.heartinbussiness1?.individual_alignment_purpose >= 75 && UserData?.heartinbussiness1?.individual_alignment_purpose < 90 ? 'green':'purple'">
+                <p>Alignment to individual purpose</p>
+                <p>{{UserData?.heartinbussiness1?.individual_alignment_purpose | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle clear_individual_purpose" [ngClass]="UserData?.heartinbussiness1?.clear_personal_purpose < 62.5 ? 'red': UserData?.heartinbussiness1?.clear_personal_purpose >= 62.5 && UserData?.heartinbussiness1?.clear_personal_purpose < 75? 'yellow': UserData?.heartinbussiness1?.clear_personal_purpose >= 75 && UserData?.heartinbussiness1?.clear_personal_purpose < 90 ? 'green':'purple'">
+                <p>Clear individual purpose</p>
+                <p>{{UserData?.heartinbussiness1?.clear_personal_purpose | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle individual_alignment_to_organisational_purpose" [ngClass]="UserData?.heartinbussiness1?.individual_alignment_ORG_purpose < 62.5 ? 'red': UserData?.heartinbussiness1?.individual_alignment_ORG_purpose >= 62.5 && UserData?.heartinbussiness1?.individual_alignment_ORG_purpose < 75? 'yellow': UserData?.heartinbussiness1?.individual_alignment_ORG_purpose >= 75 && UserData?.heartinbussiness1?.individual_alignment_ORG_purpose < 90 ? 'green':'purple'">
+                <p>Individual alignment to organisational purpose </p>
+                <p>{{UserData?.heartinbussiness1?.individual_alignment_ORG_purpose | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle clear_organisational_purpose" [ngClass]="UserData?.heartinbussiness1?.clear_org_purpose < 62.5 ? 'red': UserData?.heartinbussiness1?.clear_org_purpose >= 62.5 && UserData?.heartinbussiness1?.clear_org_purpose < 75? 'yellow': UserData?.heartinbussiness1?.clear_org_purpose >= 75 && UserData?.heartinbussiness1?.clear_org_purpose < 90 ? 'green':'purple'">
+                <p>Clear organisational purpose </p>
+                <p>{{UserData?.heartinbussiness1?.clear_org_purpose | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle psychological_safety" [ngClass]="UserData?.heartinbussiness1?.psychological_safety < 62.5 ? 'red': UserData?.heartinbussiness1?.psychological_safety >= 62.5 && UserData?.heartinbussiness1?.psychological_safety < 75? 'yellow': UserData?.heartinbussiness1?.psychological_safety >= 75 && UserData?.heartinbussiness1?.psychological_safety < 90 ? 'green':'purple'">
+                <p>Psychological safety</p>
+                <p>{{UserData?.heartinbussiness1?.psychological_safety | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle alignment_to_organisational_purpose" [ngClass]="UserData?.heartinbussiness1?.org_alignment_purpose < 62.5 ? 'red': UserData?.heartinbussiness1?.org_alignment_purpose >= 62.5 && UserData?.heartinbussiness1?.org_alignment_purpose < 75? 'yellow': UserData?.heartinbussiness1?.org_alignment_purpose >= 75 && UserData?.heartinbussiness1?.org_alignment_purpose < 90 ? 'green':'purple'">
+                <p>Alignment to organisational purpose</p>
+                <p>{{UserData?.heartinbussiness1?.org_alignment_purpose | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle trust" [ngClass]="UserData?.heartinbussiness1?.trust < 62.5 ? 'red': UserData?.heartinbussiness1?.trust >= 62.5 && UserData?.heartinbussiness1?.trust < 75? 'yellow': UserData?.heartinbussiness1?.trust >= 75 && UserData?.heartinbussiness1?.trust < 90 ? 'green':'purple'">
+                <p>Trust</p>
+                <p>{{UserData?.heartinbussiness1?.trust | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle authenticity" [ngClass]="UserData?.heartinbussiness1?.authenticity < 62.5 ? 'red': UserData?.heartinbussiness1?.authenticity >= 62.5 && UserData?.heartinbussiness1?.authenticity < 75? 'yellow': UserData?.heartinbussiness1?.authenticity >= 75 && UserData?.heartinbussiness1?.authenticity < 90 ? 'green':'purple'">
+                <p>Authenticity</p>
+                <p>{{UserData?.heartinbussiness1?.authenticity | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle principles_and_values_that_support_meaningful_purpose" [ngClass]="UserData?.heartinbussiness1?.principles_values < 62.5 ? 'red': UserData?.heartinbussiness1?.principles_values >= 62.5 && UserData?.heartinbussiness1?.principles_values < 75? 'yellow': UserData?.heartinbussiness1?.principles_values >= 75 && UserData?.heartinbussiness1?.principles_values < 90 ? 'green':'purple'">
+                <p>Principles and values that support meaningful purpose</p>
+                <p>{{UserData?.heartinbussiness1?.principles_values | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle giving_appreciation_daily" [ngClass]="UserData?.heartinbussiness1?.giving_appreciation_daily < 62.5 ? 'red': UserData?.heartinbussiness1?.giving_appreciation_daily >= 62.5 && UserData?.heartinbussiness1?.giving_appreciation_daily < 75? 'yellow': UserData?.heartinbussiness1?.giving_appreciation_daily >= 75 && UserData?.heartinbussiness1?.giving_appreciation_daily < 90 ? 'green':'purple'">
+                <p>Giving appreciation daily</p>
+                <p>{{UserData?.heartinbussiness1?.giving_appreciation_daily | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle being_on_the_pitch_and_not_in_the_stands" [ngClass]="UserData?.heartinbussiness1?.pitch_vs_stands < 62.5 ? 'red': UserData?.heartinbussiness1?.pitch_vs_stands >= 62.5 && UserData?.heartinbussiness1?.pitch_vs_stands < 75? 'yellow': UserData?.heartinbussiness1?.pitch_vs_stands >= 75 && UserData?.heartinbussiness1?.pitch_vs_stands < 90 ? 'green':'purple'">
+                <p>Being on the pitch and not in the stands</p>
+                <p>{{UserData?.heartinbussiness1?.pitch_vs_stands | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle pausing_and_reflecting" [ngClass]="UserData?.heartinbussiness1?.pausing_reflecting < 62.5 ? 'red': UserData?.heartinbussiness1?.pausing_reflecting >= 62.5 && UserData?.heartinbussiness1?.pausing_reflecting < 75? 'yellow': UserData?.heartinbussiness1?.pausing_reflecting >= 75 && UserData?.heartinbussiness1?.pausing_reflecting < 90 ? 'green':'purple'">
+                <p>Pausing and reflecting</p>
+                <p>{{UserData?.heartinbussiness1?.pausing_reflecting | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle active_listening" [ngClass]="UserData?.heartinbussiness1?.active_listening < 62.5 ? 'red': UserData?.heartinbussiness1?.active_listening >= 62.5 && UserData?.heartinbussiness1?.active_listening < 75? 'yellow': UserData?.heartinbussiness1?.active_listening >= 75 && UserData?.heartinbussiness1?.active_listening < 90 ? 'green':'purple'">
+                <p>Active listening</p>
+                <p>{{UserData?.heartinbussiness1?.active_listening | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle being_in_flow_and_having_fun" [ngClass]="UserData?.heartinbussiness1?.being_flow_having_fun < 62.5 ? 'red': UserData?.heartinbussiness1?.being_flow_having_fun >= 62.5 && UserData?.heartinbussiness1?.being_flow_having_fun < 75? 'yellow': UserData?.heartinbussiness1?.being_flow_having_fun >= 75 && UserData?.heartinbussiness1?.being_flow_having_fun < 90 ? 'green':'purple'">
+                <p>Being in flow and having fun</p>
+                <p>{{UserData?.heartinbussiness1?.being_flow_having_fun | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle giving_and_receiving_coaching" [ngClass]="UserData?.heartinbussiness1?.giving_receiving_coaching < 62.5 ? 'red': UserData?.heartinbussiness1?.giving_receiving_coaching >= 62.5 && UserData?.heartinbussiness1?.giving_receiving_coaching < 75? 'yellow': UserData?.heartinbussiness1?.giving_receiving_coaching >= 75 && UserData?.heartinbussiness1?.giving_receiving_coaching < 90 ? 'green':'purple'">
+                <p>Giving and receiving coaching</p>
+                <p>{{UserData?.heartinbussiness1?.giving_receiving_coaching | number:'1.0-0'}}</p>
+              </div>
+              <div class="overall_score">
+                <p>Win-Win 
+                  Culture</p>
+                  <p>{{UserData?.heartinbussiness1?.overall_hp_score}}</p>
+              </div>
+            </div>
+          </div>
+          <ng-template #elseBlock1>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+          <div class="heart_measure_diagram" *ngIf="UserData?.heartinbussiness2?.overall_hp_score;  else elseBlock" [ngClass]="UserData?.heartinbussiness2?.overall_hp_score < 62.5 ? 'red_background': UserData?.heartinbussiness2?.overall_hp_score >= 62.5 && UserData?.heartinbussiness2?.overall_hp_score < 75? 'yellow_background': UserData?.heartinbussiness2?.overall_hp_score >= 75 && UserData?.heartinbussiness2?.overall_hp_score < 90 ? 'green_background':'purple_background'">
+            <div class="heart_measure_img_wrapper" [ngClass]="UserData?.heartinbussiness2?.overall_hp_score < 62.5 ? 'red_bg': UserData?.heartinbussiness2?.overall_hp_score >= 62.5 && UserData?.heartinbussiness2?.overall_hp_score < 75? 'yellow_bg': UserData?.heartinbussiness2?.overall_hp_score >= 75 && UserData?.heartinbussiness2?.overall_hp_score < 90 ? 'green_bg':'purple_bg'">
+              <p  class="three_heart_name heart_name_individual">Conscious Individual</p>
+              <p  class="three_heart_name heart_name_org">Conscious Organisation</p>
+              <p  class="three_heart_name heart_name_habit">Habits</p>
+              <div class="heart_circle alignment_to_individual_purpose" [ngClass]="UserData?.heartinbussiness2?.individual_alignment_purpose < 62.5 ? 'red': UserData?.heartinbussiness2?.individual_alignment_purpose >= 62.5 && UserData?.heartinbussiness2?.individual_alignment_purpose < 75? 'yellow': UserData?.heartinbussiness2?.individual_alignment_purpose >= 75 && UserData?.heartinbussiness2?.individual_alignment_purpose < 90 ? 'green':'purple'">
+                <p>Alignment to individual purpose</p>
+                <p>{{UserData?.heartinbussiness2?.individual_alignment_purpose | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle clear_individual_purpose" [ngClass]="UserData?.heartinbussiness2?.clear_personal_purpose < 62.5 ? 'red': UserData?.heartinbussiness2?.clear_personal_purpose >= 62.5 && UserData?.heartinbussiness2?.clear_personal_purpose < 75? 'yellow': UserData?.heartinbussiness2?.clear_personal_purpose >= 75 && UserData?.heartinbussiness2?.clear_personal_purpose < 90 ? 'green':'purple'">
+                <p>Clear individual purpose</p>
+                <p>{{UserData?.heartinbussiness2?.clear_personal_purpose | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle individual_alignment_to_organisational_purpose" [ngClass]="UserData?.heartinbussiness2?.individual_alignment_ORG_purpose < 62.5 ? 'red': UserData?.heartinbussiness2?.individual_alignment_ORG_purpose >= 62.5 && UserData?.heartinbussiness2?.individual_alignment_ORG_purpose < 75? 'yellow': UserData?.heartinbussiness2?.individual_alignment_ORG_purpose >= 75 && UserData?.heartinbussiness2?.individual_alignment_ORG_purpose < 90 ? 'green':'purple'">
+                <p>Individual alignment to organisational purpose </p>
+                <p>{{UserData?.heartinbussiness2?.individual_alignment_ORG_purpose | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle clear_organisational_purpose" [ngClass]="UserData?.heartinbussiness2?.clear_org_purpose < 62.5 ? 'red': UserData?.heartinbussiness2?.clear_org_purpose >= 62.5 && UserData?.heartinbussiness2?.clear_org_purpose < 75? 'yellow': UserData?.heartinbussiness2?.clear_org_purpose >= 75 && UserData?.heartinbussiness2?.clear_org_purpose < 90 ? 'green':'purple'">
+                <p>Clear organisational purpose </p>
+                <p>{{UserData?.heartinbussiness2?.clear_org_purpose | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle psychological_safety" [ngClass]="UserData?.heartinbussiness2?.psychological_safety < 62.5 ? 'red': UserData?.heartinbussiness2?.psychological_safety >= 62.5 && UserData?.heartinbussiness2?.psychological_safety < 75? 'yellow': UserData?.heartinbussiness2?.psychological_safety >= 75 && UserData?.heartinbussiness2?.psychological_safety < 90 ? 'green':'purple'">
+                <p>Psychological safety</p>
+                <p>{{UserData?.heartinbussiness2?.psychological_safety | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle alignment_to_organisational_purpose" [ngClass]="UserData?.heartinbussiness2?.org_alignment_purpose < 62.5 ? 'red': UserData?.heartinbussiness2?.org_alignment_purpose >= 62.5 && UserData?.heartinbussiness2?.org_alignment_purpose < 75? 'yellow': UserData?.heartinbussiness2?.org_alignment_purpose >= 75 && UserData?.heartinbussiness2?.org_alignment_purpose < 90 ? 'green':'purple'">
+                <p>Alignment to organisational purpose</p>
+                <p>{{UserData?.heartinbussiness2?.org_alignment_purpose | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle trust" [ngClass]="UserData?.heartinbussiness2?.trust < 62.5 ? 'red': UserData?.heartinbussiness2?.trust >= 62.5 && UserData?.heartinbussiness2?.trust < 75? 'yellow': UserData?.heartinbussiness2?.trust >= 75 && UserData?.heartinbussiness2?.trust < 90 ? 'green':'purple'">
+                <p>Trust</p>
+                <p>{{UserData?.heartinbussiness2?.trust | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle authenticity" [ngClass]="UserData?.heartinbussiness2?.authenticity < 62.5 ? 'red': UserData?.heartinbussiness2?.authenticity >= 62.5 && UserData?.heartinbussiness2?.authenticity < 75? 'yellow': UserData?.heartinbussiness2?.authenticity >= 75 && UserData?.heartinbussiness2?.authenticity < 90 ? 'green':'purple'">
+                <p>Authenticity</p>
+                <p>{{UserData?.heartinbussiness2?.authenticity | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle principles_and_values_that_support_meaningful_purpose" [ngClass]="UserData?.heartinbussiness2?.principles_values < 62.5 ? 'red': UserData?.heartinbussiness2?.principles_values >= 62.5 && UserData?.heartinbussiness2?.principles_values < 75? 'yellow': UserData?.heartinbussiness2?.principles_values >= 75 && UserData?.heartinbussiness2?.principles_values < 90 ? 'green':'purple'">
+                <p>Principles and values that support meaningful purpose</p>
+                <p>{{UserData?.heartinbussiness2?.principles_values | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle giving_appreciation_daily" [ngClass]="UserData?.heartinbussiness2?.giving_appreciation_daily < 62.5 ? 'red': UserData?.heartinbussiness2?.giving_appreciation_daily >= 62.5 && UserData?.heartinbussiness2?.giving_appreciation_daily < 75? 'yellow': UserData?.heartinbussiness2?.giving_appreciation_daily >= 75 && UserData?.heartinbussiness2?.giving_appreciation_daily < 90 ? 'green':'purple'">
+                <p>Giving appreciation daily</p>
+                <p>{{UserData?.heartinbussiness2?.giving_appreciation_daily | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle being_on_the_pitch_and_not_in_the_stands" [ngClass]="UserData?.heartinbussiness2?.pitch_vs_stands < 62.5 ? 'red': UserData?.heartinbussiness2?.pitch_vs_stands >= 62.5 && UserData?.heartinbussiness2?.pitch_vs_stands < 75? 'yellow': UserData?.heartinbussiness2?.pitch_vs_stands >= 75 && UserData?.heartinbussiness2?.pitch_vs_stands < 90 ? 'green':'purple'">
+                <p>Being on the pitch and not in the stands</p>
+                <p>{{UserData?.heartinbussiness2?.pitch_vs_stands | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle pausing_and_reflecting" [ngClass]="UserData?.heartinbussiness2?.pausing_reflecting < 62.5 ? 'red': UserData?.heartinbussiness2?.pausing_reflecting >= 62.5 && UserData?.heartinbussiness2?.pausing_reflecting < 75? 'yellow': UserData?.heartinbussiness2?.pausing_reflecting >= 75 && UserData?.heartinbussiness2?.pausing_reflecting < 90 ? 'green':'purple'">
+                <p>Pausing and reflecting</p>
+                <p>{{UserData?.heartinbussiness2?.pausing_reflecting | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle active_listening" [ngClass]="UserData?.heartinbussiness2?.active_listening < 62.5 ? 'red': UserData?.heartinbussiness2?.active_listening >= 62.5 && UserData?.heartinbussiness2?.active_listening < 75? 'yellow': UserData?.heartinbussiness2?.active_listening >= 75 && UserData?.heartinbussiness2?.active_listening < 90 ? 'green':'purple'">
+                <p>Active listening</p>
+                <p>{{UserData?.heartinbussiness2?.active_listening | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle being_in_flow_and_having_fun" [ngClass]="UserData?.heartinbussiness2?.being_flow_having_fun < 62.5 ? 'red': UserData?.heartinbussiness2?.being_flow_having_fun >= 62.5 && UserData?.heartinbussiness2?.being_flow_having_fun < 75? 'yellow': UserData?.heartinbussiness2?.being_flow_having_fun >= 75 && UserData?.heartinbussiness2?.being_flow_having_fun < 90 ? 'green':'purple'">
+                <p>Being in flow and having fun</p>
+                <p>{{UserData?.heartinbussiness2?.being_flow_having_fun | number:'1.0-0'}}</p>
+              </div>
+              <div class="heart_circle giving_and_receiving_coaching" [ngClass]="UserData?.heartinbussiness2?.giving_receiving_coaching < 62.5 ? 'red': UserData?.heartinbussiness2?.giving_receiving_coaching >= 62.5 && UserData?.heartinbussiness2?.giving_receiving_coaching < 75? 'yellow': UserData?.heartinbussiness2?.giving_receiving_coaching >= 75 && UserData?.heartinbussiness2?.giving_receiving_coaching < 90 ? 'green':'purple'">
+                <p>Giving and receiving coaching</p>
+                <p>{{UserData?.heartinbussiness2?.giving_receiving_coaching | number:'1.0-0'}}</p>
+              </div>
+              <div class="overall_score">
+                <p>Win-Win 
+                  Culture</p>
+                  <p>{{UserData?.heartinbussiness2?.overall_hp_score}}</p>
+              </div>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <p class="text-center"> Record not found</p>
+          </ng-template>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
+<!-- Loading -->
+<div class="loader" *ngIf="loading">
+  <div class="loader_wrapper">
+    <img src="./assets/images/loader.gif">
+  </div>
+</div>

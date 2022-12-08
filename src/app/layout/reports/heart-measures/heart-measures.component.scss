@@ -1,0 +1,170 @@
+.heart_measure_img_wrapper{
+    width:785px;
+    height: 775px;
+    background-repeat: no-repeat;
+    background-size:785px 775px;
+    position: relative;
+    margin:0px auto;
+    .three_heart_name{
+        margin:0px;
+        font-size: 15px;
+        line-height: normal;
+        color:#394C6D;
+    }
+    .heart_name_individual{
+        position: absolute;
+        top: 61px;
+        left: 137px;
+    }
+    .heart_name_org{
+        position: absolute;
+        top: 61px;
+        right: 109px;
+    }
+    .heart_name_habit{
+        position: absolute;
+        bottom: 98px;
+        left: 50%;
+    }
+    .heart_circle{
+        width:72px;
+        height: 72px;
+        border-radius: 100%;
+        border:2px solid #ccc;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: absolute;
+        p{
+            margin:0px;
+            font-size: 8px;
+            line-height: normal;
+            flex-basis: 100%;
+            text-align: center;
+            word-break: break-word;
+            white-space: break-spaces;
+        }
+    }
+    .alignment_to_individual_purpose {
+        top: 135px;
+        left: 232px;
+    }
+    .clear_individual_purpose{
+        top: 212px;
+        left: 175px;
+    }
+    .individual_alignment_to_organisational_purpose {
+    
+        top: 197px;
+        left: 365px;
+    }
+    .psychological_safety {
+        top: 116px;
+        right: 155px;
+    }
+    .clear_organisational_purpose{
+        top: 197px;
+        right: 237px;
+    }
+    .alignment_to_organisational_purpose{
+        top: 207px;
+        right: 125px;
+    }
+    .trust{
+        top: 277px;
+        right: 178px;
+    }
+    .authenticity{
+        top: 329px;
+        left:  277px;
+    }
+    .principles_and_values_that_support_meaningful_purpose{
+        top: 329px;
+        right: 256px;
+        padding:10px;
+    }
+    .giving_appreciation_daily{
+        bottom: 297px;
+        left: 289px;
+    }
+    .being_on_the_pitch_and_not_in_the_stands{
+        bottom: 297px;
+        left: 367px;
+    }
+    .pausing_and_reflecting{
+        bottom: 297px;
+        right: 266px;
+    }
+    .active_listening {
+        bottom: 214px;
+        left: 314px;
+    }
+    .being_in_flow_and_having_fun{
+        bottom: 214px;
+        right: 314px;
+    }
+    .giving_and_receiving_coaching {
+        left: 380px;
+        bottom: 139px;
+    }
+    .red{
+        border:3px solid #FD0201;
+        background: rgba(255, 222, 222, 0.58);
+    }
+    .yellow{
+        background: #FDFAE7;
+        border: 3px solid #FDE32F;
+    }
+    .green{
+        background: #E5EEE8;
+        border: 3px solid #2B9349;
+    }
+    .purple{
+        background: rgba(247, 217, 255, 0.58);
+        border: 3px solid #C54DE6;
+    }
+    .overall_score {
+        position: absolute;
+        top: 300px;
+        left: 352px;
+        text-align: center;
+        p  {
+            margin:0px;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 14px;
+            line-height: 16px;
+        }
+    }
+}
+.red_bg{
+    background-image: url('../../../../assets/images/heart_measures_red.png');
+}
+.yellow_bg{
+    background-image: url('../../../../assets/images/heart_measures_yellow.png');
+}
+.green_bg{
+    background-image: url('../../../../assets/images/heart_measures_green.png');
+}
+.purple_bg{
+    background-image: url('../../../../assets/images/heart_measures_purple.png');
+}
+.heart_measure_diagram{
+    background-color: #fff;
+    padding:10px;
+    text-align: center;
+    width:100%;
+}
+.red_background{
+    background:#fd020126;
+}
+.yellow_background{
+    background: #FDFAE7;
+}
+.green_background{
+    background: #E5EEE8;
+}
+.purple_background{
+    background: rgba(247, 217, 255, 0.58);
+}

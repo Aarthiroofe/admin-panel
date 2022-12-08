@@ -1,0 +1,143 @@
+
+.report_pdf {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: #0000008c;
+    .report_pdf_wrapper{
+        position: absolute;
+        top:50%;
+        left:50%;
+        width:700px;
+        height: auto;
+        background-color: #fdfdfd;
+        transform: translate(-50%,-50%);
+        .report_title{
+            background-color: #fff;
+            padding:10px;
+            border-bottom: 1px solid #0080d8;
+            .close_report_pdf{
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                width: 24px;
+                height: 24px;
+                text-align: center;
+            }
+        }
+        .report_body{
+            padding:0px 15px;
+            margin-bottom:30px;
+            height:550px;
+            overflow-y: scroll;
+            .report_page{ 
+                background-color: #fdfdfd;
+                padding:0px 35px 35px 35px;
+                min-height: 842px;
+                margin-bottom: 15px;
+                box-shadow: 1px 1px 10px 0px #00000080;
+                .report_peage_header {
+                    background-color: #0080d8;
+                    padding-left: 20px;
+                    margin-bottom: 30px;
+                    min-width: 653px;
+                    position: relative;
+                    left: -35px;
+                    img{
+                        width:115px;
+                    }
+                }
+                .content_title{
+                    background-color: #8ccf4e;
+                    display: inline-block;
+                    padding: 5px 25px;
+                    border-radius: 0px 5px 5px 0px;
+                    position: relative;
+                    left:-35px;
+                    margin-bottom:10px;
+                    h5{
+                        color:#fff;
+                        margin-bottom:0px;
+                    }
+                }
+                .report_content{
+                    .index{
+                        list-style: none;
+                        li{
+                            margin-bottom:10px;
+                            position: relative;
+                            ul{
+                                list-style: none;
+                                padding-left:30px;
+                                li{
+                                    font-size: 15px;;
+                                }
+                            }
+                        }
+                    }
+                    .inner_title{
+                        margin:10px 0px;
+                        p  {
+                            margin:0px;
+                            font-weight: bold;
+                        }
+                    }
+                    p{
+                        font-size: 15px;
+                    }
+                    ul{
+                        padding:0px;
+                        list-style:disc;
+                    }
+                    .four_box {
+                        display: flex;
+                        justify-content: space-between;
+                        .box{
+                            border-radius: 10px;
+                            flex-basis: 24%;
+                            display: flex;
+                            align-items: center;
+                            padding: 3px;
+                            text-align: justify;
+                            p {
+                                margin:0px;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.red{
+    background: #C0141E;
+}
+.yellow{
+    background: #FEEC34;
+}
+.green{
+    background: #78933B;
+}
+.purple{
+    background: #B1A2C1;
+}
+.index_number {
+    position: absolute;
+    right: 0;
+}
+table.dataTable{
+    overflow-x: scroll;
+}
+.zark_table {
+    overflow-x: scroll;
+    table{
+        overflow-x: scroll;
+    }
+    div#DataTables_Table_0_wrapper{
+        overflow-x: scroll !important;
+    }
+}

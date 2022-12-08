@@ -1,0 +1,130 @@
+
+.maturity-index {
+    max-width: 878px;
+    margin: 0 auto;
+}
+
+.red {
+    background: #fd0100;
+}
+
+.yellow {
+    background: #fde32f;
+}
+
+.green {
+    background: #2b9349;
+}
+
+.purple {
+    background: #c54de6;
+}
+
+.orange {
+    background-color: #fa851d;
+}
+
+.blue {
+    background: #57a1df;
+}
+
+
+.five-box-gradient {
+    height: 20px;
+    margin-bottom: 2px;
+    background: linear-gradient(45deg, #fd0100, #fa851d, #fde32f, #57a1df, #c54de6);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    position: relative;
+
+    &.bottom {
+        background: none;
+        height: 40px;
+
+        div {
+            i {
+                font-size: 30px;
+                color: #7f7f7f;
+                position: relative;
+                left: 7px;
+                z-index: 1;
+            }
+        }
+    }
+
+    >div {
+
+        position: absolute;
+        height: 100%;
+
+        top: 0;
+        left: 0;
+        width: 100%;
+        right: 0;
+        display: flex;
+
+        div {
+            &:first-child {
+                background: transparent;
+            }
+
+            &:last-child {
+                border-top-right-radius: 12px;
+                background: #fff;
+                opacity: 0.65;
+            }
+        }
+
+    }
+}
+
+.five_box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    .box {
+
+        text-align: center;
+        padding: 10px;
+        position: relative;
+
+        &:first-child {
+            border-bottom-left-radius: 12px;
+        }
+
+        &:last-child {
+            border-bottom-right-radius: 12px;
+        }
+
+        &.yellow {
+
+            h4,
+            p {
+                color: #1b1b1b !important;
+            }
+        }
+
+        h4 {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #ffff !important;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            font-size: 14px !important;
+            color: #ffff !important;
+            margin-bottom: 0px;
+            font-style: italic;
+            text-align: center !important;
+        }
+    }
+}
+
+.five_box .active .indication {
+    display: block;
+}

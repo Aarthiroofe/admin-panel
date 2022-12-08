@@ -1,0 +1,49 @@
+<div class="login-page">
+    <div class="d-flex justify-content-center login_bg_color align-items-center" style="height: 100%;">
+
+        <div class="col-lg-4 col-md-6 col-sm-8 col-xs-8 loginbox">
+            <div class="form-group text-center login_background">
+                <div class="login_img">
+                    <img src="assets/images/logo.gif">
+                </div>
+            </div>
+            <div class="login_box">
+                <form class="form-horizontal" role="form" name="LogInForm" #loginform="ngForm" novalidate autocomplete="off">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-md-3 col-sm-3 col-form-label">Email</label>
+                        <div class="col-lg-9 col-md-9 col-sm-9">
+                            <input type="text" [(ngModel)]="loginDetail.email" #username="ngModel"
+                            class="form-control input-underline input-lg" placeholder="Email" name="name"
+                             required>
+                            <div class="has_error" *ngIf="loginform.invalid && (username.dirty || username.touched)">
+                                <p *ngIf="username.errors?.required" class="text-danger">Email is required</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-lg-3 col-md-3 col-sm-3 col-form-label">Password</label>
+                        <div class="col-lg-9 col-md-9 col-sm-9">
+                            <input type="password"  class="form-control input-underline input-lg" #password="ngModel"
+                            placeholder="Password" name="password"  [(ngModel)]="loginDetail.password" autocomplete="off"
+                            required>
+                            <div class="has_error" *ngIf="loginform.invalid && (password.dirty || password.touched)">
+                                <p *ngIf="password.errors?.required" class="text-danger">Password is required</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" [disabled]="!loginform.form.valid" (click)="onLoggedin()" class="btn btn-lg fs-14 btn-primary btn-w ripple">
+                            <span>Login</span>
+                        </button>
+                    </div>
+                </form>    
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Loading -->
+<div class="loader" *ngIf="loading">
+    <div class="loader_wrapper">
+        <img src="./assets/images/loader.gif">
+    </div>
+</div>

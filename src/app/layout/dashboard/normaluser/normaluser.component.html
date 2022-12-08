@@ -1,0 +1,1336 @@
+<section class="report-section pt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-20">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="d-block d-md-flex justify-content-between align-items-center">
+              <h5 class="mb-2">Reports</h5>
+              <div>
+                <button class="btn btn-outline-primary mr-3" [routerLink]="['/dashboard']"
+                  routerLinkActive="router-link-active">Back to home</button>
+                <button class="btn btn-outline-primary" (click)="Download_pdf()" [disabled]='loading'>Download
+                  Report</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card p-4">
+          <div class="report_body" id="data" #data>
+            <div id="page_1">
+              <div class="report_page">
+                <div class="report_content cloud_image">
+                  <div class="main_content">
+                    <h5 class="text-left">HUMAN POTENTIAL ASSESSMENT OF</h5>
+                    <h1 class="text-left text-uppercase">{{UserData.username}}</h1>
+                    <small class="date text-left mb-5">{{UserData.currentdate}}</small>
+                    <p class="text-left"><b>Prepared by:</b></p>
+                    <a href="https://beingatfullpotential.com" class="text-left">https://beingatfullpotential.com</a>
+                  </div>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 1</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_2">
+              <div class="report_page">
+                <div class="content_title">
+                  <h5>TABLE OF CONTENT </h5>
+                </div>
+                <div class="report_content">
+                  <ul class="index">
+                    <li>1. EXECUTIVE SUMMARY <span class="index_number">03</span></li>
+                    <li>2. How to interpret the Human Potential report <span class="index_number">04</span></li>
+                    <li>3. Introduction to the Human Potential method <span class="index_number">05</span></li>
+                    <li>4. Introduction to the Human Potential model <span class="index_number">06</span></li>
+                    <li>5. Overview of ({{UserData.username}}) Human Potential<span class="index_number">07</span></li>
+                    <li>6. Detailed findings <span class="index_number">03</span>
+                      <ul>
+                        <li>Finding 1 : Most expressed & least expressed aspects of yourself <span
+                            class="index_number">08</span></li>
+                        <li>Finding 2 : Alignment & Authenticity <span class="index_number">09</span></li>
+                        <li>Finding 3 : Intensity <span class="index_number">10</span></li>
+                        <li>Finding 4 : Inner Strength <span class="index_number">10</span></li>
+                        <li>Finding 5 : External Support <span class="index_number">11</span></li>
+                        <li>Finding 6 : Personal Maturity Index <span class="index_number">11</span></li>
+                      </ul>
+                    </li>
+                    <li>7. NEXT STEPS <span class="index_number">12</span></li>
+                    <li>8. APPENDIX <span class="index_number">13</span>
+                      <ul>
+                        <li>8.2. Definitions; BEING States & Dimensions <span class="index_number">13</span></li>
+                        <li>8.4. Definitions; Personal Maturity Index <span class="index_number">14</span></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 2</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_3">
+              <div class="report_page">
+                <div class="content_title">
+                  <h5>1. Executive summary </h5>
+                </div>
+                <div class="report_content">
+                  <ul class="cumstom_bullet">
+                    <li style="display:flex;align-items: center;margin-bottom:15px;">
+                      <p class=" mt-5 mb-5" style="flex-basis:50%;" *ngIf="UserData.hplevel < 62.5">
+                        "There is a significant opportunity for you to further realize your human potential. Whether in
+                        your
+                        profession or in your personal roles, there is significant value to be created in your life and
+                        in
+                        the lives of those around you. Existential questions seem to consume you, and self-preservation
+                        seems an important priority in your life at this moment."" </p>
+                      <p class=" mt-5 mb-5" style="flex-basis:50%;"
+                        *ngIf="UserData.hplevel >= 62.5 && UserData.hplevel < 75">
+                        "Your human potential is moderately utilized. There are occasions when you glimpse your peak
+                        potential, yet this state of high potential is not a habit to you yet. You are at a stage where
+                        significant leaps can be taken in your life with a little committed self-development. There is
+                        an
+                        opportunity for you to bring more of your unique gifts and talents to the world."</p>
+                      <p class=" mt-5 mb-5" style="flex-basis:50%;"
+                        *ngIf="UserData.hplevel >= 75 && UserData.hplevel < 90 ">
+                        " Well done! Your human potential is well-utilized. You have found effective ways to align
+                        who
+                        you are with what you do, and you are seeing the impact of this authenticity. We encourage you
+                        to
+                        keep this course and ask yourself what it would take to move from "Good" to "Great"."</p>
+                      <p class=" mt-5 mb-5" style="flex-basis:50%;" *ngIf="UserData.hplevel >= 90">"Very impressive!
+                        Your human potential
+                        is
+                        fully utilized. You exhibit qualities of those on a path to create significant positive change.
+                        You
+                        emulate a particularly elevated state exhibited by great individuals past and present. Your
+                        focus
+                        should be on how to expand your reach and create greater impact. Continue unwavering on this
+                        path
+                        and use all your resources to stay this course."</p>
+                      <div class="hp_image bar-image" style="flex-basis:50%;text-align:center;">
+                        <div class="bar-relative">
+                          <img src="assets/images/bar.png" />
+                          <div class="bar-position">
+                            <div>
+                              <div [ngStyle]="{'width': circle1 + '%'}">
+                              </div>
+                              <div [ngStyle]="{'width': circle2 + '%'}">
+                              </div>
+                            </div>
+                          </div>
+                          <p class="one">Unexpressed</p>
+                          <p class="two">Under expressed</p>
+                          <p class="three">Well expressed</p>
+                          <p class="four">Fully expressed</p>
+                          <h5>{{UserData.hplevel | number:'0.0-1'}}</h5>
+                        </div>
+                      </div>
+                    </li>
+                   
+                    <li>
+                      <p *ngIf="personal_index < 2.4">Security, paying your bills, your daily needs taken care of, etc.
+                        are
+                        important drivers of your life. You are concerned about your - and your dear ones - future.
+                        Whether
+                        at work or in your family, you are motivated by (self) preservation. Saving and having enough
+                        reserves for a "rainy day" is important to you. Where others do not see a reason to worry, you
+                        will
+                        feel inclined to worry. There is an opportunity to work through some of these fears and in doing
+                        so
+                        build more trust in yourself and the people around you.</p>
+                      <p *ngIf="personal_index >= 2.4 && personal_index < 2.8">It is important for you to belong,
+                        whether it
+                        is at work or at home or in groups you participate in. You are sensitive to the type of work
+                        atmosphere you operate in. You make an effort to be an important part of groups, and value
+                        others
+                        recognizing your effort and contribution to groups. You go out of your way to give to teams and
+                        groups so that they acknowledge you. There is an opportunity for you to define your identity or
+                        fulfillment based on your unique gifts rather than how you are received by others.</p>
+                      <p *ngIf="personal_index >= 2.8 && personal_index < 3.2">You are very adept at problem-solving and
+                        applying logic to understand the root causes
+                        and
+                        underlying motives. You typically make decisions with a lot of forethought and plenty of
+                        supporting data. In that process, you might tend to play it safe in order to avoid
+                        making
+                        "mistakes". In doing so, you might forgo the opportunity for passion, creativity and
+                        breakthroughs to emerge. Growing to the next level of maturity (PURPOSE) will require
+                        more
+                        compassionate and visionary leadership that is committed to realizing the full potential
+                        of
+                        people around you. In addition to the rational processes, it might help to access and
+                        rely
+                        more
+                        on your intuition in order to make informed decisions about the "emerging future" vs the
+                        best
+                        practices of today.</p>
+                      <p *ngIf="personal_index >= 3.2 && personal_index < 3.6">Very good! You are less driven by a need
+                        for
+                        self-preservation and more driven by a desire for self-realization. You have found effective
+                        ways to
+                        bring your deeper self into different aspects of your life. Everything you do in your life is
+                        tied
+                        to a higher purpose. You now value meaning more than the security that your relationships, work,
+                        living situation or social life gives you. You are less prone to judge others and help to bring
+                        out
+                        the best out of people. You see possibilities in everything happening around you. You have a
+                        high
+                        level of compassion for others, and rely also on your intuition for guidance. People who engage
+                        with
+                        you recognize you as a wisdom-carrier.</p>
+                      <p *ngIf="personal_index >= 3.6">Great! You express the passion of the sages. You value the
+                        essence of
+                        everything over their form. Your deepest fulfillment comes from the well-being of others. For
+                        you
+                        actions are noble and unconditional, and you undertake actions for the pure joy of doing things.
+                        You
+                        see your actions as a means to self-realization. Everything you do is driven by your choiceful
+                        concern for others. You are devoted to the greater good but you are not obsessed with the
+                        outcomes
+                        of your actions.</p>
+                    </li>
+                    <li>
+                      <p>
+                        In the following report you will be provided with many more detailed findings that will help
+                        you in these development efforts. Some of them will resonate strongly and trigger a desire to
+                        act, while others may not feel as relevant at first glance. We invite you not to ignore these
+                        tensions as our experience shows that the most powerful insights are often hidden beneath
+                        the contradictions that you may perceive in the data. We strongly recommend that you work
+                        with a certified Human Potential Assessment Coach to fully understand the findings and
+                        discover ways in which they can be integrated into your life.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 3</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_4">
+              <div class="report_page">
+                <div class="content_title">
+                  <h5>2. How to interpret the Human Potential
+                    report</h5>
+                </div>
+                <div class="report_content">
+                  <ul class="cumstom_bullet">
+                    <li>
+                      <p class="mb-5 mt-5">
+                        Both modern management science and ancient wisdom traditions recognize a certain state
+                        consistent among those who operate at high potential. These people tend to lead
+                        meaningful and fulfilling lives, create significant impact and have the ability to do all of
+                        this
+                        while remaining centered, irrespective of the circumstances they encounter. The Human
+                        Potential Assessment aims to measure and consistently enable this kind of human potential
+                        realization.
+                      </p>
+                    </li>
+                    <li>
+                      <p class="mb-5">
+                        Although the numbers are an important part of the solution this is not where the main focus
+                        should be when you study this report. We invite you to use the scores simply as an entry
+                        point for meaningful self-examination and to ask exploratory questions.
+                      </p>
+                    </li>
+                    <li>
+                      <p class="mb-5">
+                        Also, you should be careful not to interpret the measures as &quot;good&quot; or
+                        &quot;bad&quot;. A person with a
+                        high Human Potential score is not better than someone with a low score. Rather, you should
+                        be looking at lower scores as opportunity areas that can bring out even more of your
+                        inherent capabilities. The model will show you how to do this. It will reveal the key leverage
+                        points to focus on and key questions to explore in your personal development work.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        We believe every person is gifted with abundant potential. However, the extent to which this
+                        is realized in one’s day-to-day life can vary significantly. Some people are in tune with their
+                        greatest potential and have found ways to integrate it into their lives. This not only brings
+                        them enormous fulfillment, but it is also the most effective way to have an impact and
+                        contribute to the world in a meaningful way. Other people are aware of their unique gifts but
+                        haven’t yet found ways to fully realize this potential. Unfortunately, many of us go through
+                        life not really knowing the extent of our potential and therefore much of it remains
+                        untapped.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 4</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_5">
+              <div class="report_page">
+                <div class="content_title">
+                  <h5>3. Introduction to the Human Potential
+                    method</h5>
+                </div>
+                <div class="report_content">
+                  <h5 class="text-center mb-4  mt-5">A state-of-the-art framework to assess and unlock HUMAN POTENTIAL
+                  </h5>
+                  <p class="mb-5">Our approach to Human Potential realization aspires to elevate your state of BEING. We
+                    deeply
+                    believe that when your BEING is ignited and you access your most passionate self, all of life
+                    becomes a joyful and incredibly rewarding experience. We believe that you will realize your Full
+                    Potential when your DOING and BEING are fully aligned.</p>
+                  <h5 class="text-center mb-4">&quot;When the BEING is alive, the DOING thrives&quot;</h5>
+                  <p class="mb-5">The Human Potential Assessment Tool is the beginning of a 3-step process. It starts by
+                    putting
+                    the necessary facts &amp; data on the table to enable the right conversations and identify the key
+                    levers to further unlock your Human Potential.</p>
+                  <p class="mb-5">The in the next phase we recommend working with a coach to integrate these findings
+                    and
+                    make them your own. It&#39;s this discovery process that will trigger deep commitment and lasting
+                    engagement. At the end of this critical phase the next steps and personal development roadmap
+                    will become clear. Finally, together with a coach, you may work together to unleash and liberate
+                    your untapped potential.</p>
+                  <h5 class="text-center mb-4">&quot;When we focus our attention on a person’s innate HUMAN POTENTIAL,
+                    we
+                    inspire them to stretch beyond expectations and deliver extraordinary results.&quot;</h5>
+                  <p>In this model, maximizing Human Potential is directly dependent on triggering four key States
+                    within you; BEING Aware, BEING Inspired, BEING Abundant and BEING in Service. (see Appendix
+                    1 for the definition of each of these States).</p>
+                  <p>Within each State are a number of Dimensions to help you understand the levers of Human
+                    Potential realization and pinpoint the areas that will have the greatest impact on your life (see
+                    Appendix 1 for a short description of the Dimensions).</p>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 5</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_6">
+              <div class="report_page">
+                <div class="content_title">
+                  <h5>4. Introduction to the Human Potential
+                    model</h5>
+                </div>
+                <div class="report_content">
+                  <p class="mt-4 mb-4">Diagram 1 denotes a generic HUMAN POTENTIAL utilization meter. The various color
+                    codes help
+                    understand the current score. This same color coding will also be used in the other frameworks
+                    presented in this report.</p>
+                  <h6 class="text-center">The Human Potential meter</h6>
+                  <div class="hp_image bar-image mb-2">
+                    <div class="bar-relative">
+                      <img src="assets/images/bar.png" />
+                      <div class="bar-position"></div>
+                      <p class="one">Unexpressed</p>
+                      <p class="two">Under expressed</p>
+                      <p class="three">Well expressed</p>
+                      <p class="four">Fully expressed</p>
+                    </div>
+                  </div>
+                  <p class="mt-4">Diagram 2 is a visual representation of the generic HUMAN POTENTIAL model. We will be
+                    referring to the STATES, DIMENSIONS and relationships between them in the subsequent
+                    analysis.</p>
+                </div>
+                <div class="four_states normal" *ngIf="UserData.fourthbeingattitude">
+                  <div class="flex_img">
+                    <img src="assets/images/normal-graph.png" alt="">
+                  </div>
+                </div>
+                <p class="text-danger text-center mt-15">Diagram 2</p>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 6</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_7">
+              <div class="report_page">
+                <div class="content_title">
+                  <h5>5. Overview for {{UserData.username | uppercase}}</h5>
+                </div>
+                <div class="report_content">
+                  <div class="row mt-15">
+                    <div class="col-md-6 text-center">
+                      <div class="hp_image bar-image mb-2">
+                        <div class="bar-relative">
+                          <img src="assets/images/bar.png" />
+                          <div class="bar-position">
+                            <div>
+                              <div [ngStyle]="{'width': circle1 + '%'}">
+                              </div>
+                              <div [ngStyle]="{'width': circle2 + '%'}">
+                              </div>
+                            </div>
+                          </div>
+                          <p class="one">Unexpressed</p>
+                          <p class="two">Under expressed</p>
+                          <p class="three">Well expressed</p>
+                          <p class="four">Fully expressed</p>
+                          <h5>{{UserData.hplevel | number:'0.0-1'}}</h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <p><strong>Key Finding:</strong></p>
+                      <p *ngIf="UserData.hplevel < 62.5">
+                        There is a significant opportunity for you to further realize your human potential. Whether in
+                        your
+                        profession or in your personal roles, there is significant value to be created in your life and
+                        in
+                        the lives of those around you. Existential questions seem to consume you, and self-preservation
+                        seems an important priority in your life at this moment. </p>
+                      <p *ngIf="UserData.hplevel >= 62.5 && UserData.hplevel < 75">
+                        Your human potential is moderately utilized. There are occasions when you glimpse your peak
+                        potential, yet this state of high potential is not a habit to you yet. You are at a stage where
+                        significant leaps can be taken in your life with a little committed self-development. There is
+                        an
+                        opportunity for you to bring more of your unique gifts and talents to the world</p>
+                      <p *ngIf="UserData.hplevel >= 75 && UserData.hplevel < 90 ">
+                        Well done! Your human potential is well-utilized. You have found effective ways to align who
+                        you
+                        are with what you do, and you are seeing the impact of this authenticity. We encourage you to
+                        keep
+                        this course and ask yourself what it would take to move from "Good" to "Great"!</p>
+                      <p *ngIf="UserData.hplevel >= 90">Very impressive! Your human potential is fully utilized. You
+                        exhibit
+                        qualities of those on a path to create significant positive change. You emulate a particularly
+                        elevated state exhibited by great individuals past and present. Your focus should be on how to
+                        expand your reach and create greater impact. Continue unwavering on this path and use all your
+                        resources to stay this course.</p>
+                    </div>
+                  </div>
+                  <div class="four_states" *ngIf="UserData.fourthbeingattitude">
+                    <div class="color_code">
+                      <p> <span class="purple square"></span>Fully Expressed</p>
+                      <p> <span class="green square"></span>Well Expressed</p>
+                      <p> <span class="yellow square"></span>Under Expressed</p>
+                      <p> <span class="red square"></span>Unexpressed</p>
+                    </div>
+                    <div class="flex_img">
+                      <img
+                        src="assets/images/{{UserData.hplevel < 62.5 ? 'red_top': UserData.hplevel >= 62.5 && UserData.hplevel < 75? 'yellow_top': UserData.hplevel >= 75 && UserData.hplevel < 90 ? 'green_top': 'purble_top'}}.png"
+                        alt="">
+                    </div>
+                    <div class="flex_box">
+                      <div class="box">
+                        <div class="title">
+                          <p>Being Inspired </p>
+                        </div>
+                        <ul>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Inspired.Play < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Inspired.Play >= 62.5 && UserData.fourthbeingattitude.Being_Inspired.Play < 75? 'yellow': UserData.fourthbeingattitude.Being_Inspired.Play >= 75 && UserData.fourthbeingattitude.Being_Inspired.Play < 90 ? 'green':'purple'">
+                            Play</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Inspired.Curiosity < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Inspired.Curiosity >= 62.5 && UserData.fourthbeingattitude.Being_Inspired.Curiosity < 75? 'yellow': UserData.fourthbeingattitude.Being_Inspired.Curiosity >= 75 && UserData.fourthbeingattitude.Being_Inspired.Curiosity < 90 ? 'green':'purple'">
+                            Curiosity</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Inspired.Not_knowing < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Inspired.Not_knowing >= 62.5 && UserData.fourthbeingattitude.Being_Inspired.Not_knowing < 75? 'yellow': UserData.fourthbeingattitude.Being_Inspired.Not_knowing >= 75 && UserData.fourthbeingattitude.Being_Inspired.Not_knowing < 90 ? 'green':'purple'">
+                            Facing unknown</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Inspired.Flow < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Inspired.Flow >= 62.5 && UserData.fourthbeingattitude.Being_Inspired.Flow < 75? 'yellow': UserData.fourthbeingattitude.Being_Inspired.Flow >= 75 && UserData.fourthbeingattitude.Being_Inspired.Flow < 90 ? 'green':'purple'">
+                            Being in flow</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Inspired.Openess_to_new_ideas < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Inspired.Openess_to_new_ideas >= 62.5 && UserData.fourthbeingattitude.Being_Inspired.Openess_to_new_ideas < 75? 'yellow': UserData.fourthbeingattitude.Being_Inspired.Openess_to_new_ideas >= 75 && UserData.fourthbeingattitude.Being_Inspired.Openess_to_new_ideas < 90 ? 'green':'purple'">
+                            Open to new possibility</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Inspired.Holistic_view < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Inspired.Holistic_view >= 62.5 && UserData.fourthbeingattitude.Being_Inspired.Holistic_view < 75? 'yellow': UserData.fourthbeingattitude.Being_Inspired.Holistic_view >= 75 && UserData.fourthbeingattitude.Being_Inspired.Holistic_view < 90 ? 'green':'purple'">
+                            Holistic view</li>
+                        </ul>
+                      </div>
+                      <div class="box">
+                        <div class="title">
+                          <p>Being Abundant</p>
+                        </div>
+                        <ul>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Abundant.Collaboration_vs_competition < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Abundant.Collaboration_vs_competition >= 62.5 && UserData.fourthbeingattitude.Being_Abundant.Collaboration_vs_competition < 75? 'yellow': UserData.fourthbeingattitude.Being_Abundant.Collaboration_vs_competition >= 75 && UserData.fourthbeingattitude.Being_Abundant.Collaboration_vs_competition < 90 ? 'green':'purple'">
+                            Collaboration vs competition</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Abundant.Being_from_Doing < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Abundant.Being_from_Doing >= 62.5 && UserData.fourthbeingattitude.Being_Abundant.Being_from_Doing < 75? 'yellow': UserData.fourthbeingattitude.Being_Abundant.Being_from_Doing >= 75 && UserData.fourthbeingattitude.Being_Abundant.Being_from_Doing < 90 ? 'green':'purple'">
+                            Doing from Being</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Abundant.Trust_vs_control < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Abundant.Trust_vs_control >= 62.5 && UserData.fourthbeingattitude.Being_Abundant.Trust_vs_control < 75? 'yellow': UserData.fourthbeingattitude.Being_Abundant.Trust_vs_control >= 75 && UserData.fourthbeingattitude.Being_Abundant.Trust_vs_control < 90 ? 'green':'purple'">
+                            Trust vs control</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Abundant.Gratitude < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Abundant.Gratitude >= 62.5 && UserData.fourthbeingattitude.Being_Abundant.Gratitude < 75? 'yellow': UserData.fourthbeingattitude.Being_Abundant.Gratitude >= 75 && UserData.fourthbeingattitude.Being_Abundant.Gratitude < 90 ? 'green':'purple'">
+                            Gratitude</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Abundant.Acknowledgment < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Abundant.Acknowledgment >= 62.5 && UserData.fourthbeingattitude.Being_Abundant.Acknowledgment < 75? 'yellow': UserData.fourthbeingattitude.Being_Abundant.Acknowledgment >= 75 && UserData.fourthbeingattitude.Being_Abundant.Acknowledgment < 90 ? 'green':'purple'">
+                            Acknowledgment</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Abundant.Generosity < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Abundant.Generosity >= 62.5 && UserData.fourthbeingattitude.Being_Abundant.Generosity < 75? 'yellow': UserData.fourthbeingattitude.Being_Abundant.Generosity >= 75 && UserData.fourthbeingattitude.Being_Abundant.Generosity < 90 ? 'green':'purple'">
+                            Generosity</li>
+                        </ul>
+                      </div>
+                      <div class="box">
+                        <div class="title">
+                          <p>Being In Service</p>
+                        </div>
+                        <ul>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Service.True_diversity < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Service.True_diversity >= 62.5 && UserData.fourthbeingattitude.Being_Service.True_diversity < 75? 'yellow': UserData.fourthbeingattitude.Being_Service.True_diversity >= 75 && UserData.fourthbeingattitude.Being_Service.True_diversity < 90 ? 'green':'purple'">
+                            Greater Good</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Service.Connectedness < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Service.Connectedness >= 62.5 && UserData.fourthbeingattitude.Being_Service.Connectedness < 75? 'yellow': UserData.fourthbeingattitude.Being_Service.Connectedness >= 75 && UserData.fourthbeingattitude.Being_Service.Connectedness < 90 ? 'green':'purple'">
+                            Connectedness</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Service.Compassion < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Service.Compassion >= 62.5 && UserData.fourthbeingattitude.Being_Service.Compassion < 75? 'yellow': UserData.fourthbeingattitude.Being_Service.Compassion >= 75 && UserData.fourthbeingattitude.Being_Service.Compassion < 90 ? 'green':'purple'">
+                            Compassion</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Service.Harmony < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Service.Harmony >= 62.5 && UserData.fourthbeingattitude.Being_Service.Harmony < 75? 'yellow': UserData.fourthbeingattitude.Being_Service.Harmony >= 75 && UserData.fourthbeingattitude.Being_Service.Harmony < 90 ? 'green':'purple'">
+                            Harmony</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Service.Humility < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Service.Humility >= 62.5 && UserData.fourthbeingattitude.Being_Service.Humility < 75? 'yellow': UserData.fourthbeingattitude.Being_Service.Humility >= 75 && UserData.fourthbeingattitude.Being_Service.Humility < 90 ? 'green':'purple'">
+                            Humility</li>
+                          <li
+                            [class]="UserData.fourthbeingattitude.Being_Service.Passion < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Service.Passion >= 62.5 && UserData.fourthbeingattitude.Being_Service.Passion < 75? 'yellow': UserData.fourthbeingattitude.Being_Service.Passion >= 75 && UserData.fourthbeingattitude.Being_Service.Passion < 90 ? 'green':'purple'">
+                            Living my calling</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="flex_bottom">
+                      <div class="title">
+                        <p class="text-center">Being Aware</p>
+                      </div>
+                      <ul>
+                        <li
+                          [class]="UserData.fourthbeingattitude.Being_Aware.Individual_awareness < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Aware.Individual_awareness >= 62.5 && UserData.fourthbeingattitude.Being_Aware.Individual_awareness < 75? 'yellow': UserData.fourthbeingattitude.Being_Aware.Individual_awareness >= 75 && UserData.fourthbeingattitude.Being_Aware.Individual_awareness < 90 ? 'green':'purple'">
+                          Individual Awareness</li>
+                        <li
+                          [class]="UserData.fourthbeingattitude.Being_Aware.Team_awareness < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Aware.Team_awareness >= 62.5 && UserData.fourthbeingattitude.Being_Aware.Team_awareness < 75? 'yellow': UserData.fourthbeingattitude.Being_Aware.Team_awareness >= 75 && UserData.fourthbeingattitude.Being_Aware.Team_awareness < 90 ? 'green':'purple'">
+                          Interpersonal Awareness </li>
+                        <li
+                          [class]="UserData.fourthbeingattitude.Being_Aware.Organizational_awareness < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Aware.Organizational_awareness >= 62.5 && UserData.fourthbeingattitude.Being_Aware.Organizational_awareness < 75? 'yellow': UserData.fourthbeingattitude.Being_Aware.Organizational_awareness >= 75 && UserData.fourthbeingattitude.Being_Aware.Organizational_awareness < 90 ? 'green':'purple'">
+                          Environmental Awareness</li>
+                        <li
+                          [class]="UserData.fourthbeingattitude.Being_Aware.Societal_awareness < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Aware.Societal_awareness >= 62.5 && UserData.fourthbeingattitude.Being_Aware.Societal_awareness < 75? 'yellow': UserData.fourthbeingattitude.Being_Aware.Societal_awareness >= 75 && UserData.fourthbeingattitude.Being_Aware.Societal_awareness < 90 ? 'green':'purple'">
+                          Societal Awareness</li>
+                        <li
+                          [class]="UserData.fourthbeingattitude.Being_Aware.Personal_development < 62.5 ? 'red': UserData.fourthbeingattitude.Being_Aware.Personal_development >= 62.5 && UserData.fourthbeingattitude.Being_Aware.Personal_development < 75? 'yellow': UserData.fourthbeingattitude.Being_Aware.Personal_development >= 75 && UserData.fourthbeingattitude.Being_Aware.Personal_development < 90 ? 'green':'purple'">
+                          Personal Development</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 7</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_8">
+              <div class="report_page">
+                <div class="content_title">
+                  <h5>6. Detailed findings</h5>
+                </div>
+                <p>In this section we will explore a number of additional characteristics that are common amongst
+                  individuals who are realizing their full Human Potential. These characteristics help you in
+                  pinpointing additional areas of strengths and opportunities for future development.</p>
+                <div class="inner_title">
+                  <h5>Finding 1: Most expressed &amp; least expressed aspects of yourself </h5>
+                </div>
+                <div class="report_content">
+                  <p>This section highlights the Human Potential levers of your life that are most expressed and
+                    those that are least expressed. Please be careful not to interpret these as strengths or
+                    weaknesses but rather as inherent potential that you may or may not have been able to access
+                    yet. By looking at the top and bottom 3 dimensions from this perspective, it is possible to start
+                    prioritizing future areas of development that will further unlock your human potential and create
+                    a compelling work experience.
+                  </p>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <ul class="detail">
+                        <li *ngFor="let item of AscendingData"
+                          [class]="item.value < 62.5 ? 'red': item.value >= 62.5 && item.value < 75? 'yellow': item.value >= 75 && item.value < 90 ? 'green':'purple'">
+                          {{item.name}}
+                          <div class="value"><span>{{item.value}}</span></div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <h4>Top 3 Dimensions expressed:</h4>
+                      <ul>
+                        <li class="text-justify" *ngFor='let item of Top'><span class="span_underline">{{item.name}}
+                          </span>:
+                          {{item.content}} is
+                          <strong>{{item.value < 62.5 ? 'Unexpressed' : item.value>= 62.5 && item.value <
+                                75? 'Under Expressed' : item.value>= 75 && item.value < 90 ? 'Well Expressed' :'Fully
+                                  Expressed'}}</strong>
+                        </li>
+                      </ul>
+                      <h4>Bottom 3 Dimensions expressed:</h4>
+                      <ul>
+                        <li class="text-justify" *ngFor='let item of Bottom'><span class="span_underline">{{item.name}}
+                          </span>:
+                          {{item.content}}
+                          is
+                          <strong>{{item.value < 62.5 ? 'Unexpressed' : item.value>= 62.5 && item.value <
+                                75? 'Under Expressed' : item.value>= 75 && item.value < 90 ? 'Well Expressed' :'Fully
+                                  Expressed'}}</strong>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 8</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_9">
+              <div class="report_page">
+                <div class="content_title">
+                  <h5>Finding 2: Alignment &amp; Authenticity </h5>
+                </div>
+                <div class="report_content">
+                  <p>The Alignment & Authenticity matrix maps who you perceive yourself to be at a conscious level
+                    (referred to as Stated Awareness) AND who you are actually being at an unconscious level
+                    (referred to as Actualized Awareness). The combination of these two axis can help you see in
+                    which of the four quadrants you find yourself today, and where you might want to grow towards
+                    in the future.</p>
+                  <h5 class="text-center mb-4">Actualized Awareness</h5>
+                  <div class="four_position">
+                    <div class="four_square">
+                      <div class="box"
+                        [ngClass]="{'yellow': Box_alignment.seconddata >= 75 && Box_alignment.firstdata < this.Box_alignment.seconddata}"
+                        style="top:58px;left:80px;">
+                        <p>Your authenticity shines through in environments that are comfortable to you but when challenged you might find yourself falling back on old patterns and behaving in ways that "protect" you rather than empower you.
+                        </p>
+                      </div>
+                      <div class="box"
+                        [ngClass]="{'purple': Box_alignment.seconddata >= 75 && Box_alignment.firstdata >= this.Box_alignment.seconddata}"
+                        style="top:58px;right:80px;">
+                        <p>You are a "Being Leader". You have clarity on your values and rely on your inner strength when faced with uncertainty. You lead by example.</p>
+                      </div>
+                     
+                      <div class="box"
+                        [ngClass]="{'red':Box_alignment.seconddata < 75 && Box_alignment.firstdata < 75}"
+                        style="bottom:58px;right:80px;">
+                        <p>You are often caught up in the "win-lose" game where the end justifies the means. There is an opportunity to approach life more holistically and with a longer term view. Bringing greater clarity to your higher values, purpose and ideals is essential for you to step into greater potential. Step away from (or transform) environments that are fear-based.</p>
+                      </div>
+                      <div class="box"
+                        [ngClass]="{'green':Box_alignment.seconddata < 75 && Box_alignment.firstdata >= 75}"
+                        style="bottom:58px;left:80px;">
+                        <p>You live authentically, often following your heart but lack a longer term vision. You are often generous and available to others. Those around you find you affable. You don't always make deliberate choices and therefore are at risk of giving away your power. You may have difficulty maintaining your boundaries.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="four_po_ab">
+                      <div class="one">
+                        <p class="font_bold">Low</p>
+                      </div>
+                      <div class="two">
+                        <p class="font_bold">High</p>
+                      </div>
+                      <div class="three">
+                        <p class="font_bold">Low</p>
+                      </div>
+                      <div class="four">
+                        <p class="font_bold">High</p>
+                      </div>
+                      <div class="five">
+                        <h5 class="text-center">Stated Awareness</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <h5>Findings</h5>
+                  <div class="align_content">
+                    <p
+                      *ngIf="Box_alignment.seconddata >= 75 && Box_alignment.firstdata >= Box_alignment.seconddata">
+                      You are a "Being Leader". You have clarity on your values and rely on your inner strength when faced with uncertainty. You lead by example.</p>
+                    <p
+                      *ngIf="Box_alignment.seconddata >= 75 && Box_alignment.firstdata < Box_alignment.seconddata">
+                      Your authenticity shines through in environments that are comfortable to you but when challenged you might find yourself falling back on old patterns and behaving in ways that "protect" you rather than empower you.</p>
+                    <p *ngIf="Box_alignment.seconddata < 75 && Box_alignment.firstdata < 75">You are often caught up in the "win-lose" game where the end justifies the means. There is an opportunity to approach life more holistically and with a longer term view. Bringing greater clarity to your higher values, purpose and ideals is essential for you to step into greater potential. Step away from (or transform) environments that are fear-based.
+                    </p>
+                    <p *ngIf="Box_alignment.seconddata < 75 && Box_alignment.firstdata >= 75">You live authentically, often following your heart but lack a longer term vision. You are often generous and available to others. Those around you find you affable. You don't always make deliberate choices and therefore are at risk of giving away your power. You may have difficulty maintaining your boundaries.</p>
+                  </div>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 9</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_10">
+              <div class="report_page">
+                <div class="report_content">
+                  <div class="inner_title">
+                    <h5>Finding 3: Intensity</h5>
+                  </div>
+                  <p>The Intensity score measures your aliveness, or intensity with which you engage life. Being
+                    "full on" is a sign that you are contributing in meaningful and deeply fullfilling ways. This
+                    vibrant
+                    energy is contagious and acts as a powerful magnet to attract the right people and
+                    opportunities into your life </p>
+                  <div class="three_box">
+                    <div class="three_box_gradient">
+                      <div>
+                        <div [ngStyle]="{'width': three1 + '%'}">
+                        </div>
+                        <div [ngStyle]="{'width': three2 + '%'}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="three_color_box">
+                      <div class="box red"></div>
+                      <div class="box yellow"></div>
+                      <div class="box green"></div>
+                    </div>
+                    <div class="three_box_gradient bottom">
+                      <div>
+                        <div class="text-right" [ngStyle]="{'width': three1 + '%'}">
+                          <i class="fa fa-long-arrow-up"></i>
+                        </div>
+                        <div [ngStyle]="{'width': three2 + '%'}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="three_box_arrow">
+                     
+                      <div class="arrow_content">
+                        <p *ngIf="intensity >= 3.2">You are always full on, bringing the best of
+                          yourself to every situation. Your energy is
+                          contagious which makes it easy for you to
+                          engage and energize others. You are focussed
+                          and purpose-driven, and meaning is driving your
+                          actions. Remain connected to your energy level,
+                          manage it appropriately so that you can present
+                          yourself fully in all situations that matter most to
+                          you. Take enough downtime to recharge
+                          yourself and reappear in full intensity.</p>
+                        <p *ngIf="intensity >= 2.8 && intensity < 3.2">
+                          You are full on and bringing the best of yourself in certain situations (perhaps those within
+                          your
+                          comfort zone). There is an opportunity to identify the fears that may be holding you back and
+                          take
+                          the necessary time to work through them. This will help you expand your raw passion in other
+                          aspects of your life as well. Identify the things that ignites you and build a life around it.
+                          Make an attempt to gradually phase out those activities and relationships in your life that
+                          draw
+                          your energy. Replace them with activities and relationships that nurture you.
+                        </p>
+                        <p *ngIf="intensity < 2.8 ">
+                          There may be an energy drain in your life that is preventing your passion and excitement for
+                          life
+                          from fully expressing itself. Your life may be populated with activities or relationships that
+                          might be draining your vitality. There is an opportunity for you to redefine aspects of your
+                          life
+                          that are tiresome and no longer serve you. Reclaim meaning and prevent the possibility of
+                          spreading yourself too thin.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inner_title">
+                    <h5>Finding 4: Inner Strength</h5>
+                  </div>
+                  <p>The Inner Strength score gives you a sense of how rooted you are in your core values and
+                    how courageous you are in staying true to them.</p>
+                  <div class="three_box">
+                    <div class="three_box_gradient">
+                      <div>
+                        <div [ngStyle]="{'width': three3 + '%'}">
+                        </div>
+                        <div [ngStyle]="{'width': three4 + '%'}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="three_color_box">
+                      <div class="box red"></div>
+                      <div class="box yellow"></div>
+                      <div class="box green"></div>
+                    </div>
+                    <div class="three_box_gradient bottom">
+                      <div>
+                        <div class="text-right" [ngStyle]="{'width': three3 + '%'}">
+                          <i class="fa fa-long-arrow-up"></i>
+                        </div>
+                        <div [ngStyle]="{'width': three4 + '%'}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="three_box_arrow">
+                     
+                      <div class="arrow_content">
+                        <p *ngIf=" strength >= 2.8 && strength < 3.2">In situations familiar to you, or where you can be
+                          yourself, you show the
+                          ability to stand in your own strength. In such environments, you rely on
+                          your inner core. People who are with you in such settings see you
+                          radiate your core values and become authentic. You stand strong in
+                          your principles and remain unwavering from your ideals. In situations
+                          outside your comfort zone, you might hesitate in standing strong in your
+                          principles, and might even deviate from your ideals. In such occasions,
+                          you tend to show preference to others' opinions, sometimes at the
+                          expense of your own inner voice. You might question yourself when
+                          challenged in more radical ways.</p>
+                        <p *ngIf="strength >= 3.2 ">Great! You possess great inner strength and resilience. You have
+                          great
+                          clarity of your values and principles and have built a life anchored around them. You are
+                          aligned
+                          with your inner voice and are not distracted by the demands of your worldly circumstances. You
+                          take time to reflect and act carefully which helps you stay centered and see opportunities
+                          where
+                          others might only see challenges. </p>
+                        <p *ngIf="strength < 2.8">There is an opportunity for you to further build your inner strength.
+                          There is room for you to either uncover your values and principles or - if you have uncovered
+                          your
+                          values and principles - to align your life around them. There is an opportunity for you to
+                          take
+                          small steps in "testing" your values and noticing the impact your choices have on others. In
+                          situations outside your comfort zone, you tend to show preference to others' opinions,
+                          sometimes
+                          at the expense of your own inner voice. </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 10</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_11">
+              <div class="report_page">
+                <div class="report_content">
+                  <div class="inner_title">
+                    <h5>Finding 5: External Support </h5>
+                  </div>
+                  <p>The External Support score measures the extent to which your immediate environment
+                    understands and supports you in stepping into your full potential. A supporting environment
+                    makes it easier to follow your calling. Without this, it becomes even more important to build
+                    and nurture a solid inner core that can help you stay on track and work through the challenges
+                    that arise.</p>
+                  <div class="three_box">
+                    <div class="three_box_gradient">
+                      <div>
+                        <div [ngStyle]="{'width': three5 + '%'}">
+                        </div>
+                        <div [ngStyle]="{'width': three6 + '%'}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="three_color_box">
+                      <div class="box red"></div>
+                      <div class="box yellow"></div>
+                      <div class="box green"></div>
+                    </div>
+                    <div class="three_box_gradient bottom">
+                      <div>
+                        <div class="text-right" [ngStyle]="{'width': three5 + '%'}">
+                          <i class="fa fa-long-arrow-up"></i>
+                        </div>
+                        <div [ngStyle]="{'width': three6 + '%'}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="three_box_arrow">
+                     
+                      <div class="arrow_content">
+                        <p *ngIf="external >= 3.2">You are blessed with a very supportive group of friends, family and
+                          colleagues. They can see your potential and are there to encourage you to step more fully into
+                          it.
+                          They accept your imperfections and no matter how radical your step, they will remain a support
+                          system for you. You will benefit from their unconditional support for the big steps you take
+                          in
+                          your life.</p>
+                        <p *ngIf="external >= 2.8 && external < 3.2">Your close friends and family want the best for you
+                          but
+                          may not understand how to best support you. Do not be discouraged by their confusion and
+                          resistance. Once they understand your calling, and start seeing the steps you are taking, and
+                          how
+                          they infuse your life with meaning, they will be fully behind you. They may be waiting for you
+                          to
+                          "bring them on board" and engage them on your journey.</p>
+                        <p *ngIf="external < 2.8">Your close friends and family do not necessarily pay attention to your
+                          gifts and encourage you to follow them. They might be comfortable with your 'old self' and
+                          might
+                          even exert pressure on you to continue remaining your 'old self'. Your concern for losing them
+                          due
+                          to the changes you are ready to make might dissuade you from taking the big steps you are
+                          ready
+                          for. Without the support from your near and dear ones, it is even more important to rely on
+                          your
+                          inner strength that will help you stay on track.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inner_title">
+                    <h5>Finding 6: Personal Maturity Index</h5>
+                  </div>
+                  <p>The "Personal Maturity Index" measure gives you an indication of the underlying motivations
+                    present in your life today and the impact this has on your belief systems and behaviour
+                    patterns. This measure helps you to identify the personal learning you must embrace in order
+                    to reach the next breakthrough and to grow your life in a truly sustainable way.</p>
+                  <div class="five-box-gradient">
+                    <div>
+                      <div [ngStyle]="{'width': five1 + '%'}">
+                      </div>
+                      <div [ngStyle]="{'width': five2 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="five_box">
+                    <div class="box red" [ngClass]="personal_index < 2.4 ? 'active':''">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <h4>Physical</h4>
+                      <p>Fear based consciousness</p>
+                    </div>
+                    <div class="box orange" [ngClass]="personal_index >= 2.4 && personal_index < 2.8 ? 'active':''">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <h4>Emotional</h4>
+                      <p>Feel good-basedconsciousness </p>
+                    </div>
+                    <div class="box yellow" [ngClass]="personal_index >= 2.8 && personal_index < 3.2 ? 'active':''">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <h4>Mental</h4>
+                      <p>Reason-based consciousness</p>
+                    </div>
+                    <div class="box blue" [ngClass]="personal_index >= 3.2 && personal_index < 3.6 ? 'active':''">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <h4>Awareness</h4>
+                      <p>Wisdom-based consciousness</p>
+                    </div>
+                    <div class="box purple" [ngClass]="personal_index >= 3.6 ? 'active':''">
+                      <span class="indication">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </span>
+                      <h4>Bliss</h4>
+                      <p>Service-based consciousness</p>
+                    </div>
+                  </div>
+                  <div class="five-box-gradient bottom">
+                    <div>
+                      <div [ngStyle]="{'width': five1 + '%'}" class="text-right">
+                        <i class="fa fa-long-arrow-up"></i>
+                      </div>
+                      <div [ngStyle]="{'width': five2 + '%'}">
+                      </div>
+                    </div>
+                  </div>
+                  <h5 class="mt-15">Findings</h5>
+                  <p *ngIf="personal_index < 2.4">Security, paying your bills, your daily needs taken care of, etc. are
+                    important drivers
+                    of
+                    your life. You are concerned about your, and your dear ones, future. Whether at work
+                    or in
+                    your family, you are motivated by (self) preservation. Saving and having enough reserves
+                    for
+                    a "rainy day" is important to you. Where others do not see a reason to worry, you will
+                    feel
+                    inclined to worry. There is an opportunity to work through some of these fears, and in
+                    doing so, build more trust in yourself and the people around you.</p>
+                  <p *ngIf="personal_index >= 2.4 && personal_index < 2.8">It is important for you to belong, whether it
+                    is at work, or at home, or in groups you
+                    participate in, You are sensitive to the type of work atmosphere you operate in. You
+                    make an
+                    effort to be an important part of groups, and value others recognizing your effort and
+                    contribution to groups. You go out of your way to give to teams and groups so that they
+                    acknowledge you. There is an opportunity for you to define your identity or fulfillment
+                    based on
+                    your unique gifts rather than how you are received by others.</p>
+                  <p *ngIf="personal_index >= 2.8 && personal_index < 3.2">You are very adept at problem-solving and
+                    applying logic to understand the root causes
+                    and
+                    underlying motives. You typically make decisions with a lot of forethought and plenty of
+                    supporting data. In that process, you might tend to play it safe in order to avoid
+                    making
+                    "mistakes". In doing so, you might forgo the opportunity for passion, creativity and
+                    breakthroughs to emerge. Growing to the next level of maturity (PURPOSE) will require
+                    more
+                    compassionate and visionary leadership that is committed to realizing the full potential
+                    of
+                    people around you. In addition to the rational processes, it might help to access and
+                    rely
+                    more
+                    on your intuition in order to make informed decisions about the "emerging future" vs the
+                    best
+                    practices of today.</p>
+                  <p *ngIf="personal_index >= 3.2 && personal_index < 3.6">You are less driven by a need for
+                    self-preservation and more driven by a desire for
+                    self-realization. You have found effective ways to bring your deeper self into different
+                    aspects
+                    of life. Everything you do in your life is tied to a higher purpose. You now value meaning
+                    more
+                    than
+                    the security that your relationships, work, living situation or social life gives you.
+                    You
+                    are
+                    less prone to judge others and focus more on bringing out the best out of people. You see
+                    possibilities
+                    in everything happening around you. You have a high level of compassion for others and
+                    rely
+                    also
+                    on your intuition for guidance. People who engage with you recognize you as a wisdom-
+                    carrier.</p>
+                  <p *ngIf="personal_index >= 3.6">You express the passion of the sages. You value the essence of
+                    everything over it's
+                    form.
+                    Your deepest fulfillment comes from the well-being of others. For you, actions are noble
+                    and
+                    unconditional, and you undertake actions for the pure joy of doing things. You see your
+                    actions as a means to self-realization. Everything you do is driven by your choiceful
+                    concern for others. You are devoted to the greater good but you are not obsessed with the
+                    outcomes of your actions.
+                  </p>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 11</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_12">
+              <div class="report_page">
+                <div class="content_title">
+                  <h5>7. Next Steps: </h5>
+                </div>
+                <div class="report_content">
+                  <p>The assessment and this report is an important first step in your Human Potential journey. The
+                    report offers you an effective way to acknowledge where you are today in terms of Human
+                    Potential Realization, and what you need to focus on in the future in order to further grow into
+                    your full potential. </p>
+                  <p>The next step for you is to process and integrate the insights coming out of this report so they
+                    can be transformed into actionable next steps, fully owned by you. You are invited to look
+                    deeply into your current beliefs and assumptions that drive you as a professional today and
+                    make very deliberate choices on who you want to BE going forward. </p>
+                  <p>Though this report is fairly self-explanatory, we recommend you use the services of a coach,
+                    consultant or mentor who is trained in Human Potential development. This will ensure that the
+                    insights from this report are fully integrated and transformed into an impactful personal action
+                    plan. </p>
+                  <p>In this follow-up, we invite you to visualize your new intentions in full details and start shaping
+                    them. That is the secret to creating a targeted development plan that might include training and
+                    coaching programs that turn your new inner states into a reality. </p>
+                  <p>We look forward to supporting you in this process. </p>
+                  <p>Your BEING at Full Potential Team</p>
+                  <p>Thank you. </p>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 12</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_13">
+              <div class="report_page reduce_font">
+                <div class="content_title">
+                  <h5>Appendix Definitions of BEING States and Dimensions</h5>
+                </div>
+                <div class="report_content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p><span class="font_bold">HUMAN POTENTIAL SCORE: </span> Measures the extent
+                        to which your potential is being utilized</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p><span class="font_bold">BEING Aware:</span> The level of self-awareness, and depth of
+                        understanding, with which you engage the world</p>
+                      <p> <span class="span_underline"> 1. Individual Awareness:</span> The extent to which you are
+                        aware of
+                        your unique gifts & have chosen to live by them</p>
+                      <p> <span class="span_underline"> 2. Interpersonal Awareness: </span> Measures how effectively you
+                        relate and interact with others.</p>
+                      <p> <span class="span_underline">3. Environmental Awareness:</span> Measures how aware your
+                        immediate
+                        environment is (indicates how supportive
+                        your environment is towards your personal growth)</p>
+                      <p> <span class="span_underline">4. Societal Awareness:</span> Measures the amount of concern you
+                        have towards society and planet</p>
+                      <p> <span class="span_underline">5. Personal Development: </span> Measures your openness to
+                        support
+                        personal development as a means to more effective leadership & performance</p>
+                    </div>
+                    <div class="col-md-12">
+                      <p><span class="font_bold">BEING Inspired: </span> The extent to which you are in touch with your
+                        greater potential</p>
+                      <p> <span class="span_underline">6. Play:</span> The extent to which your life is a joyful,
+                        creative
+                        experience for you</p>
+                      <p> <span class="span_underline">7. Curiosity: </span> Measures your ability to look at the world
+                        with
+                        fresh eyes</p>
+                      <p> <span class="span_underline">8. Facing the Unknown: </span> Measures how willing you are to
+                        step
+                        into uncertainty in spite of the challenges you may
+                        be facing</p>
+                      <p> <span class="span_underline">9. Being in Flow: </span> The ability to remain centered even in
+                        challenging times </p>
+                      <p> <span class="span_underline">10. Open to New Possibilities: </span> The ability to see
+                        opportunities even in difficult situations</p>
+                      <p> <span class="span_underline">11. Holistic View: </span> Your ability to step back and see the
+                        big
+                        picture from the perspective of different stakeholders</p>
+                    </div>
+                    <div class="col-md-12">
+                      <p><span class="font_bold">BEING Abundant: </span> Living in deep regard of yourself, of others,
+                        and
+                        of the circumstances you encounter</p>
+                      <p> <span class="span_underline">12. Collaboration Vs. Competition: </span>The synergy that is
+                        created
+                        when you step beyond your own self-interest in
+                        service of a greater purpose</p>
+                      <p> <span class="span_underline">13. Doing from Being: </span> Measures how well you are applying
+                        your
+                        true potential in your day-to-day life</p>
+                      <p> <span class="span_underline">14. Trust Vs. Control: </span> Measures how comfortable you are
+                        with
+                        uncertainty, and the level of trust you have in
+                        yourself and your ability to stretch beyond your comfort zone into new opportunities</p>
+                      <p> <span class="span_underline">15. Gratitude: </span> Seeing the goodness even in challenging
+                        situations</p>
+                      <p> <span class="span_underline">16. Acknowledgment: </span> The ability to see the positives in
+                        people and situations and acknowledge it</p>
+                      <p> <span class="span_underline">17. Generosity: </span> The openness to give to others without
+                        expecting anything in return</p>
+                    </div>
+                    <div class="col-md-12">
+                      <p><span class="font_bold">BEING in Service: </span> Running a successful business in service of
+                        the
+                        greater good</p>
+                      <p> <span class="span_underline">18. Greater Good: </span> Deeply caring and committing yourself
+                        to a
+                        greater good</p>
+                      <p> <span class="span_underline">19. Connectedness: </span> The ability to experience the world as
+                        a
+                        unified web of interconnected relationships</p>
+                      <p> <span class="span_underline">20. Compassion: </span> The ability to open your heart and see
+                        the
+                        world from another person's perspective</p>
+                      <p> <span class="span_underline">21. Harmony:</span> The ability to create sufficient space for
+                        reflection and self-care</p>
+                      <p> <span class="span_underline">22. Humility:</span> Accepting that your thoughts and the way you
+                        choose to respond to a situation is the only thing
+                        within your control</p>
+                      <p> <span class="span_underline">23. Living my calling: </span> Extent to which your life is in
+                        alignment with your true aspirations</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 13</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="page_14">
+              <div class="report_page">
+                <div class="content_title">
+                  <h5>Description of the Personal Maturity Index</h5>
+                </div>
+                <div class="report_content">
+                  <p class="mt-15">The Personal Maturity Index has been adapted from the "five Koshas" which finds its
+                    origin
+                    in the Indian spiritual traditions. These five layers measure your level of consciousness (or
+                    maturity) at this point in time and indicate your next stage of growth or maturity. Below are
+                    the descriptions of the five levels</p>
+                  <div class="flex_box">
+                    <div class="border_box red" style="background: #C0141E;">
+                      <h4>Physical</h4>
+                      <p>Fear based <br /> consciousness</p>
+                    </div>
+                    <div class="box_content">
+                      <p>Security, paying your bills, your daily needs taken care of, etc. are important drivers
+                        of
+                        your life. You are concerned about your, and your dear ones, future. Whether at work
+                        or in
+                        your family, you are motivated by (self) preservation. Saving and having enough reserves
+                        for
+                        a "rainy day" is important to you. Where others do not see a reason to worry, you will
+                        feel
+                        inclined to worry. There is an opportunity to work through some of these fears, and in
+                        doing so, build more trust in yourself and the people around you.</p>
+                    </div>
+                  </div>
+                  <div class="flex_box">
+                    <div class="border_box orange">
+                      <h4>Emotional</h4>
+                      <p>Feel good-based <br /> consciousness </p>
+                    </div>
+                    <div class="box_content">
+                      <p>It is important for you to belong, whether it is at work, or at home, or in groups you
+                        participate in, You are sensitive to the type of work atmosphere you operate in. You
+                        make an
+                        effort to be an important part of groups, and value others recognizing your effort and
+                        contribution to groups. You go out of your way to give to teams and groups so that they
+                        acknowledge you. There is an opportunity for you to define your identity or fulfillment
+                        based on
+                        your unique gifts rather than how you are received by others.</p>
+                    </div>
+                  </div>
+                  <div class="flex_box">
+                    <div class="border_box yellow">
+                      <h4>Mental</h4>
+                      <p>Reason-based <br /> consciousness</p>
+                    </div>
+                    <div class="box_content">
+                      <p>You are very adept at problem-solving and applying logic to understand the root causes
+                        and
+                        underlying motives. You typically make decisions with a lot of forethought and plenty of
+                        supporting data. In that process, you might tend to play it safe in order to avoid
+                        making
+                        "mistakes". In doing so, you might forgo the opportunity for passion, creativity and
+                        breakthroughs to emerge. Growing to the next level of maturity (PURPOSE) will require
+                        more
+                        compassionate and visionary leadership that is committed to realizing the full potential
+                        of
+                        people around you. In addition to the rational processes, it might help to access and
+                        rely
+                        more
+                        on your intuition in order to make informed decisions about the "emerging future" vs the
+                        best
+                        practices of today.</p>
+                    </div>
+                  </div>
+                  <div class="flex_box">
+                    <div class="border_box blue">
+                      <h4>Awareness</h4>
+                      <p>Wisdom-based <br /> consciousness</p>
+                    </div>
+                    <div class="box_content">
+                      <p>You are less driven by a need for self-preservation and more driven by a desire for
+                        self-realization. You have found effective ways to bring your deeper self into different
+                        aspects
+                        of life. Everything you do in your life is tied to a higher purpose. You now value meaning
+                        more
+                        than
+                        the security that your relationships, work, living situation or social life gives you.
+                        You
+                        are
+                        less prone to judge others and focus more on bringing out the best out of people. You see
+                        possibilities
+                        in everything happening around you. You have a high level of compassion for others and
+                        rely
+                        also
+                        on your intuition for guidance. People who engage with you recognize you as a wisdom-
+                        carrier.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex_box">
+                    <div class="border_box purple">
+                      <h4>Bliss</h4>
+                      <p>Service-based <br /> consciousness</p>
+                    </div>
+                    <div class="box_content">
+                      <p>You express the passion of the sages. You value the essence of everything over it's
+                        form.
+                        Your deepest fulfillment comes from the well-being of others. For you, actions are noble
+                        and
+                        unconditional, and you undertake actions for the pure joy of doing things. You see your
+                        actions as a means to self-realization. Everything you do is driven by your choiceful
+                        concern for others. You are devoted to the greater good but you are not obsessed with the
+                        outcomes of your actions.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row report-footer align-items-center">
+                  <div class="col-md-6">
+                    <div class="report_peage_header">
+                      <img src="assets/images/logo.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-right mt-3 text-italic">Page 14</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
